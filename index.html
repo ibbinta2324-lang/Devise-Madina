@@ -1,257 +1,196 @@
-Écriture
-
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#0b5ed7">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Devise Madina">
-<title>💱 Devise Madina</title><style>
-:root{
-  --bleu:#0b5ed7;
-  --bleu-fonce:#084298;
-  --bleu-clair:#e7f1ff;
-  --blanc:#fff;
-  --gris:#f4f6fa;
-  --texte:#1a2332;
-  --vert:#198754;
-  --rouge:#dc3545;
-}
+<title>💱 Devise Madina</title>
+
+<style>
 *{
+  box-sizing:border-box;
   margin:0;
   padding:0;
-  box-sizing:border-box;
-  font-family:Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-  -webkit-tap-highlight-color:transparent
+  font-family:Arial, sans-serif;
 }
 body{
-  background:var(--gris);
-  color:var(--texte);
-  min-height:100vh
+  background:#f3f6fa;
+  color:#172033;
 }
 .cacher{display:none!important}
 
 #splash{
   position:fixed;
   inset:0;
-  background:linear-gradient(160deg,#0b5ed7,#084298 60%,#052c65);
+  z-index:9999;
+  background:linear-gradient(135deg,#0b5ed7,#063b83);
+  color:white;
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
-  z-index:100;
-  color:#fff;
-  transition:opacity .5s
+  align-items:center;
 }
-#splash .logo{
-  font-size:70px;
-  animation:float 2s ease-in-out infinite
-}
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
-}
-#splash h1{font-size:28px;margin-top:14px}
-#splash p{opacity:.85;margin-top:6px;font-size:14px}
+#splash .logo{font-size:70px}
+#splash h1{margin-top:15px}
+#splash p{margin-top:8px;opacity:.8}
 
 .ecran{
   max-width:430px;
-  margin:0 auto;
-  padding:24px 20px 90px;
-  min-height:100vh
+  margin:auto;
+  padding:20px;
+  min-height:100vh;
 }
 .carte{
-  background:#fff;
+  background:white;
+  padding:20px;
   border-radius:18px;
-  padding:24px;
-  box-shadow:0 4px 20px rgba(8,66,152,.10);
-  margin-top:20px
+  margin:18px 0;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
 }
-.brand{text-align:center;padding-top:20px}
-.brand .logo{font-size:52px}
-.brand h1{color:var(--bleu-fonce);font-size:24px;margin-top:8px}
-.brand p{color:#6b7a90;font-size:13px;margin-top:4px}
+.brand{
+  text-align:center;
+  padding:20px 0;
+}
+.brand .logo{font-size:55px}
+.brand h1{
+  color:#084298;
+  margin-top:8px;
+}
+.brand p{
+  color:#697789;
+  font-size:13px;
+  margin-top:5px;
+}
 
-.champ{margin-bottom:16px}
+.champ{margin-bottom:15px}
 .champ label{
   display:block;
   font-size:13px;
-  font-weight:600;
-  color:var(--bleu-fonce);
-  margin-bottom:6px
+  font-weight:bold;
+  color:#084298;
+  margin-bottom:6px;
 }
-.champ input,.champ select{
+input,select{
   width:100%;
-  padding:13px 14px;
-  border:2px solid #dbe6f5;
-  border-radius:12px;
+  padding:13px;
+  border:2px solid #dce6f2;
+  border-radius:11px;
   font-size:15px;
-  background:#fbfdff;
-  outline:none
+  background:white;
+  outline:none;
 }
-.champ input:focus,.champ select:focus{
-  border-color:var(--bleu)
+input:focus,select:focus{
+  border-color:#0b5ed7;
 }
 .btn{
-  display:block;
   width:100%;
   padding:14px;
-  border:none;
+  border:0;
   border-radius:12px;
-  background:linear-gradient(135deg,var(--bleu),var(--bleu-fonce));
-  color:#fff;
+  background:#0b5ed7;
+  color:white;
   font-size:16px;
-  font-weight:700;
+  font-weight:bold;
   cursor:pointer;
-  box-shadow:0 4px 14px rgba(11,94,215,.35)
 }
-.btn:active{transform:scale(.97)}
 .btn.second{
-  background:#fff;
-  color:var(--bleu);
-  border:2px solid var(--bleu);
-  box-shadow:none
+  background:white;
+  color:#0b5ed7;
+  border:2px solid #0b5ed7;
 }
 .lien{
-  color:var(--bleu);
-  text-align:center;
   display:block;
-  margin-top:16px;
+  text-align:center;
+  color:#0b5ed7;
   font-size:14px;
-  cursor:pointer;
-  font-weight:600
+  font-weight:bold;
+  margin-top:15px;
 }
 .msg{
-  padding:12px;
+  padding:11px;
   border-radius:10px;
-  font-size:14px;
-  margin-bottom:14px;
-  text-align:center
+  margin-bottom:12px;
+  font-size:13px;
+  text-align:center;
 }
-.msg.ok{
-  background:#e8f7ee;
-  color:var(--vert);
-  border:1px solid #bfe6cd
+.ok{
+  background:#e7f7ed;
+  color:#137a3b;
 }
-.msg.err{
-  background:#fdecec;
-  color:var(--rouge);
-  border:1px solid #f5c2c7
+.err{
+  background:#fdeaea;
+  color:#c62828;
 }
 
 .header{
-  background:linear-gradient(135deg,var(--bleu),var(--bleu-fonce));
-  color:#fff;
-  padding:18px 20px 22px;
-  border-radius:0 0 26px 26px;
-  position:sticky;
-  top:0;
-  z-index:50
+  max-width:430px;
+  margin:auto;
+  background:linear-gradient(135deg,#0b5ed7,#063b83);
+  color:white;
+  padding:18px 20px;
+  border-radius:0 0 22px 22px;
 }
 .header h2{font-size:20px}
-.header .sous{font-size:12px;opacity:.85;margin-top:2px}
+.header p{
+  font-size:12px;
+  opacity:.8;
+  margin-top:4px;
+}
 
 .sect{
   max-width:430px;
-  margin:0 auto;
-  padding:16px 16px 100px
+  margin:auto;
+  padding:15px 16px 100px;
 }
-.titre-sect{
-  font-size:16px;
-  font-weight:700;
-  color:var(--bleu-fonce);
-  margin:18px 0 10px
+.titre{
+  font-size:17px;
+  font-weight:bold;
+  color:#084298;
+  margin:18px 0 10px;
 }
 
-.taux-carte{
-  background:linear-gradient(135deg,#0b5ed7,#06357a);
+.taux{
+  background:linear-gradient(135deg,#0b5ed7,#063b83);
+  color:white;
   border-radius:18px;
-  padding:18px;
-  color:#fff;
-  box-shadow:0 6px 18px rgba(8,66,152,.30)
+  padding:15px;
 }
-.taux-ligne{
+.tauxligne{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:10px 0;
-  border-bottom:1px solid rgba(255,255,255,.18)
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.2);
 }
-.taux-ligne:last-child{border-bottom:none}
-.taux-ligne .nom{font-size:13px;opacity:.9}
-.taux-ligne .val{font-size:20px;font-weight:800}
-.taux-ligne .src{font-size:11px;opacity:.75}
-
-.badge-auto{
-  background:#22c55e;
-  color:#fff;
-  font-size:10px;
-  padding:2px 8px;
-  border-radius:20px;
-  font-weight:700
-}
-.badge-manu{
-  background:#f59e0b;
-  color:#fff;
-  font-size:10px;
-  padding:2px 8px;
-  border-radius:20px;
-  font-weight:700
+.tauxligne:last-child{border-bottom:0}
+.tauxnom{font-size:13px}
+.tauxval{
+  font-size:20px;
+  font-weight:bold;
 }
 
-.ann{
-  background:#fff;
-  border-radius:16px;
-  padding:16px;
+.annonce{
+  background:white;
+  border-radius:15px;
+  padding:15px;
   margin-bottom:12px;
-  box-shadow:0 3px 12px rgba(8,66,152,.07);
-  border-left:5px solid var(--bleu)
+  box-shadow:0 3px 12px rgba(0,0,0,.07);
+  border-left:5px solid #0b5ed7;
 }
-.ann .haut{
-  display:flex;
-  justify-content:space-between;
-  align-items:center
-}
-.ann .type{
-  font-size:11px;
-  font-weight:800;
-  padding:3px 10px;
+.badge{
+  display:inline-block;
+  padding:4px 9px;
   border-radius:20px;
-  text-transform:uppercase
+  font-size:10px;
+  font-weight:bold;
 }
-.ann .type.v{
-  background:#e8f7ee;
-  color:var(--vert)
+.vente{
+  background:#e6f7ed;
+  color:#168443;
 }
-.ann .type.a{
-  background:#fef3e2;
-  color:#b45309
-}
-.ann .mont{
-  font-size:22px;
-  font-weight:800;
-  color:var(--bleu-fonce);
-  margin:6px 0
-}
-.ann .det{
-  font-size:13px;
-  color:#5b6b80;
-  margin-top:5px
-}
-.ann .cheque{
-  margin-top:8px;
-  background:var(--bleu-clair);
-  border-radius:10px;
-  padding:8px 10px;
-  font-size:12px;
-  color:var(--bleu-fonce)
-}
-.ann .qui{
-  font-size:12px;
-  color:#8a97a8;
-  margin-top:8px
+.cherche{
+  background:#fff1df;
+  color:#a65b00;
 }
 
 .navbar{
@@ -259,1128 +198,1002 @@ body{
   bottom:0;
   left:0;
   right:0;
-  background:#fff;
+  max-width:430px;
+  margin:auto;
+  background:white;
   display:flex;
   justify-content:space-around;
   padding:8px 0;
-  box-shadow:0 -3px 16px rgba(8,66,152,.12);
-  z-index:60;
-  border-radius:20px 20px 0 0;
-  max-width:430px;
-  margin:0 auto
+  box-shadow:0 -3px 15px rgba(0,0,0,.12);
+  border-radius:18px 18px 0 0;
+  z-index:50;
 }
 .nav{
   text-align:center;
-  cursor:pointer;
-  color:#8a97a8;
   font-size:11px;
-  font-weight:600;
-  padding:2px 10px
-}
-.nav .ico{
-  font-size:22px;
-  display:block
-}
-.nav.act{color:var(--bleu)}
-
-.duree{
-  display:flex;
-  gap:8px
-}
-.duree .pill{
-  flex:1;
-  text-align:center;
-  padding:11px 4px;
-  border:2px solid #dbe6f5;
-  border-radius:12px;
-  font-size:13px;
-  font-weight:700;
-  color:#7a8aa0;
+  color:#8995a5;
   cursor:pointer;
-  background:#fff
 }
-.duree .pill.sel{
-  background:var(--bleu);
-  border-color:var(--bleu);
-  color:#fff
+.nav span{
+  display:block;
+  font-size:22px;
 }
-.check-neg{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  white-space:nowrap;
-  font-size:14px;
-  font-weight:600;
-  color:var(--bleu-fonce)
+.nav.act{color:#0b5ed7}
+
+.admin{
+  border:2px dashed #8bb4e8;
 }
-.check-neg input{
-  width:20px;
-  height:20px;
-  accent-color:var(--bleu)
-}
-.carte-admin{border:2px dashed #93b8e8}
 
 @media(min-width:431px){
-  body{
-    display:flex;
-    justify-content:center;
-    background:#dfe8f5
-  }
+  body{background:#dce5f1}
 }
-</style></head><body><div id="splash">
+</style>
+</head>
+
+<body>
+
+<div id="splash">
   <div class="logo">💱</div>
   <h1>Devise Madina</h1>
-  <p>Achat &amp; vente de devises à Madina</p>
-</div><div id="auth" class="cacher">
-  <div class="ecran">
-    <div class="brand">
-      <div class="logo">💱</div>
-      <h1>Devise Madina</h1>
-      <p>Dollar 💵 • Euro 💶 • FCFA • GNF</p>
-    </div><div class="carte" id="formConnexion">
-  <h3 style="color:var(--bleu-fonce);margin-bottom:16px">Connexion</h3>
-  <div id="msgC"></div>
-
-  <div class="champ">
-    <label>Numéro de téléphone</label>
-    <input id="cTel" type="tel" placeholder="Ex : 622 00 00 00">
-  </div>
-
-  <div class="champ">
-    <label>Mot de passe</label>
-    <input id="cMdp" type="password" placeholder="Votre mot de passe">
-  </div>
-
-  <button class="btn" onclick="connecter()">Se connecter</button>
-  <span class="lien" onclick="afficherInscription()">Pas encore de compte ? S'inscrire</span>
+  <p>Achat & vente de devises à Madina</p>
 </div>
 
-<div class="carte cacher" id="formInscription">
-  <h3 style="color:var(--bleu-fonce);margin-bottom:16px">Inscription</h3>
-  <div id="msgI"></div>
+<!-- ================= CONNEXION ================= -->
 
-  <div class="champ">
-    <label>Nom complet</label>
-    <input id="iNom" type="text" placeholder="Ex : Mamadou Diallo">
-  </div>
+<div id="auth" class="cacher">
+<div class="ecran">
 
-  <div class="champ">
-    <label>Numéro de téléphone</label>
-    <input id="iTel" type="tel" placeholder="Ex : 622 00 00 00">
-  </div>
-
-  <div class="champ">
-    <label>Mot de passe</label>
-    <input id="iMdp" type="password" placeholder="Choisissez un mot de passe">
-  </div>
-
-  <div class="champ">
-    <label>Confirmer le mot de passe</label>
-    <input id="iMdp2" type="password" placeholder="Répétez le mot de passe">
-  </div>
-
-  <button class="btn" onclick="inscrire()">Créer mon compte</button>
-  <span class="lien" onclick="afficherConnexion()">Déjà inscrit ? Se connecter</span>
+<div class="brand">
+  <div class="logo">💱</div>
+  <h1>Devise Madina</h1>
+  <p>USD • EUR • CFA • GNF</p>
 </div>
 
-  </div>
-</div><div id="app" class="cacher">  <div class="header">
-    <h2>💱 Devise Madina</h2>
-    <div class="sous" id="sousHeader">Bienvenue 👋</div>
-  </div>  <div class="sect" id="pageAccueil"><div class="carte" style="margin-top:16px">
+<div class="carte" id="connexion">
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<h3 style="color:#084298;margin-bottom:15px">
+Connexion
+</h3>
 
-    <div class="champ">
-      <label>J'ai</label>
-      <select id="aiDevise">
-        <option value="GNF">🇬🇳 Franc guinéen (GNF)</option>
-        <option value="USD">🇺🇸 Dollar américain (USD)</option>
-        <option value="EUR">🇪🇺 Euro (EUR)</option>
-        <option value="XOF">🌍 Franc CFA (XOF)</option>
-      </select>
-    </div>
+<div id="msgConnexion"></div>
 
-    <div class="champ">
-      <label>Montant</label>
-      <input id="montant" type="number" placeholder="Ex : 500" min="1">
-    </div>
+<div class="champ">
+<label>Numéro de téléphone</label>
+<input id="loginTel" type="tel" placeholder="Ex : 622000000">
+</div>
 
-  </div>
+<div class="champ">
+<label>Mot de passe</label>
+<input id="loginMdp" type="password">
+</div>
 
-  <div class="champ">
-    <label>Sous forme de</label>
-    <select id="aiForme" onchange="toggleCheque('AI')">
-      <option value="especes">💵 Espèces</option>
-      <option value="orange">📱 Orange Money</option>
-      <option value="mtn">🟡 MTN Mobile Money</option>
-      <option value="wave">🌊 Wave</option>
-      <option value="cheque">📝 Chèque bancaire</option>
-    </select>
-  </div>
+<button class="btn" onclick="connecter()">
+Se connecter
+</button>
 
-  <div id="chequeAI" class="cacher" style="background:var(--bleu-clair);border-radius:12px;padding:12px;margin-bottom:16px">
-
-    <div class="champ">
-      <label>Type de chèque</label>
-      <select id="typeChequeAI">
-        <option>Chèque de banque</option>
-        <option>Chèque certifié</option>
-        <option>Chèque normal</option>
-      </select>
-    </div>
-
-    <div class="champ" style="margin-bottom:0">
-      <label>Nom de la banque</label>
-      <input id="banqueAI" type="text" placeholder="Ex : BICIGUI, Ecobank, UBA">
-    </div>
-
-  </div>
-
-  <div class="champ">
-    <label>Et je cherche</label>
-    <select id="chercheDevise" onchange="majLibelleTaux()">
-      <option value="GNF">🇬🇳 Franc guinéen (GNF)</option>
-      <option value="USD" selected>🇺🇸 Dollar américain (USD)</option>
-      <option value="EUR">🇪🇺 Euro (EUR)</option>
-      <option value="XOF">🌍 Franc CFA (XOF)</option>
-    </select>
-  </div>
-
-  <div class="champ">
-    <label>Sous forme de</label>
-    <select id="chercheForme" onchange="toggleCheque('CH')">
-      <option value="especes">💵 Espèces</option>
-      <option value="orange">📱 Orange Money</option>
-      <option value="mtn">🟡 MTN Mobile Money</option>
-      <option value="wave">🌊 Wave</option>
-      <option value="cheque">📝 Chèque bancaire</option>
-    </select>
-  </div>
-
-  <div id="chequeCH" class="cacher" style="background:var(--bleu-clair);border-radius:12px;padding:12px;margin-bottom:16px">
-
-    <div class="champ">
-      <label>Type de chèque</label>
-      <select id="typeChequeCH">
-        <option>Chèque de banque</option>
-        <option>Chèque certifié</option>
-        <option>Chèque normal</option>
-      </select>
-    </div>
-
-    <div class="champ" style="margin-bottom:0">
-      <label>Nom de la banque</label>
-      <input id="banqueCH" type="text" placeholder="Ex : BICIGUI, Ecobank, UBA">
-    </div>
-
-  </div>
-
-  <div class="champ">
-    <label>
-      Taux proposé (pour 1 <span id="lblDevise">USD</span>)
-    </label>
-
-    <div style="display:flex;align-items:center;gap:12px">
-      <input id="tauxPropose" type="number" step="0.01" placeholder="Ex : 9600" style="flex:1">
-
-      <label class="check-neg">
-        <input type="checkbox" id="aNegocier" onchange="toggleTaux">
-        À négocier
-      </label>
-    </div>
-  </div>
-
-  <div class="champ">
-    <label>Localisation</label>
-    <select id="localisation">
-      <option>Madina</option>
-      <option>Matam</option>
-      <option>Taouyah</option>
-      <option>Bellevue</option>
-      <option>Sonfonia</option>
-      <option>Kagbelen</option>
-      <option>Hamdallaye</option>
-      <option>Cosa</option>
-      <option>Kobayah</option>
-      <option>Dabompa</option>
-      <option>Autre</option>
-    </select>
-  </div>
-
-  <div class="champ">
-    <label>Durée de validité</label>
-
-    <div class="duree" id="dureePills">
-      <div class="pill" onclick="setDuree(this,'24 heures')">24 heures</div>
-      <div class="pill sel" onclick="setDuree(this,'3 jours')">3 jours</div>
-      <div class="pill" onclick="setDuree(this,'7 jours')">7 jours</div>
-    </div>
-  </div>
-
-  <button class="btn" onclick="publier()">📢 Publier l'annonce</button>
+<div class="lien" onclick="showInscription()">
+Créer un compte
+</div>
 
 </div>
 
-<div class="titre-sect">Taux appliqués</div>
+<!-- INSCRIPTION -->
 
-<div class="taux-carte">
+<div class="carte cacher" id="inscription">
 
-  <div class="taux-ligne">
-    <div>
-      <div class="nom">Taux de référence</div>
-      <div class="src" id="srcBcrg">Valeur de référence</div>
-    </div>
-    <div class="val" id="valBcrg">—</div>
-  </div>
+<h3 style="color:#084298;margin-bottom:15px">
+Créer un compte
+</h3>
 
-  <div class="taux-ligne">
-    <div>
-      <div class="nom">Taux Madina <span class="badge-manu">MAISON</span></div>
-      <div class="src">Géré par l'administrateur</div>
-    </div>
-    <div class="val" id="valMadina">—</div>
-  </div>
+<div id="msgInscription"></div>
+
+<div class="champ">
+<label>Nom complet</label>
+<input id="nomInscription" type="text">
+</div>
+
+<div class="champ">
+<label>Téléphone</label>
+<input id="telInscription" type="tel">
+</div>
+
+<div class="champ">
+<label>Mot de passe</label>
+<input id="mdpInscription" type="password">
+</div>
+
+<div class="champ">
+<label>Confirmer le mot de passe</label>
+<input id="mdp2Inscription" type="password">
+</div>
+
+<button class="btn" onclick="inscrire()">
+Créer mon compte
+</button>
+
+<div class="lien" onclick="showConnexion()">
+J'ai déjà un compte
+</div>
 
 </div>
 
-<div class="titre-sect">Dernières annonces à Madina</div>
+</div>
+</div>
+
+<!-- ================= APPLICATION ================= -->
+
+<div id="app" class="cacher">
+
+<div class="header">
+<h2>💱 Devise Madina</h2>
+<p id="bienvenue"></p>
+</div>
+
+<!-- ACCUEIL -->
+
+<div id="pageAccueil" class="sect">
+
+<div class="carte">
+
+<h3 style="color:#084298;margin-bottom:15px">
+📢 Publier une annonce
+</h3>
+
+<div class="champ">
+<label>J'ai</label>
+<select id="aiDevise">
+<option value="USD">🇺🇸 Dollar américain (USD)</option>
+<option value="EUR">🇪🇺 Euro (EUR)</option>
+<option value="XOF">🌍 Franc CFA (XOF)</option>
+<option value="GNF">🇬🇳 Franc guinéen (GNF)</option>
+</select>
+</div>
+
+<div class="champ">
+<label>Montant</label>
+<input id="montant" type="number" placeholder="Ex : 100">
+</div>
+
+<div class="champ">
+<label>Je cherche</label>
+<select id="chercheDevise">
+<option value="GNF">🇬🇳 Franc guinéen (GNF)</option>
+<option value="USD">🇺🇸 Dollar américain (USD)</option>
+<option value="EUR">🇪🇺 Euro (EUR)</option>
+<option value="XOF">🌍 Franc CFA (XOF)</option>
+</select>
+</div>
+
+<div class="champ">
+<label>Taux proposé</label>
+<input id="tauxAnnonce" type="number" placeholder="Ex : 9700">
+</div>
+
+<div class="champ">
+<label>Localisation</label>
+<select id="lieuAnnonce">
+<option>Madina</option>
+<option>Matam</option>
+<option>Taouyah</option>
+<option>Hamdallaye</option>
+<option>Cosa</option>
+<option>Sonfonia</option>
+<option>Autre</option>
+</select>
+</div>
+
+<button class="btn" onclick="publier()">
+📢 Publier l'annonce
+</button>
+
+</div>
+
+<div class="titre">📊 Taux actuels</div>
+
+<div class="taux">
+
+<div class="tauxligne">
+<div class="tauxnom">💵 1 USD → GNF</div>
+<div class="tauxval" id="affUSD">—</div>
+</div>
+
+<div class="tauxligne">
+<div class="tauxnom">💶 1 EUR → GNF</div>
+<div class="tauxval" id="affEUR">—</div>
+</div>
+
+<div class="tauxligne">
+<div class="tauxnom">🌍 1 CFA → GNF</div>
+<div class="tauxval" id="affCFA">—</div>
+</div>
+
+</div>
+
+<div class="titre">📢 Dernières annonces</div>
 <div id="listeAnnonces"></div>
 
-  </div>  <div class="sect cacher" id="pageTaux"><div class="titre-sect">Taux du jour</div>
+</div>
 
-<div class="taux-carte">
+<!-- TAUX -->
 
-  <div class="taux-ligne">
-    <div>
-      <div class="nom">USD / GNF — Référence</div>
-      <div class="src">Valeur indicative</div>
-    </div>
-    <div class="val" id="valBcrg2">—</div>
-  </div>
+<div id="pageTaux" class="sect cacher">
 
-  <div class="taux-ligne">
-    <div>
-      <div class="nom">USD / GNF — Madina</div>
-      <div class="src">Taux de la maison</div>
-    </div>
-    <div class="val" id="valMadina2">—</div>
-  </div>
+<div class="titre">📊 Taux de change</div>
+
+<div class="taux">
+
+<div class="tauxligne">
+<div class="tauxnom">💵 1 USD → GNF</div>
+<div class="tauxval" id="tauxUSD">—</div>
+</div>
+
+<div class="tauxligne">
+<div class="tauxnom">💶 1 EUR → GNF</div>
+<div class="tauxval" id="tauxEUR">—</div>
+</div>
+
+<div class="tauxligne">
+<div class="tauxnom">🌍 1 CFA → GNF</div>
+<div class="tauxval" id="tauxCFA">—</div>
+</div>
 
 </div>
 
-<div class="carte carte-admin">
+<div class="carte admin">
 
-  <h3 style="color:var(--bleu-fonce);margin-bottom:6px">
-    🔐 Espace Admin
-  </h3>
+<h3 style="color:#084298">
+🔐 Modifier les taux
+</h3>
 
-  <p style="font-size:12px;color:#7a8aa0;margin-bottom:14px">
-    Modifiez ici le taux Madina sur cet appareil.
-  </p>
+<p style="font-size:12px;color:#687789;margin:8px 0 18px">
+Tu peux modifier les trois taux directement depuis ton téléphone.
+</p>
 
-  <div class="champ">
-    <label>Nouveau taux USD/GNF</label>
-    <input id="nouveauTaux" type="number" step="0.01" placeholder="Ex : 9550">
-  </div>
+<div class="champ">
+<label>💵 Taux USD → GNF</label>
+<input id="nouveauUSD" type="number" placeholder="Ex : 9700">
+</div>
 
-  <div class="champ">
-    <label>Mot de passe admin</label>
-    <input id="mdpAdmin" type="password" placeholder="Mot de passe admin">
-  </div>
+<div class="champ">
+<label>💶 Taux EUR → GNF</label>
+<input id="nouveauEUR" type="number" placeholder="Ex : 11300">
+</div>
 
-  <button class="btn second" onclick="changerTaux()">
-    Mettre à jour le taux
-  </button>
+<div class="champ">
+<label>🌍 Taux CFA → GNF</label>
+<input id="nouveauCFA" type="number" step="0.01" placeholder="Ex : 15.5">
+</div>
 
-  <div id="msgAdmin" style="margin-top:12px"></div>
+<div class="champ">
+<label>🔑 Mot de passe admin</label>
+<input id="mdpAdmin" type="password" placeholder="Mot de passe">
+</div>
+
+<button class="btn" onclick="modifierTaux()">
+💾 Enregistrer les taux
+</button>
+
+<div id="msgAdmin" style="margin-top:12px"></div>
 
 </div>
 
-  </div>  <div class="sect cacher" id="pageAnnonces"><div class="titre-sect">Mes annonces</div>
+</div>
+
+<!-- ANNONCES -->
+
+<div id="pageAnnonces" class="sect cacher">
+
+<div class="titre">
+📋 Mes annonces
+</div>
 
 <div id="mesAnnonces"></div>
 
-  </div>  <div class="sect cacher" id="pageProfil"><div class="carte" style="margin-top:18px;text-align:center">
+</div>
 
-  <div style="font-size:56px">👤</div>
+<!-- PROFIL -->
 
-  <h3 id="profilNom" style="color:var(--bleu-fonce);margin-top:8px">
-    —
-  </h3>
+<div id="pageProfil" class="sect cacher">
 
-  <p id="profilTel" style="color:#7a8aa0;font-size:14px">
-    —
-  </p>
+<div class="carte" style="text-align:center">
 
-  <button class="btn second" style="margin-top:18px" onclick="deconnecter()">
-    Se déconnecter
-  </button>
+<div style="font-size:55px">👤</div>
+
+<h3 id="profilNom" style="color:#084298"></h3>
+
+<p id="profilTel" style="color:#718096;margin-top:5px"></p>
+
+<button class="btn second"
+style="margin-top:20px"
+onclick="installer()">
+📲 Installer l'application
+</button>
+
+<button class="btn second"
+style="margin-top:10px"
+onclick="deconnecter()">
+Se déconnecter
+</button>
 
 </div>
 
 <div class="carte">
 
-  <h3 style="color:var(--bleu-fonce);margin-bottom:8px">
-    📲 Installer l'application
-  </h3>
+<h3 style="color:#084298">
+📱 Installation
+</h3>
 
-  <p style="font-size:13px;color:#5b6b80;line-height:1.6">
-    Android : menu ⋮ du navigateur → Ajouter à l'écran d'accueil.
-    <br><br>
-    iPhone : bouton Partager → Sur l'écran d'accueil.
-  </p>
-
-  <button class="btn" style="margin-top:12px" onclick="installer()">
-    ⬇ Installer Devise Madina
-  </button>
+<p style="font-size:13px;color:#65758b;line-height:1.6;margin-top:10px">
+Si le bouton d'installation automatique ne fonctionne pas,
+ouvre le menu <b>⋮</b> de Chrome puis choisis
+<b>« Ajouter à l'écran d'accueil »</b>.
+</p>
 
 </div>
 
-  </div>  <div class="navbar"><div class="nav act" id="navAccueil" onclick="go('Accueil')">
-  <span class="ico">🏠</span>
-  Accueil
 </div>
 
-<div class="nav" id="navTaux" onclick="go('Taux')">
-  <span class="ico">📊</span>
-  Taux
+<!-- NAVIGATION -->
+
+<div class="navbar">
+
+<div class="nav act" id="navAccueil"
+onclick="go('Accueil')">
+<span>🏠</span>
+Accueil
 </div>
 
-<div class="nav" id="navAnnonces" onclick="go('Annonces')">
-  <span class="ico">📋</span>
-  Annonces
+<div class="nav" id="navTaux"
+onclick="go('Taux')">
+<span>📊</span>
+Taux
 </div>
 
-<div class="nav" id="navProfil" onclick="go('Profil')">
-  <span class="ico">👤</span>
-  Profil
+<div class="nav" id="navAnnonces"
+onclick="go('Annonces')">
+<span>📋</span>
+Annonces
 </div>
 
-  </div></div><script>
+<div class="nav" id="navProfil"
+onclick="go('Profil')">
+<span>👤</span>
+Profil
+</div>
 
-/* ================================
+</div>
+
+</div>
+
+<script>
+
+/* =====================================
    CONFIGURATION
-================================ */
+===================================== */
 
-const TAUX_REFERENCE_DEFAUT = 9650;
+const ADMIN_PASSWORD="madina2024";
 
-let user = null;
-let dureeSel = "3 jours";
-let deferredInstall = null;
+let user=null;
+let deferredPrompt=null;
 
-const SYM = {
-  GNF:"GNF",
-  USD:"$",
-  EUR:"€",
-  XOF:"FCFA"
+
+/* =====================================
+   TAUX PAR DEFAUT
+===================================== */
+
+const tauxDefaut={
+  USD:9700,
+  EUR:11300,
+  CFA:15.5
 };
 
-const NOM = {
-  GNF:"Franc guinéen",
-  USD:"Dollar américain",
-  EUR:"Euro",
-  XOF:"Franc CFA"
-};
 
-const FORME = {
-  especes:"💵 Espèces",
-  orange:"📱 Orange Money",
-  mtn:"🟡 MTN Mobile Money",
-  wave:"🌊 Wave",
-  cheque:"📝 Chèque bancaire"
-};
-
-/*
-  IMPORTANT :
-  Cette version fonctionne sans Supabase.
-  Les comptes et annonces sont enregistrés
-  dans le navigateur avec localStorage.
-*/
-
-/* ================================
+/* =====================================
    DEMARRAGE
-================================ */
+===================================== */
 
-window.addEventListener("load",function(){
+window.addEventListener("load",()=>{
 
-  setTimeout(function(){
+setTimeout(()=>{
 
-    const splash=document.getElementById("splash");
+document.getElementById("splash").classList.add("cacher");
 
-    splash.style.opacity="0";
+const saved=localStorage.getItem("dm_user");
 
-    setTimeout(function(){
+if(saved){
 
-      splash.classList.add("cacher");
+try{
+user=JSON.parse(saved);
+ouvrirApplication();
+}catch(e){
+afficherConnexion();
+}
 
-      const sauvegarde=localStorage.getItem("dm_user");
+}else{
 
-      if(sauvegarde){
+document.getElementById("auth")
+.classList.remove("cacher");
 
-        try{
-          user=JSON.parse(sauvegarde);
-          entrerApp();
-        }catch(e){
-          localStorage.removeItem("dm_user");
-          afficherConnexion();
-        }
+}
 
-      }else{
+},1200);
 
-        document.getElementById("auth").classList.remove("cacher");
-
-      }
-
-    },500);
-
-  },1200);
-
-  chargerTaux();
+chargerTaux();
 
 });
 
-/* ================================
-   AUTHENTIFICATION
-================================ */
+
+/* =====================================
+   CONNEXION
+===================================== */
+
+function showInscription(){
+
+document.getElementById("connexion")
+.classList.add("cacher");
+
+document.getElementById("inscription")
+.classList.remove("cacher");
+
+}
+
+function showConnexion(){
+
+document.getElementById("inscription")
+.classList.add("cacher");
+
+document.getElementById("connexion")
+.classList.remove("cacher");
+
+}
 
 function afficherConnexion(){
 
-  document.getElementById("formInscription").classList.add("cacher");
-  document.getElementById("formConnexion").classList.remove("cacher");
+document.getElementById("auth")
+.classList.remove("cacher");
 
 }
-
-function afficherInscription(){
-
-  document.getElementById("formConnexion").classList.add("cacher");
-  document.getElementById("formInscription").classList.remove("cacher");
-
-}
-
-function msg(id,texte,ok){
-
-  const element=document.getElementById(id);
-
-  element.innerHTML=texte
-    ? '<div class="msg '+(ok?'ok':'err')+'">'+texte+'</div>'
-    : "";
-
-}
-
-/* ================================
-   INSCRIPTION
-================================ */
 
 function inscrire(){
 
-  const nom=document.getElementById("iNom").value.trim();
-  const tel=document.getElementById("iTel").value.trim();
-  const mdp=document.getElementById("iMdp").value;
-  const mdp2=document.getElementById("iMdp2").value;
+const nom=document.getElementById("nomInscription").value.trim();
+const tel=document.getElementById("telInscription").value.trim();
+const mdp=document.getElementById("mdpInscription").value;
+const mdp2=document.getElementById("mdp2Inscription").value;
 
-  if(!nom || !tel || !mdp){
+if(!nom||!tel||!mdp){
 
-    msg("msgI","Remplissez tous les champs.",false);
-    return;
-
-  }
-
-  if(mdp.length<4){
-
-    msg("msgI","Mot de passe trop court (minimum 4 caractères).",false);
-    return;
-
-  }
-
-  if(mdp!==mdp2){
-
-    msg("msgI","Les mots de passe ne correspondent pas.",false);
-    return;
-
-  }
-
-  const utilisateurs=JSON.parse(
-    localStorage.getItem("dm_users") || "[]"
-  );
-
-  if(utilisateurs.some(u=>u.tel===tel)){
-
-    msg("msgI","Ce numéro est déjà inscrit.",false);
-    return;
-
-  }
-
-  utilisateurs.push({
-    nom:nom,
-    tel:tel,
-    mdp:mdp
-  });
-
-  localStorage.setItem(
-    "dm_users",
-    JSON.stringify(utilisateurs)
-  );
-
-  msg("msgI","✅ Compte créé ! Connectez-vous.",true);
-
-  setTimeout(function(){
-
-    afficherConnexion();
-
-    document.getElementById("cTel").value=tel;
-
-  },800);
+message("msgInscription","Remplis tous les champs.",false);
+return;
 
 }
 
-/* ================================
-   CONNEXION
-================================ */
+if(mdp!==mdp2){
+
+message("msgInscription","Les mots de passe ne correspondent pas.",false);
+return;
+
+}
+
+let users=JSON.parse(
+localStorage.getItem("dm_users")||"[]"
+);
+
+if(users.some(u=>u.tel===tel)){
+
+message("msgInscription","Ce numéro existe déjà.",false);
+return;
+
+}
+
+users.push({
+nom:nom,
+tel:tel,
+mdp:mdp
+});
+
+localStorage.setItem(
+"dm_users",
+JSON.stringify(users)
+);
+
+message(
+"msgInscription",
+"✅ Compte créé. Tu peux maintenant te connecter.",
+true
+);
+
+setTimeout(showConnexion,700);
+
+}
 
 function connecter(){
 
-  const tel=document.getElementById("cTel").value.trim();
-  const mdp=document.getElementById("cMdp").value;
+const tel=document.getElementById("loginTel").value.trim();
+const mdp=document.getElementById("loginMdp").value;
 
-  if(!tel || !mdp){
+const users=JSON.parse(
+localStorage.getItem("dm_users")||"[]"
+);
 
-    msg("msgC","Entrez votre numéro et votre mot de passe.",false);
-    return;
+const trouve=users.find(
+u=>u.tel===tel&&u.mdp===mdp
+);
 
-  }
+if(!trouve){
 
-  const utilisateurs=JSON.parse(
-    localStorage.getItem("dm_users") || "[]"
-  );
+message(
+"msgConnexion",
+"Numéro ou mot de passe incorrect.",
+false
+);
 
-  const trouve=utilisateurs.find(
-    u=>u.tel===tel && u.mdp===mdp
-  );
+return;
 
-  if(!trouve){
+}
 
-    msg("msgC","Numéro ou mot de passe incorrect.",false);
-    return;
+user={
+nom:trouve.nom,
+tel:trouve.tel
+};
 
-  }
+localStorage.setItem(
+"dm_user",
+JSON.stringify(user)
+);
 
-  user={
-    nom:trouve.nom,
-    tel:trouve.tel
-  };
+ouvrirApplication();
 
-  localStorage.setItem(
-    "dm_user",
-    JSON.stringify(user)
-  );
+}
 
-  entrerApp();
+function ouvrirApplication(){
+
+document.getElementById("auth")
+.classList.add("cacher");
+
+document.getElementById("app")
+.classList.remove("cacher");
+
+document.getElementById("bienvenue").textContent=
+"Bienvenue "+user.nom+" 👋";
+
+document.getElementById("profilNom").textContent=
+user.nom;
+
+document.getElementById("profilTel").textContent=
+user.tel;
+
+chargerAnnonces();
+chargerMesAnnonces();
 
 }
 
 function deconnecter(){
 
-  localStorage.removeItem("dm_user");
-  location.reload();
+localStorage.removeItem("dm_user");
+
+location.reload();
 
 }
 
-function entrerApp(){
 
-  document.getElementById("auth").classList.add("cacher");
-  document.getElementById("app").classList.remove("cacher");
+/* =====================================
+   MESSAGES
+===================================== */
 
-  document.getElementById("sousHeader").textContent=
-    "Bienvenue, "+user.nom+" 👋";
+function message(id,texte,ok){
 
-  document.getElementById("profilNom").textContent=user.nom;
-  document.getElementById("profilTel").textContent=user.tel;
-
-  chargerAnnonces();
-  chargerMesAnnonces();
+document.getElementById(id).innerHTML=
+'<div class="msg '+(ok?"ok":"err")+'">'+
+texte+
+'</div>';
 
 }
 
-/* ================================
-   FORMULAIRE
-================================ */
 
-function toggleCheque(type){
+/* =====================================
+   TAUX
+===================================== */
 
-  const selectId=type==="AI"
-    ?"aiForme"
-    :"chercheForme";
+function obtenirTaux(){
 
-  const valeur=document.getElementById(selectId).value;
+return {
 
-  document
-    .getElementById("cheque"+type)
-    .classList.toggle("cacher",valeur!=="cheque");
+USD:parseFloat(
+localStorage.getItem("taux_USD")||tauxDefaut.USD
+),
 
-}
+EUR:parseFloat(
+localStorage.getItem("taux_EUR")||tauxDefaut.EUR
+),
 
-function majLibelleTaux(){
+CFA:parseFloat(
+localStorage.getItem("taux_CFA")||tauxDefaut.CFA
+)
 
-  document.getElementById("lblDevise").textContent=
-    document.getElementById("chercheDevise").value;
-
-}
-
-function toggleTaux(){
-
-  const checkbox=document.getElementById("aNegocier");
-  const input=document.getElementById("tauxPropose");
-
-  input.disabled=checkbox.checked;
-
-  input.style.opacity=
-    checkbox.checked?".5":"1";
-
-  if(checkbox.checked){
-    input.value="";
-  }
+};
 
 }
 
-function setDuree(element,duree){
+function chargerTaux(){
 
-  document
-    .querySelectorAll("#dureePills .pill")
-    .forEach(p=>p.classList.remove("sel"));
+const t=obtenirTaux();
 
-  element.classList.add("sel");
+document.getElementById("affUSD").textContent=
+format(t.USD)+" GNF";
 
-  dureeSel=duree;
+document.getElementById("affEUR").textContent=
+format(t.EUR)+" GNF";
+
+document.getElementById("affCFA").textContent=
+format(t.CFA)+" GNF";
+
+document.getElementById("tauxUSD").textContent=
+format(t.USD)+" GNF";
+
+document.getElementById("tauxEUR").textContent=
+format(t.EUR)+" GNF";
+
+document.getElementById("tauxCFA").textContent=
+format(t.CFA)+" GNF";
 
 }
 
-/* ================================
-   PUBLICATION
-================================ */
+function modifierTaux(){
+
+const mdp=
+document.getElementById("mdpAdmin").value;
+
+if(mdp!==ADMIN_PASSWORD){
+
+message(
+"msgAdmin",
+"❌ Mot de passe admin incorrect.",
+false
+);
+
+return;
+
+}
+
+const usd=parseFloat(
+document.getElementById("nouveauUSD").value
+);
+
+const eur=parseFloat(
+document.getElementById("nouveauEUR").value
+);
+
+const cfa=parseFloat(
+document.getElementById("nouveauCFA").value
+);
+
+if(!usd||!eur||!cfa){
+
+message(
+"msgAdmin",
+"❌ Remplis les trois taux.",
+false
+);
+
+return;
+
+}
+
+localStorage.setItem("taux_USD",usd);
+localStorage.setItem("taux_EUR",eur);
+localStorage.setItem("taux_CFA",cfa);
+
+chargerTaux();
+
+message(
+"msgAdmin",
+"✅ Les trois taux ont été mis à jour.",
+true
+);
+
+document.getElementById("nouveauUSD").value="";
+document.getElementById("nouveauEUR").value="";
+document.getElementById("nouveauCFA").value="";
+document.getElementById("mdpAdmin").value="";
+
+}
+
+function format(n){
+
+return Number(n).toLocaleString(
+"fr-FR",
+{
+maximumFractionDigits:2
+}
+);
+
+}
+
+
+/* =====================================
+   ANNONCES
+===================================== */
 
 function publier(){
 
-  if(!user){
+if(!user){
 
-    alert("Vous devez être connecté.");
-    return;
-
-  }
-
-  const montant=parseFloat(
-    document.getElementById("montant").value
-  );
-
-  if(!montant || montant<=0){
-
-    alert("Entrez un montant valide.");
-    return;
-
-  }
-
-  const aiDevise=document.getElementById("aiDevise").value;
-  const chercheDevise=document.getElementById("chercheDevise").value;
-  const aiForme=document.getElementById("aiForme").value;
-  const chercheForme=document.getElementById("chercheForme").value;
-
-  let chequeAI=null;
-  let chequeCH=null;
-
-  if(aiForme==="cheque"){
-
-    const banque=document.getElementById("banqueAI").value.trim();
-
-    if(!banque){
-
-      alert("Précisez le nom de votre banque.");
-      return;
-
-    }
-
-    chequeAI={
-      type:document.getElementById("typeChequeAI").value,
-      banque:banque
-    };
-
-  }
-
-  if(chercheForme==="cheque"){
-
-    const banque=document.getElementById("banqueCH").value.trim();
-
-    if(!banque){
-
-      alert("Précisez la banque du chèque recherché.");
-      return;
-
-    }
-
-    chequeCH={
-      type:document.getElementById("typeChequeCH").value,
-      banque:banque
-    };
-
-  }
-
-  const negociable=
-    document.getElementById("aNegocier").checked;
-
-  const taux=negociable
-    ?null
-    :parseFloat(
-      document.getElementById("tauxPropose").value
-    );
-
-  if(!negociable && (!taux || taux<=0)){
-
-    alert("Entrez un taux ou cochez « À négocier ».");
-    return;
-
-  }
-
-  const annonce={
-
-    id:Date.now(),
-
-    ai_devise:aiDevise,
-    montant:montant,
-    ai_forme:aiForme,
-    chq_ai:chequeAI,
-
-    cherche_devise:chercheDevise,
-    cherche_forme:chercheForme,
-    chq_cherche:chequeCH,
-
-    taux:taux,
-    negociable:negociable,
-
-    lieu:document.getElementById("localisation").value,
-
-    duree:dureeSel,
-
-    auteur:user.nom,
-    telephone:user.tel,
-
-    date:new Date().toISOString()
-
-  };
-
-  const annonces=JSON.parse(
-    localStorage.getItem("dm_annonces") || "[]"
-  );
-
-  annonces.unshift(annonce);
-
-  localStorage.setItem(
-    "dm_annonces",
-    JSON.stringify(annonces)
-  );
-
-  document.getElementById("montant").value="";
-  document.getElementById("tauxPropose").value="";
-  document.getElementById("banqueAI").value="";
-  document.getElementById("banqueCH").value="";
-
-  document.getElementById("aNegocier").checked=false;
-  document.getElementById("tauxPropose").disabled=false;
-  document.getElementById("tauxPropose").style.opacity="1";
-
-  chargerAnnonces();
-  chargerMesAnnonces();
-
-  alert("✅ Annonce publiée !");
+alert("Connecte-toi d'abord.");
+return;
 
 }
 
-/* ================================
-   AFFICHAGE ANNONCES
-================================ */
+const devise=
+document.getElementById("aiDevise").value;
 
-function carteAnn(a){
+const montant=parseFloat(
+document.getElementById("montant").value
+);
 
-  const montant=
-    Number(a.montant).toLocaleString("fr-FR");
+const cherche=
+document.getElementById("chercheDevise").value;
 
-  const tauxHtml=a.negociable
+const taux=parseFloat(
+document.getElementById("tauxAnnonce").value
+);
 
-    ?'<div class="det">🤝 Taux : <b>À négocier</b></div>'
+const lieu=
+document.getElementById("lieuAnnonce").value;
 
-    :'<div class="det">📈 Taux proposé : <b>'+
-      Number(a.taux).toLocaleString("fr-FR")+
-      ' GNF</b> pour 1 '+SYM[a.cherche_devise]+'</div>';
+if(!montant){
 
-  function chequeHTML(c){
-
-    if(!c || !c.banque) return "";
-
-    return '<div class="cheque">📝 '+
-      c.type+
-      ' — Banque : <b>'+
-      escapeHTML(c.banque)+
-      '</b></div>';
-
-  }
-
-  return (
-
-    '<div class="ann">'+
-
-      '<div class="haut">'+
-        '<span class="type v">💰 J\'AI</span>'+
-        '<span style="font-size:12px;color:#8a97a8">⏳ '+
-        escapeHTML(a.duree)+
-        '</span>'+
-      '</div>'+
-
-      '<div class="mont">'+
-        montant+" "+SYM[a.ai_devise]+
-      '</div>'+
-
-      '<div class="det">'+
-        NOM[a.ai_devise]+" • "+
-        FORME[a.ai_forme]+
-      '</div>'+
-
-      chequeHTML(a.chq_ai)+
-
-      '<div class="haut" style="margin-top:10px">'+
-        '<span class="type a">🔎 JE CHERCHE</span>'+
-      '</div>'+
-
-      '<div class="det">'+
-        '<b style="color:var(--bleu-fonce)">'+
-        NOM[a.cherche_devise]+
-        '</b> • '+
-        FORME[a.cherche_forme]+
-      '</div>'+
-
-      chequeHTML(a.chq_cherche)+
-
-      tauxHtml+
-
-      '<div class="qui">'+
-        '📍 '+escapeHTML(a.lieu)+
-        ' • 👤 '+escapeHTML(a.auteur)+
-        ' • 📞 '+escapeHTML(a.telephone)+
-      '</div>'+
-
-    '</div>'
-
-  );
+alert("Entre un montant.");
+return;
 
 }
 
-function escapeHTML(value){
+if(!taux){
 
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+alert("Entre un taux.");
+return;
 
 }
 
-/* ================================
-   CHARGER ANNONCES
-================================ */
+const annonce={
+
+id:Date.now(),
+
+devise:devise,
+
+montant:montant,
+
+cherche:cherche,
+
+taux:taux,
+
+lieu:lieu,
+
+nom:user.nom,
+
+tel:user.tel,
+
+date:new Date().toISOString()
+
+};
+
+let annonces=JSON.parse(
+localStorage.getItem("dm_annonces")||"[]"
+);
+
+annonces.unshift(annonce);
+
+localStorage.setItem(
+"dm_annonces",
+JSON.stringify(annonces)
+);
+
+document.getElementById("montant").value="";
+document.getElementById("tauxAnnonce").value="";
+
+chargerAnnonces();
+chargerMesAnnonces();
+
+alert("✅ Annonce publiée.");
+
+}
 
 function chargerAnnonces(){
 
-  const annonces=JSON.parse(
-    localStorage.getItem("dm_annonces") || "[]"
-  );
+const annonces=JSON.parse(
+localStorage.getItem("dm_annonces")||"[]"
+);
 
-  const recentes=annonces.slice(0,20);
+const element=
+document.getElementById("listeAnnonces");
 
-  const element=document.getElementById("listeAnnonces");
+if(!annonces.length){
 
-  element.innerHTML=recentes.length
+element.innerHTML=
+'<p style="text-align:center;color:#7a8798">'+
+"Aucune annonce pour le moment."+
+"</p>";
 
-    ?recentes.map(carteAnn).join("")
+return;
 
-    :'<p style="color:#8a97a8;font-size:13px;text-align:center">'+
-     'Aucune annonce pour le moment.</p>';
+}
+
+element.innerHTML=
+annonces.slice(0,20)
+.map(creerAnnonce)
+.join("");
 
 }
 
 function chargerMesAnnonces(){
 
-  if(!user) return;
+if(!user)return;
 
-  const annonces=JSON.parse(
-    localStorage.getItem("dm_annonces") || "[]"
-  );
+const annonces=JSON.parse(
+localStorage.getItem("dm_annonces")||"[]"
+);
 
-  const mes=annonces.filter(
-    a=>a.telephone===user.tel
-  );
+const mes=annonces.filter(
+a=>a.tel===user.tel
+);
 
-  const element=document.getElementById("mesAnnonces");
+const element=
+document.getElementById("mesAnnonces");
 
-  element.innerHTML=mes.length
+if(!mes.length){
 
-    ?mes.map(carteAnn).join("")
+element.innerHTML=
+'<p style="text-align:center;color:#7a8798">'+
+"Tu n'as aucune annonce."+
+"</p>";
 
-    :'<p style="color:#8a97a8;font-size:13px;text-align:center">'+
-     'Vous n\'avez pas encore publié d\'annonce.</p>';
-
-}
-
-/* ================================
-   TAUX
-================================ */
-
-function chargerTaux(){
-
-  const tauxReference=TAUX_REFERENCE_DEFAUT;
-
-  const tauxMadina=parseFloat(
-    localStorage.getItem("dm_taux_madina")
-    || tauxReference
-  );
-
-  document.getElementById("valBcrg").textContent=
-    tauxReference.toLocaleString("fr-FR")+" GNF";
-
-  document.getElementById("valMadina").textContent=
-    tauxMadina.toLocaleString("fr-FR")+" GNF";
-
-  document.getElementById("valBcrg2").textContent=
-    tauxReference.toLocaleString("fr-FR")+" GNF";
-
-  document.getElementById("valMadina2").textContent=
-    tauxMadina.toLocaleString("fr-FR")+" GNF";
+return;
 
 }
 
-function changerTaux(){
-
-  const taux=parseFloat(
-    document.getElementById("nouveauTaux").value
-  );
-
-  const mdp=document.getElementById("mdpAdmin").value;
-
-  /*
-    Pour cette première version locale.
-    Change ce mot de passe avant de publier
-    une vraie version avec plusieurs utilisateurs.
-  */
-  const MOT_DE_PASSE_ADMIN="madina2024";
-
-  if(!taux || taux<=0){
-
-    msg("msgAdmin","Entrez un taux valide.",false);
-    return;
-
-  }
-
-  if(mdp!==MOT_DE_PASSE_ADMIN){
-
-    msg("msgAdmin","Mot de passe admin incorrect.",false);
-    return;
-
-  }
-
-  localStorage.setItem(
-    "dm_taux_madina",
-    String(taux)
-  );
-
-  msg(
-    "msgAdmin",
-    "✅ Taux Madina mis à jour : "+
-    taux.toLocaleString("fr-FR")+" GNF",
-    true
-  );
-
-  document.getElementById("nouveauTaux").value="";
-  document.getElementById("mdpAdmin").value="";
-
-  chargerTaux();
+element.innerHTML=
+mes.map(creerAnnonce).join("");
 
 }
 
-/* ================================
+function deviseNom(code){
+
+if(code==="USD")return"💵 Dollar américain";
+if(code==="EUR")return"💶 Euro";
+if(code==="XOF")return"🌍 Franc CFA";
+return"🇬🇳 Franc guinéen";
+
+}
+
+function creerAnnonce(a){
+
+return `
+<div class="annonce">
+
+<span class="badge vente">
+💰 DISPONIBLE
+</span>
+
+<h3 style="color:#084298;margin:8px 0">
+${format(a.montant)} ${a.devise}
+</h3>
+
+<p style="font-size:13px;color:#66758a">
+${deviseNom(a.devise)}
+</p>
+
+<p style="margin-top:8px;font-size:13px">
+🔎 Recherche :
+<b>${deviseNom(a.cherche)}</b>
+</p>
+
+<p style="margin-top:7px;font-size:13px">
+📈 Taux :
+<b>${format(a.taux)} GNF</b>
+</p>
+
+<p style="margin-top:7px;font-size:13px">
+📍 ${a.lieu}
+</p>
+
+<p style="margin-top:7px;font-size:12px;color:#8995a5">
+👤 ${a.nom} • 📞 ${a.tel}
+</p>
+
+</div>
+`;
+
+}
+
+
+/* =====================================
    NAVIGATION
-================================ */
+===================================== */
 
 function go(page){
 
-  const pages=[
-    "Accueil",
-    "Taux",
-    "Annonces",
-    "Profil"
-  ];
+const pages=[
+"Accueil",
+"Taux",
+"Annonces",
+"Profil"
+];
 
-  pages.forEach(function(p){
+pages.forEach(p=>{
 
-    document
-      .getElementById("page"+p)
-      .classList.toggle("cacher",p!==page);
-
-    document
-      .getElementById("nav"+p)
-      .classList.toggle("act",p===page);
-
-  });
-
-  if(page==="Accueil"){
-    chargerAnnonces();
-  }
-
-  if(page==="Annonces"){
-    chargerMesAnnonces();
-  }
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-/* ================================
-   INSTALLATION
-================================ */
-
-function installer(){
-
-  if(deferredInstall){
-
-    deferredInstall.prompt();
-
-    deferredInstall.userChoice.then(function(result){
-
-      if(result.outcome==="accepted"){
-        deferredInstall=null;
-      }
-
-    });
-
-  }else{
-
-    alert(
-      "📲 Android : menu ⋮ → Ajouter à l'écran d'accueil.\n\n"+
-      "🍎 iPhone : bouton Partager → Sur l'écran d'accueil."
-    );
-
-  }
-
-}
-
-window.addEventListener(
-  "beforeinstallprompt",
-  function(event){
-
-    event.preventDefault();
-    deferredInstall=event;
-
-  }
+document
+.getElementById("page"+p)
+.classList.toggle(
+"cacher",
+p!==page
 );
 
-</script></body>
+document
+.getElementById("nav"+p)
+.classList.toggle(
+"act",
+p===page
+);
+
+});
+
+if(page==="Accueil"){
+chargerAnnonces();
+}
+
+if(page==="Annonces"){
+chargerMesAnnonces();
+}
+
+window.scrollTo(0,0);
+
+}
+
+
+/* =====================================
+   INSTALLATION
+===================================== */
+
+window.addEventListener(
+"beforeinstallprompt",
+event=>{
+
+event.preventDefault();
+
+deferredPrompt=event;
+
+}
+);
+
+async function installer(){
+
+if(deferredPrompt){
+
+deferredPrompt.prompt();
+
+const choix=
+await deferredPrompt.userChoice;
+
+if(choix.outcome==="accepted"){
+
+deferredPrompt=null;
+
+}
+
+return;
+
+}
+
+alert(
+"Pour installer Devise Madina :\n\n"+
+"1. Ouvre le menu ⋮ de Chrome.\n"+
+"2. Choisis « Ajouter à l'écran d'accueil ».\n"+
+"3. Confirme l'installation."
+);
+
+}
+
+</script>
+
+</body>
 </html>
