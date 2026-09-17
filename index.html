@@ -2,520 +2,188 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#0b5ed7">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-
 <title>Devise Madina</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f3f6fb;color:#172033}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
 
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f3f6fb;
-  color:#172033;
-  min-height:100vh;
-}
-
-button,
-input,
-select{
-  font-family:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.hidden{
-  display:none!important;
-}
-
-/* SPLASH */
 #splash{
-  position:fixed;
-  inset:0;
-  background:#0b5ed7;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  z-index:9999;
+position:fixed;inset:0;background:#0b5ed7;color:#fff;
+display:flex;align-items:center;justify-content:center;
+flex-direction:column;z-index:99999
 }
-
-.logoCircle{
-  width:95px;
-  height:95px;
-  border-radius:50%;
-  background:white;
-  color:#0b5ed7;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:38px;
-  font-weight:900;
-  margin-bottom:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
+.logo{
+width:90px;height:90px;border-radius:50%;background:#fff;
+color:#0b5ed7;display:flex;align-items:center;
+justify-content:center;font-size:34px;font-weight:900;
+margin-bottom:18px
 }
+#splash h1{font-size:30px}
+#splash p{margin-top:8px}
 
-#splash h1{
-  font-size:30px;
-}
-
-#splash p{
-  margin-top:8px;
-  opacity:.9;
-}
-
-/* AUTH */
 #auth{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
+min-height:100vh;display:flex;align-items:center;
+justify-content:center;padding:20px
 }
-
-.authBox{
-  width:100%;
-  max-width:430px;
-  background:white;
-  padding:28px 22px;
-  border-radius:20px;
-  box-shadow:0 10px 35px rgba(0,0,0,.10);
+.authbox{
+width:100%;max-width:430px;background:#fff;padding:25px;
+border-radius:20px;box-shadow:0 8px 30px #0001
 }
+.authhead{text-align:center;margin-bottom:22px}
+.authhead .logo{width:75px;height:75px;margin:auto auto 10px}
+.authhead h2{color:#0b5ed7}
 
-.authLogo{
-  text-align:center;
-  margin-bottom:25px;
+.tabs{display:flex;gap:8px;margin-bottom:18px}
+.tabs button{
+flex:1;border:0;padding:12px;border-radius:9px;
+background:#edf1f7;font-weight:bold
 }
+.tabs button.active{background:#0b5ed7;color:#fff}
 
-.authLogo .logoCircle{
-  margin:0 auto 12px;
-  width:75px;
-  height:75px;
-  font-size:30px;
+.msg{padding:11px;border-radius:9px;margin-bottom:15px;font-size:14px}
+.error{background:#ffe4e4;color:#b00020}
+.success{background:#e2f7e9;color:#16743b}
+
+.group{margin-bottom:14px}
+.group label{display:block;font-weight:bold;font-size:14px;margin-bottom:7px}
+.group input,.group select{
+width:100%;padding:13px;border:1px solid #d5dce7;
+border-radius:9px;background:#fff;outline:none
 }
+.group input:focus,.group select:focus{border-color:#0b5ed7}
 
-.authLogo h2{
-  color:#0b5ed7;
-}
-
-.authTabs{
-  display:flex;
-  gap:8px;
-  margin-bottom:20px;
-}
-
-.authTabs button{
-  flex:1;
-  border:0;
-  padding:12px;
-  border-radius:10px;
-  background:#edf2f8;
-  color:#333;
-  font-weight:bold;
-}
-
-.authTabs button.active{
-  background:#0b5ed7;
-  color:white;
-}
-
-.formGroup{
-  margin-bottom:15px;
-}
-
-.formGroup label{
-  display:block;
-  margin-bottom:7px;
-  font-weight:bold;
-  font-size:14px;
-}
-
-.formGroup input,
-.formGroup select{
-  width:100%;
-  padding:13px;
-  border:1px solid #d7deea;
-  border-radius:10px;
-  outline:none;
-  background:white;
-}
-
-.formGroup input:focus,
-.formGroup select:focus{
-  border-color:#0b5ed7;
-}
-
-.primaryBtn{
-  width:100%;
-  padding:14px;
-  border:0;
-  border-radius:10px;
-  background:#0b5ed7;
-  color:white;
-  font-weight:bold;
-  font-size:16px;
-}
-
-.primaryBtn:active{
-  transform:scale(.98);
-}
-
-.error{
-  background:#ffe5e5;
-  color:#b00020;
-  padding:11px;
-  border-radius:9px;
-  margin-bottom:15px;
-  font-size:14px;
-}
-
-.success{
-  background:#e2f8ea;
-  color:#16743b;
-  padding:11px;
-  border-radius:9px;
-  margin-bottom:15px;
-  font-size:14px;
-}
-
-/* APP */
-#app{
-  min-height:100vh;
+.primary{
+width:100%;border:0;background:#0b5ed7;color:#fff;
+padding:14px;border-radius:10px;font-weight:bold;font-size:16px
 }
 
 header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:#0b5ed7;
-  color:white;
-  padding:14px 15px;
-  box-shadow:0 3px 12px rgba(0,0,0,.15);
+background:#0b5ed7;color:#fff;padding:14px;
+position:sticky;top:0;z-index:100
+}
+.headerin{
+max-width:1100px;margin:auto;display:flex;
+justify-content:space-between;align-items:center
+}
+.brand{font-size:20px;font-weight:900}
+.logout{
+border:0;background:#ffffff22;color:#fff;
+padding:8px 11px;border-radius:8px
 }
 
-.headerInside{
-  max-width:1100px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+main{max-width:1100px;margin:auto;padding:20px 15px 100px}
+.page{display:none}.page.active{display:block}
+.title{margin-bottom:18px}
+.title h2{font-size:24px;margin-bottom:5px}
+.title p{color:#667085}
+
+.gridrates{
+display:grid;grid-template-columns:repeat(3,1fr);
+gap:14px;margin-bottom:20px
+}
+.rate{
+background:#fff;padding:18px;border-radius:15px;
+box-shadow:0 3px 14px #0000000d
+}
+.rate small{color:#667085}
+.rate strong{
+display:block;color:#0b5ed7;font-size:24px;margin-top:6px
 }
 
-.brand{
-  font-weight:900;
-  font-size:20px;
-}
-
-.headerRight{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.logoutBtn{
-  border:0;
-  background:rgba(255,255,255,.15);
-  color:white;
-  padding:8px 11px;
-  border-radius:8px;
-}
-
-main{
-  max-width:1100px;
-  margin:auto;
-  padding:20px 15px 100px;
-}
-
-.page{
-  display:none;
-}
-
-.page.active{
-  display:block;
-}
-
-.pageTitle{
-  margin-bottom:18px;
-}
-
-.pageTitle h2{
-  font-size:24px;
-  margin-bottom:5px;
-}
-
-.pageTitle p{
-  color:#667085;
-}
-
-/* RATES */
-.rateGrid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-  margin-bottom:25px;
-}
-
-.rateCard{
-  background:white;
-  border-radius:15px;
-  padding:18px;
-  box-shadow:0 3px 14px rgba(0,0,0,.07);
-}
-
-.rateCard .currency{
-  color:#667085;
-  font-size:14px;
-}
-
-.rateCard .rate{
-  font-size:25px;
-  font-weight:900;
-  margin-top:7px;
-  color:#0b5ed7;
-}
-
-.rateCard small{
-  color:#777;
-}
-
-/* FORMS */
 .card{
-  background:white;
-  border-radius:16px;
-  padding:20px;
-  box-shadow:0 3px 14px rgba(0,0,0,.07);
-  margin-bottom:18px;
+background:#fff;padding:20px;border-radius:16px;
+box-shadow:0 3px 14px #0000000d;margin-bottom:18px
+}
+.section{
+font-size:18px;font-weight:900;color:#0b5ed7;
+margin-bottom:15px
+}
+.formgrid{
+display:grid;grid-template-columns:repeat(2,1fr);gap:14px
+}
+.full{grid-column:1/-1}
+
+.checkline{
+display:flex;align-items:center;gap:8px;margin:10px 0
+}
+.checkline input{width:18px;height:18px}
+
+.list{display:flex;flex-direction:column;gap:14px}
+.ann{
+background:#fff;padding:18px;border-radius:16px;
+box-shadow:0 3px 14px #0000000d
+}
+.antop{
+display:flex;justify-content:space-between;gap:10px;
+margin-bottom:12px
+}
+.blue{color:#0b5ed7;font-weight:900}
+.amount{font-size:22px;font-weight:900;margin-top:4px}
+.row{
+padding:7px 0;border-bottom:1px solid #edf0f5;
+font-size:14px
+}
+.row:last-child{border-bottom:0}
+.label{color:#667085}
+.badge{
+display:inline-block;background:#fff0bd;color:#7a5900;
+padding:4px 8px;border-radius:6px;font-size:12px;
+font-weight:bold
+}
+.delete{
+margin-top:13px;border:0;background:#ffe5e5;
+color:#c62828;padding:10px;border-radius:8px;font-weight:bold
 }
 
-.sectionTitle{
-  font-size:18px;
-  font-weight:900;
-  color:#0b5ed7;
-  margin-bottom:15px;
+.profile{text-align:center}
+.avatar{
+width:80px;height:80px;border-radius:50%;
+background:#0b5ed7;color:#fff;display:flex;
+align-items:center;justify-content:center;
+margin:auto auto 12px;font-size:30px;font-weight:900
+}
+.pname{font-size:23px;font-weight:900}
+.pphone{color:#667085;margin-top:5px}
+
+.admin{
+border:2px solid #0b5ed7
+}
+.adminbadge{
+display:inline-block;background:#0b5ed7;color:#fff;
+padding:5px 9px;border-radius:7px;font-size:12px;
+font-weight:bold;margin-bottom:12px
 }
 
-.formGrid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
+.empty,.loading{
+background:#fff;padding:25px;border-radius:15px;
+text-align:center;color:#667085
 }
 
-.full{
-  grid-column:1/-1;
+.bottom{
+position:fixed;bottom:0;left:0;right:0;background:#fff;
+border-top:1px solid #ddd;z-index:500
 }
-
-.checkboxLine{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  margin:10px 0;
+.nav{
+max-width:850px;margin:auto;display:flex
 }
-
-.checkboxLine input{
-  width:18px;
-  height:18px;
+.nav button{
+flex:1;border:0;background:#fff;color:#667085;
+padding:8px 2px;font-size:10px
 }
+.nav button span{display:block;font-size:19px}
+.nav button.active{color:#0b5ed7;font-weight:bold}
 
-/* ANNOUNCEMENTS */
-.annonceList{
-  display:flex;
-  flex-direction:column;
-  gap:15px;
-}
-
-.annonceCard{
-  background:white;
-  border-radius:16px;
-  padding:18px;
-  box-shadow:0 3px 14px rgba(0,0,0,.07);
-}
-
-.annonceTop{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  margin-bottom:13px;
-}
-
-.annonceType{
-  font-weight:900;
-  color:#0b5ed7;
-}
-
-.annonceAmount{
-  font-size:22px;
-  font-weight:900;
-}
-
-.infoRow{
-  padding:7px 0;
-  border-bottom:1px solid #edf0f5;
-  font-size:14px;
-}
-
-.infoRow:last-child{
-  border-bottom:0;
-}
-
-.infoLabel{
-  color:#667085;
-}
-
-.deleteBtn{
-  margin-top:14px;
-  border:0;
-  background:#ffe5e5;
-  color:#c62828;
-  padding:10px 13px;
-  border-radius:9px;
-  font-weight:bold;
-}
-
-.negociable{
-  display:inline-block;
-  background:#fff1c7;
-  color:#8a6200;
-  padding:4px 8px;
-  border-radius:6px;
-  font-size:12px;
-  font-weight:bold;
-}
-
-/* PROFILE */
-.profileBox{
-  text-align:center;
-}
-
-.profileAvatar{
-  width:80px;
-  height:80px;
-  border-radius:50%;
-  background:#0b5ed7;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:0 auto 15px;
-  font-size:30px;
-  font-weight:900;
-}
-
-.profileName{
-  font-size:23px;
-  font-weight:900;
-}
-
-.profilePhone{
-  color:#667085;
-  margin-top:5px;
-}
-
-/* NAV */
-.bottomNav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:white;
-  border-top:1px solid #dfe4ec;
-  display:flex;
-  justify-content:center;
-  z-index:500;
-}
-
-.navInside{
-  width:100%;
-  max-width:800px;
-  display:flex;
-}
-
-.navBtn{
-  flex:1;
-  border:0;
-  background:white;
-  padding:9px 3px 8px;
-  color:#667085;
-  font-size:11px;
-}
-
-.navBtn span{
-  display:block;
-  font-size:20px;
-  margin-bottom:2px;
-}
-
-.navBtn.active{
-  color:#0b5ed7;
-  font-weight:bold;
-}
-
-/* ADMIN */
-.adminBox{
-  border:2px solid #0b5ed7;
-}
-
-.adminBadge{
-  display:inline-block;
-  background:#0b5ed7;
-  color:white;
-  padding:5px 9px;
-  border-radius:7px;
-  font-size:12px;
-  font-weight:bold;
-  margin-bottom:12px;
-}
-
-/* LOADING */
-.loading{
-  text-align:center;
-  padding:25px;
-  color:#667085;
-}
-
-.empty{
-  background:white;
-  padding:25px;
-  border-radius:15px;
-  text-align:center;
-  color:#667085;
-}
-
-/* RESPONSIVE */
 @media(max-width:700px){
-  .rateGrid{
-    grid-template-columns:1fr;
-  }
-
-  .formGrid{
-    grid-template-columns:1fr;
-  }
-
-  .full{
-    grid-column:auto;
-  }
-
-  main{
-    padding-bottom:100px;
-  }
-
-  .headerRight{
-    gap:5px;
-  }
-
-  .brand{
-    font-size:17px;
-  }
+.gridrates{grid-template-columns:1fr}
+.formgrid{grid-template-columns:1fr}
+.full{grid-column:auto}
+.brand{font-size:17px}
 }
 </style>
 </head>
@@ -524,2051 +192,1515 @@ main{
 
 <!-- SPLASH -->
 <div id="splash">
-  <div class="logoCircle">DM</div>
+  <div class="logo">DM</div>
   <h1>Devise Madina</h1>
   <p>Votre partenaire d'échange à Madina</p>
 </div>
 
 <!-- AUTH -->
-<section id="auth" class="hidden">
+<div id="auth" class="hidden">
+  <div class="authbox">
 
-  <div class="authBox">
-
-    <div class="authLogo">
-      <div class="logoCircle">DM</div>
+    <div class="authhead">
+      <div class="logo">DM</div>
       <h2>Devise Madina</h2>
       <p>Plateforme d'échange à Madina</p>
     </div>
 
-    <div class="authTabs">
-      <button id="tabConnexion" class="active" onclick="showAuth('connexion')">
+    <div class="tabs">
+      <button id="tabLogin" class="active" onclick="authTab('login')">
         Connexion
       </button>
-
-      <button id="tabInscription" onclick="showAuth('inscription')">
+      <button id="tabRegister" onclick="authTab('register')">
         Inscription
       </button>
     </div>
 
-    <div id="authMessage"></div>
+    <div id="message"></div>
 
-    <!-- CONNEXION -->
-    <div id="connexionBox">
+    <div id="loginBox">
 
-      <div class="formGroup">
+      <div class="group">
         <label>Nom ou téléphone</label>
-        <input
-          id="loginInput"
-          type="text"
-          placeholder="Votre nom ou téléphone"
-        >
+        <input id="login" placeholder="Votre nom ou téléphone">
       </div>
 
-      <div class="formGroup">
+      <div class="group">
         <label>Mot de passe</label>
-        <input
-          id="loginPassword"
-          type="password"
-          placeholder="Votre mot de passe"
-        >
+        <input id="loginPass" type="password" placeholder="Mot de passe">
       </div>
 
-      <button class="primaryBtn" onclick="connexion()">
+      <button class="primary" onclick="loginUser()">
         Se connecter
       </button>
 
     </div>
 
-    <!-- INSCRIPTION -->
-    <div id="inscriptionBox" class="hidden">
+    <div id="registerBox" class="hidden">
 
-      <div class="formGroup">
+      <div class="group">
         <label>Nom complet</label>
-        <input
-          id="registerName"
-          type="text"
-          placeholder="Ex : Ibrahima Diallo"
-        >
+        <input id="regName" placeholder="Ex : Ibrahima Diallo">
       </div>
 
-      <div class="formGroup">
+      <div class="group">
         <label>Téléphone / WhatsApp</label>
-        <input
-          id="registerPhone"
-          type="tel"
-          placeholder="Ex : 622000000"
-        >
+        <input id="regPhone" type="tel" placeholder="Ex : 622000000">
       </div>
 
-      <div class="formGroup">
+      <div class="group">
         <label>Mot de passe</label>
-        <input
-          id="registerPassword"
-          type="password"
-          placeholder="Minimum 6 caractères"
-        >
+        <input id="regPass" type="password" placeholder="Minimum 6 caractères">
       </div>
 
-      <button class="primaryBtn" onclick="inscription()">
+      <button class="primary" onclick="registerUser()">
         Créer mon compte
       </button>
 
     </div>
 
   </div>
+</div>
+
+<!-- APP -->
+<div id="app" class="hidden">
+
+<header>
+  <div class="headerin">
+    <div class="brand">💱 Devise Madina</div>
+    <div>
+      <span id="headerName"></span>
+      <button class="logout" onclick="logoutUser()">Déconnexion</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ACCUEIL -->
+<section id="home" class="page active">
+
+  <div class="title">
+    <h2>Bienvenue sur Devise Madina</h2>
+    <p>Échangez vos devises directement entre utilisateurs.</p>
+  </div>
+
+  <div class="gridrates">
+
+    <div class="rate">
+      <small>USD / GNF</small>
+      <strong id="usd">—</strong>
+    </div>
+
+    <div class="rate">
+      <small>EUR / GNF</small>
+      <strong id="eur">—</strong>
+    </div>
+
+    <div class="rate">
+      <small>CFA / GNF</small>
+      <strong id="cfa">—</strong>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <div class="section">📢 Comment ça marche ?</div>
+    <p style="line-height:1.7;color:#667085">
+      Publiez ce que vous avez et ce que vous recherchez.
+      Les autres utilisateurs peuvent consulter votre annonce
+      et vous contacter directement.
+    </p>
+  </div>
 
 </section>
 
 
-<!-- APPLICATION -->
-<div id="app" class="hidden">
+<!-- PUBLIER -->
+<section id="publish" class="page">
 
-  <header>
-    <div class="headerInside">
+  <div class="title">
+    <h2>Publier une annonce</h2>
+    <p>Indiquez ce que vous avez et ce que vous recherchez.</p>
+  </div>
 
-      <div class="brand">
-        💱 Devise Madina
+  <div class="card">
+
+    <div class="section">💰 CE QUE J'AI</div>
+
+    <div class="formgrid">
+
+      <div class="group">
+        <label>Devise</label>
+        <select id="haveCurrency">
+          <option value="USD">Dollar (USD)</option>
+          <option value="EUR">Euro (EUR)</option>
+          <option value="CFA">Franc CFA (XOF)</option>
+          <option value="GNF">Franc guinéen (GNF)</option>
+        </select>
       </div>
 
-      <div class="headerRight">
-        <span id="headerUser"></span>
-        <button class="logoutBtn" onclick="deconnexion()">
-          Déconnexion
-        </button>
+      <div class="group">
+        <label>Montant</label>
+        <input id="amount" type="number" placeholder="Ex : 1000">
+      </div>
+
+      <div class="group">
+        <label>Sous forme de</label>
+        <select id="haveForm" onchange="chequeToggle('have')">
+          <option>Espèces</option>
+          <option>Orange Money</option>
+          <option>MTN Mobile Money</option>
+          <option>Wave</option>
+          <option>Chèque bancaire</option>
+        </select>
+      </div>
+
+      <div id="haveCheque" class="full hidden">
+        <div class="formgrid">
+
+          <div class="group">
+            <label>Type de chèque</label>
+            <select id="haveChequeType">
+              <option>Chèque bancaire</option>
+              <option>Chèque certifié</option>
+              <option>Chèque de banque</option>
+            </select>
+          </div>
+
+          <div class="group">
+            <label>Banque</label>
+            <input id="haveBank" placeholder="Ex : Ecobank">
+          </div>
+
+        </div>
       </div>
 
     </div>
-  </header>
+  </div>
 
 
-  <main>
+  <div class="card">
 
-    <!-- ACCUEIL -->
-    <section id="pageAccueil" class="page active">
+    <div class="section">🔎 CE QUE JE CHERCHE</div>
 
-      <div class="pageTitle">
-        <h2>Bienvenue sur Devise Madina</h2>
-        <p>Échangez vos devises directement entre utilisateurs.</p>
+    <div class="formgrid">
+
+      <div class="group">
+        <label>Devise recherchée</label>
+        <select id="wantCurrency">
+          <option value="USD">Dollar (USD)</option>
+          <option value="EUR">Euro (EUR)</option>
+          <option value="CFA">Franc CFA (XOF)</option>
+          <option value="GNF">Franc guinéen (GNF)</option>
+        </select>
       </div>
 
-      <div class="rateGrid">
-
-        <div class="rateCard">
-          <div class="currency">USD / GNF</div>
-          <div id="rateUSD" class="rate">—</div>
-          <small>Dollar américain</small>
-        </div>
-
-        <div class="rateCard">
-          <div class="currency">EUR / GNF</div>
-          <div id="rateEUR" class="rate">—</div>
-          <small>Euro</small>
-        </div>
-
-        <div class="rateCard">
-          <div class="currency">CFA / GNF</div>
-          <div id="rateCFA" class="rate">—</div>
-          <small>Franc CFA</small>
-        </div>
-
+      <div class="group">
+        <label>Sous forme de</label>
+        <select id="wantForm" onchange="chequeToggle('want')">
+          <option>Espèces</option>
+          <option>Orange Money</option>
+          <option>MTN Mobile Money</option>
+          <option>Wave</option>
+          <option>Chèque bancaire</option>
+        </select>
       </div>
 
+      <div id="wantCheque" class="full hidden">
+        <div class="formgrid">
 
-      <div class="card">
-
-        <div class="sectionTitle">
-          📢 Comment ça marche ?
-        </div>
-
-        <p style="line-height:1.7;color:#667085;">
-          Publiez ce que vous avez et ce que vous recherchez.
-          Les autres utilisateurs peuvent consulter votre annonce
-          et vous contacter directement.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- PUBLIER -->
-    <section id="pagePublier" class="page">
-
-      <div class="pageTitle">
-        <h2>Publier une annonce</h2>
-        <p>Indiquez ce que vous avez et ce que vous recherchez.</p>
-      </div>
-
-
-      <div class="card">
-
-        <div class="sectionTitle">
-          💰 CE QUE J'AI
-        </div>
-
-        <div class="formGrid">
-
-          <div class="formGroup">
-            <label>Devise</label>
-
-            <select id="aiDevise">
-              <option value="USD">Dollar (USD)</option>
-              <option value="EUR">Euro (EUR)</option>
-              <option value="CFA">Franc CFA (XOF)</option>
-              <option value="GNF">Franc guinéen (GNF)</option>
+          <div class="group">
+            <label>Type de chèque</label>
+            <select id="wantChequeType">
+              <option>Chèque bancaire</option>
+              <option>Chèque certifié</option>
+              <option>Chèque de banque</option>
             </select>
           </div>
 
-
-          <div class="formGroup">
-            <label>Montant</label>
-
-            <input
-              id="montant"
-              type="number"
-              min="0"
-              placeholder="Ex : 1000"
-            >
+          <div class="group">
+            <label>Banque</label>
+            <input id="wantBank" placeholder="Ex : UBA">
           </div>
 
-
-          <div class="formGroup">
-
-            <label>Sous forme de</label>
-
-            <select id="aiForme" onchange="toggleCheque('AI')">
-
-              <option value="Espèces">
-                Espèces
-              </option>
-
-              <option value="Orange Money">
-                Orange Money
-              </option>
-
-              <option value="MTN Mobile Money">
-                MTN Mobile Money
-              </option>
-
-              <option value="Wave">
-                Wave
-              </option>
-
-              <option value="Chèque bancaire">
-                Chèque bancaire
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div id="chequeAI" class="full hidden">
-
-            <div class="formGrid">
-
-              <div class="formGroup">
-
-                <label>Type de chèque</label>
-
-                <select id="aiChequeType">
-
-                  <option value="Chèque bancaire">
-                    Chèque bancaire
-                  </option>
-
-                  <option value="Chèque certifié">
-                    Chèque certifié
-                  </option>
-
-                  <option value="Chèque de banque">
-                    Chèque de banque
-                  </option>
-
-                </select>
-
-              </div>
-
-
-              <div class="formGroup">
-
-                <label>Nom de la banque</label>
-
-                <input
-                  id="aiBanque"
-                  type="text"
-                  placeholder="Ex : Ecobank"
-                >
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="card">
-
-        <div class="sectionTitle">
-          🔎 CE QUE JE CHERCHE
-        </div>
-
-        <div class="formGrid">
-
-          <div class="formGroup">
-
-            <label>Devise recherchée</label>
-
-            <select id="chercheDevise">
-
-              <option value="USD">Dollar (USD)</option>
-
-              <option value="EUR">Euro (EUR)</option>
-
-              <option value="CFA">Franc CFA (XOF)</option>
-
-              <option value="GNF">Franc guinéen (GNF)</option>
-
-            </select>
-
-          </div>
-
-
-          <div class="formGroup">
-
-            <label>Sous forme de</label>
-
-            <select id="chercheForme" onchange="toggleCheque('CH')">
-
-              <option value="Espèces">
-                Espèces
-              </option>
-
-              <option value="Orange Money">
-                Orange Money
-              </option>
-
-              <option value="MTN Mobile Money">
-                MTN Mobile Money
-              </option>
-
-              <option value="Wave">
-                Wave
-              </option>
-
-              <option value="Chèque bancaire">
-                Chèque bancaire
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div id="chequeCH" class="full hidden">
-
-            <div class="formGrid">
-
-              <div class="formGroup">
-
-                <label>Type de chèque</label>
-
-                <select id="chercheChequeType">
-
-                  <option value="Chèque bancaire">
-                    Chèque bancaire
-                  </option>
-
-                  <option value="Chèque certifié">
-                    Chèque certifié
-                  </option>
-
-                  <option value="Chèque de banque">
-                    Chèque de banque
-                  </option>
-
-                </select>
-
-              </div>
-
-
-              <div class="formGroup">
-
-                <label>Nom de la banque</label>
-
-                <input
-                  id="chercheBanque"
-                  type="text"
-                  placeholder="Ex : UBA"
-                >
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="formGroup">
-
-            <label>Taux proposé</label>
-
-            <input
-              id="taux"
-              type="number"
-              min="0"
-              placeholder="Ex : 9800"
-            >
-
-          </div>
-
-
-          <div class="formGroup">
-
-            <label>Durée de validité</label>
-
-            <select id="duree">
-
-              <option value="24 heures">
-                24 heures
-              </option>
-
-              <option value="3 jours">
-                3 jours
-              </option>
-
-              <option value="7 jours">
-                7 jours
-              </option>
-
-              <option value="30 jours">
-                30 jours
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div class="formGroup full">
-
-            <label>Localisation</label>
-
-            <input
-              id="lieu"
-              type="text"
-              placeholder="Ex : Madina, Conakry"
-            >
-
-          </div>
-
-
-          <div class="checkboxLine full">
-
-            <input
-              type="checkbox"
-              id="negociable"
-              onchange="toggleTaux()"
-            >
-
-            <label for="negociable">
-              Taux à négocier
-            </label>
-
-          </div>
-
-        </div>
-
-
-        <button
-          class="primaryBtn"
-          onclick="publierAnnonce()"
-        >
-          📢 Publier l'annonce
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- ANNONCES -->
-    <section id="pageAnnonces" class="page">
-
-      <div class="pageTitle">
-        <h2>📢 Annonces</h2>
-        <p>Les offres publiées par les utilisateurs.</p>
-      </div>
-
-      <div id="annoncesList" class="annonceList">
-        <div class="loading">
-          Chargement des annonces...
         </div>
       </div>
 
-    </section>
-
-
-    <!-- MES ANNONCES -->
-    <section id="pageMesAnnonces" class="page">
-
-      <div class="pageTitle">
-        <h2>📋 Mes annonces</h2>
-        <p>Gérez vos annonces publiées.</p>
+      <div class="group">
+        <label>Taux proposé</label>
+        <input id="rateInput" type="number" placeholder="Ex : 9800">
       </div>
 
-      <div id="mesAnnoncesList" class="annonceList">
-        <div class="loading">
-          Chargement...
-        </div>
+      <div class="group">
+        <label>Durée de validité</label>
+        <select id="validity">
+          <option>24 heures</option>
+          <option>3 jours</option>
+          <option>7 jours</option>
+          <option>30 jours</option>
+        </select>
       </div>
 
-    </section>
-
-
-    <!-- TAUX -->
-    <section id="pageTaux" class="page">
-
-      <div class="pageTitle">
-        <h2>💱 Taux</h2>
-        <p>Les taux actuellement enregistrés.</p>
+      <div class="group full">
+        <label>Localisation</label>
+        <input id="location" placeholder="Ex : Madina, Conakry">
       </div>
 
-      <div class="rateGrid">
-
-        <div class="rateCard">
-          <div class="currency">USD / GNF</div>
-          <div id="rateUSD2" class="rate">—</div>
-        </div>
-
-        <div class="rateCard">
-          <div class="currency">EUR / GNF</div>
-          <div id="rateEUR2" class="rate">—</div>
-        </div>
-
-        <div class="rateCard">
-          <div class="currency">CFA / GNF</div>
-          <div id="rateCFA2" class="rate">—</div>
-        </div>
-
+      <div class="checkline full">
+        <input id="negotiable" type="checkbox" onchange="toggleRate()">
+        <label for="negotiable">Taux à négocier</label>
       </div>
-
-
-      <!-- ADMIN -->
-      <div id="adminPanel" class="card adminBox hidden">
-
-        <div class="adminBadge">
-          👑 ADMINISTRATEUR
-        </div>
-
-        <div class="sectionTitle">
-          Modifier les taux
-        </div>
-
-        <div class="formGrid">
-
-          <div class="formGroup">
-
-            <label>USD / GNF</label>
-
-            <input
-              id="adminUSD"
-              type="number"
-              min="0"
-            >
-
-          </div>
-
-
-          <div class="formGroup">
-
-            <label>EUR / GNF</label>
-
-            <input
-              id="adminEUR"
-              type="number"
-              min="0"
-            >
-
-          </div>
-
-
-          <div class="formGroup">
-
-            <label>CFA / GNF</label>
-
-            <input
-              id="adminCFA"
-              type="number"
-              min="0"
-            >
-
-          </div>
-
-        </div>
-
-        <button
-          class="primaryBtn"
-          onclick="modifierTaux()"
-        >
-          💾 Enregistrer les nouveaux taux
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- PROFIL -->
-    <section id="pageProfil" class="page">
-
-      <div class="pageTitle">
-        <h2>👤 Mon profil</h2>
-      </div>
-
-      <div class="card profileBox">
-
-        <div id="profileAvatar" class="profileAvatar">
-          ?
-        </div>
-
-        <div id="profileName" class="profileName">
-          —
-        </div>
-
-        <div id="profilePhone" class="profilePhone">
-          —
-        </div>
-
-        <div id="profileRole" style="margin-top:10px;"></div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- NAVIGATION -->
-  <nav class="bottomNav">
-
-    <div class="navInside">
-
-      <button
-        class="navBtn active"
-        onclick="showPage('Accueil',this)"
-      >
-        <span>🏠</span>
-        Accueil
-      </button>
-
-
-      <button
-        class="navBtn"
-        onclick="showPage('Publier',this)"
-      >
-        <span>➕</span>
-        Publier
-      </button>
-
-
-      <button
-        class="navBtn"
-        onclick="showPage('Annonces',this)"
-      >
-        <span>📢</span>
-        Annonces
-      </button>
-
-
-      <button
-        class="navBtn"
-        onclick="showPage('MesAnnonces',this)"
-      >
-        <span>📋</span>
-        Mes annonces
-      </button>
-
-
-      <button
-        class="navBtn"
-        onclick="showPage('Taux',this)"
-      >
-        <span>💱</span>
-        Taux
-      </button>
-
-
-      <button
-        class="navBtn"
-        onclick="showPage('Profil',this)"
-      >
-        <span>👤</span>
-        Profil
-      </button>
 
     </div>
 
-  </nav>
+    <button class="primary" onclick="publishAd()">
+      📢 Publier l'annonce
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ANNONCES -->
+<section id="ads" class="page">
+
+  <div class="title">
+    <h2>📢 Annonces</h2>
+    <p>Toutes les annonces publiées.</p>
+  </div>
+
+  <div id="adsList" class="list"></div>
+
+</section>
+
+
+<!-- MES ANNONCES -->
+<section id="myAds" class="page">
+
+  <div class="title">
+    <h2>📋 Mes annonces</h2>
+    <p>Vos annonces publiées.</p>
+  </div>
+
+  <div id="myAdsList" class="list"></div>
+
+</section>
+
+
+<!-- TAUX -->
+<section id="ratesPage" class="page">
+
+  <div class="title">
+    <h2>💱 Taux</h2>
+    <p>Taux enregistrés sur Devise Madina.</p>
+  </div>
+
+  <div class="gridrates">
+
+    <div class="rate">
+      <small>USD / GNF</small>
+      <strong id="usd2">—</strong>
+    </div>
+
+    <div class="rate">
+      <small>EUR / GNF</small>
+      <strong id="eur2">—</strong>
+    </div>
+
+    <div class="rate">
+      <small>CFA / GNF</small>
+      <strong id="cfa2">—</strong>
+    </div>
+
+  </div>
+
+  <div id="adminBox" class="card admin hidden">
+
+    <div class="adminbadge">👑 ADMINISTRATEUR</div>
+
+    <div class="section">Modifier les taux</div>
+
+    <div class="formgrid">
+
+      <div class="group">
+        <label>USD / GNF</label>
+        <input id="adminUSD" type="number">
+      </div>
+
+      <div class="group">
+        <label>EUR / GNF</label>
+        <input id="adminEUR" type="number">
+      </div>
+
+      <div class="group">
+        <label>CFA / GNF</label>
+        <input id="adminCFA" type="number">
+      </div>
+
+    </div>
+
+    <button class="primary" onclick="saveRates()">
+      💾 Enregistrer les taux
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- PROFIL -->
+<section id="profile" class="page">
+
+  <div class="title">
+    <h2>👤 Mon profil</h2>
+  </div>
+
+  <div class="card profile">
+
+    <div id="avatar" class="avatar">?</div>
+
+    <div id="profileName" class="pname">—</div>
+
+    <div id="profilePhone" class="pphone">—</div>
+
+    <div id="profileRole" style="margin-top:12px"></div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- NAVIGATION -->
+<div class="bottom">
+<div class="nav">
+
+<button class="active" onclick="page('home',this)">
+<span>🏠</span>Accueil
+</button>
+
+<button onclick="page('publish',this)">
+<span>➕</span>Publier
+</button>
+
+<button onclick="page('ads',this)">
+<span>📢</span>Annonces
+</button>
+
+<button onclick="page('myAds',this)">
+<span>📋</span>Mes annonces
+</button>
+
+<button onclick="page('ratesPage',this)">
+<span>💱</span>Taux
+</button>
+
+<button onclick="page('profile',this)">
+<span>👤</span>Profil
+</button>
+
+</div>
+</div>
 
 </div>
 
 
 <!-- SUPABASE -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 
 <script>
 
-/* =====================================================
-   SUPABASE
-===================================================== */
-
 const SUPABASE_URL =
-  "https://wfiamfhislywldilotr.supabase.co";
+"https://wfiamfhislywldilotr.supabase.co";
 
 const SUPABASE_KEY =
-  "sb_publishable_kXVEOktiC5IMsSuAQJlVAw_2mqOgt5-";
+"sb_publishable_kXVEOktiC5IMsSuAQJlVAw_2mqOgt5-";
 
-const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
-
-/* =====================================================
-   VARIABLES
-===================================================== */
-
-let currentUser = null;
-let currentProfile = null;
-
-let realtimeAnnoncesChannel = null;
-let realtimeTauxChannel = null;
+let db=null;
+let user=null;
+let profileData=null;
+let adsChannel=null;
+let ratesChannel=null;
 
 
-/* =====================================================
-   OUTILS
-===================================================== */
+/* =========================
+OUTILS
+========================= */
 
 function $(id){
-  return document.getElementById(id);
+return document.getElementById(id);
 }
-
 
 function escapeHTML(value){
-
-  if(value === null || value === undefined){
-    return "";
-  }
-
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 }
 
-
-function formatNumber(value){
-
-  if(value === null || value === undefined || value === ""){
-    return "—";
-  }
-
-  return Number(value).toLocaleString("fr-FR");
+function numberFormat(value){
+if(value===null||value===undefined||value==="") return "—";
+return Number(value).toLocaleString("fr-FR");
 }
 
-
-function normalizePhone(phone){
-
-  return String(phone || "")
-    .replace(/\D/g,"");
+function cleanPhone(phone){
+return String(phone||"").replace(/\D/g,"");
 }
-
 
 function emailFromPhone(phone){
+return "dm."+cleanPhone(phone)+"@devise-madina.local";
+}
 
-  const clean = normalizePhone(phone);
-
-  return "dm." + clean + "@devise-madina.local";
+function message(text,type="error"){
+$("message").innerHTML=
+`<div class="msg ${type}">${escapeHTML(text)}</div>`;
 }
 
 
-function showMessage(message,type="error"){
+/* =========================
+DÉMARRAGE
+========================= */
 
-  const box = $("authMessage");
+window.addEventListener("load",async()=>{
 
-  box.innerHTML =
-    `<div class="${type}">
-      ${escapeHTML(message)}
-    </div>`;
+setTimeout(async()=>{
+
+try{
+
+if(!window.supabase){
+
+$("splash").classList.add("hidden");
+$("auth").classList.remove("hidden");
+
+message(
+"Impossible de charger Supabase. Vérifiez votre connexion Internet."
+);
+
+return;
+}
+
+db=window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+const result=await db.auth.getSession();
+
+const session=result.data?.session;
+
+$("splash").classList.add("hidden");
+
+if(session){
+
+user=session.user;
+
+await loadProfile();
+
+openApp();
+
+await loadRates();
+await loadAds();
+await loadMyAds();
+
+realtime();
+
+}else{
+
+$("auth").classList.remove("hidden");
 
 }
 
+}catch(error){
 
-/* =====================================================
-   SPLASH
-===================================================== */
+console.error(error);
 
-setTimeout(async ()=>{
+$("splash").classList.add("hidden");
+$("auth").classList.remove("hidden");
 
-  $("splash").classList.add("hidden");
-
-  await initialiserApplication();
-
-},1200);
-
-
-/* =====================================================
-   INITIALISATION
-===================================================== */
-
-async function initialiserApplication(){
-
-  try{
-
-    const {
-      data:{
-        session
-      }
-    } = await supabaseClient.auth.getSession();
-
-
-    if(session && session.user){
-
-      currentUser = session.user;
-
-      await chargerProfil();
-
-      afficherApp();
-
-      await chargerTaux();
-
-      await afficherAnnonces();
-
-      await afficherMesAnnonces();
-
-      activerRealtime();
-
-    }else{
-
-      $("auth").classList.remove("hidden");
-
-    }
-
-  }catch(error){
-
-    console.error(error);
-
-    $("auth").classList.remove("hidden");
-
-    showMessage(
-      "Impossible de charger l'application. Vérifiez votre connexion."
-    );
-
-  }
+message(
+"Erreur de démarrage. Rechargez la page."
+);
 
 }
 
+},800);
 
-/* =====================================================
-   AUTH TABS
-===================================================== */
+});
 
-function showAuth(type){
 
-  $("authMessage").innerHTML = "";
+/* =========================
+AUTH
+========================= */
 
-  if(type === "connexion"){
+function authTab(type){
 
-    $("connexionBox").classList.remove("hidden");
-    $("inscriptionBox").classList.add("hidden");
+$("message").innerHTML="";
 
-    $("tabConnexion").classList.add("active");
-    $("tabInscription").classList.remove("active");
+if(type==="login"){
 
-  }else{
+$("loginBox").classList.remove("hidden");
+$("registerBox").classList.add("hidden");
 
-    $("connexionBox").classList.add("hidden");
-    $("inscriptionBox").classList.remove("hidden");
+$("tabLogin").classList.add("active");
+$("tabRegister").classList.remove("active");
 
-    $("tabConnexion").classList.remove("active");
-    $("tabInscription").classList.add("active");
+}else{
 
-  }
+$("loginBox").classList.add("hidden");
+$("registerBox").classList.remove("hidden");
+
+$("tabLogin").classList.remove("active");
+$("tabRegister").classList.add("active");
+
+}
 
 }
 
 
-/* =====================================================
-   INSCRIPTION
-===================================================== */
+/* =========================
+INSCRIPTION
+========================= */
 
-async function inscription(){
+async function registerUser(){
 
-  const nom =
-    $("registerName").value.trim();
+const name=$("regName").value.trim();
+const phone=$("regPhone").value.trim();
+const pass=$("regPass").value;
 
-  const telephone =
-    $("registerPhone").value.trim();
+if(!name||!phone||!pass){
 
-  const password =
-    $("registerPassword").value;
+message("Veuillez remplir tous les champs.");
+return;
+}
 
+if(cleanPhone(phone).length<6){
 
-  if(!nom || !telephone || !password){
+message("Numéro de téléphone invalide.");
+return;
+}
 
-    showMessage(
-      "Veuillez remplir tous les champs."
-    );
+if(pass.length<6){
 
-    return;
+message("Le mot de passe doit contenir au moins 6 caractères.");
+return;
+}
 
-  }
+message("Création du compte...","success");
 
+try{
 
-  if(normalizePhone(telephone).length < 6){
+const email=emailFromPhone(phone);
 
-    showMessage(
-      "Veuillez entrer un numéro de téléphone valide."
-    );
+const result=await db.auth.signUp({
 
-    return;
+email:email,
 
-  }
+password:pass,
 
+options:{
+data:{
+nom:name,
+telephone:phone
+}
+}
 
-  if(password.length < 6){
+});
 
-    showMessage(
-      "Le mot de passe doit contenir au moins 6 caractères."
-    );
+if(result.error){
 
-    return;
+console.error(result.error);
+message(result.error.message);
+return;
+}
 
-  }
+if(!result.data.session){
 
+message(
+"Compte créé. Si la connexion ne fonctionne pas, désactivez « Confirm email » dans Supabase.",
+"success"
+);
 
-  const email =
-    emailFromPhone(telephone);
+return;
+}
 
+user=result.data.user;
 
-  showMessage(
-    "Création du compte...",
-    "success"
-  );
+await loadProfile();
 
+openApp();
 
-  try{
+await loadRates();
+await loadAds();
+await loadMyAds();
 
-    const {
-      data,
-      error
-    } = await supabaseClient.auth.signUp({
+realtime();
 
-      email:email,
+}catch(error){
 
-      password:password,
+console.error(error);
+message("Erreur pendant la création du compte.");
 
-      options:{
-        data:{
-          nom:nom,
-          telephone:telephone
-        }
-      }
-
-    });
-
-
-    if(error){
-
-      console.error(error);
-
-      showMessage(
-        error.message
-      );
-
-      return;
-
-    }
-
-
-    if(!data.session){
-
-      showMessage(
-        "Compte créé. Si la connexion ne fonctionne pas, désactivez « Confirm email » dans Supabase > Authentication > Settings.",
-        "success"
-      );
-
-      return;
-
-    }
-
-
-    currentUser = data.user;
-
-    await chargerProfil();
-
-    afficherApp();
-
-    await chargerTaux();
-
-    await afficherAnnonces();
-
-    await afficherMesAnnonces();
-
-    activerRealtime();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    showMessage(
-      "Une erreur est survenue pendant l'inscription."
-    );
-
-  }
+}
 
 }
 
 
-/* =====================================================
-   CONNEXION
-===================================================== */
+/* =========================
+CONNEXION
+========================= */
 
-async function connexion(){
+async function loginUser(){
 
-  const login =
-    $("loginInput").value.trim();
+const login=$("login").value.trim();
+const pass=$("loginPass").value;
 
-  const password =
-    $("loginPassword").value;
+if(!login||!pass){
 
+message("Veuillez remplir tous les champs.");
+return;
+}
 
-  if(!login || !password){
+message("Connexion...","success");
 
-    showMessage(
-      "Veuillez remplir tous les champs."
-    );
+try{
 
-    return;
+let email="";
 
-  }
+if(cleanPhone(login).length>=6){
 
+email=emailFromPhone(login);
 
-  showMessage(
-    "Connexion...",
-    "success"
-  );
+}else{
 
+const result=await db.rpc(
+"get_login_email",
+{p_login:login}
+);
 
-  try{
+if(result.error){
 
-    let email;
+console.error(result.error);
+message("Erreur de recherche du compte.");
+return;
+}
 
+email=result.data;
 
-    /*
-      Si l'utilisateur entre un téléphone,
-      on fabrique directement son identifiant.
-    */
+}
 
-    if(/\d/.test(login) && normalizePhone(login).length >= 6){
+if(!email){
 
-      email =
-        emailFromPhone(login);
+message("Nom ou téléphone introuvable.");
+return;
+}
 
-    }else{
+const result=await db.auth.signInWithPassword({
 
-      /*
-        Si l'utilisateur entre son nom,
-        Supabase utilise notre fonction SQL.
-      */
+email:email,
+password:pass
 
-      const {
-        data,
-        error
-      } =
-      await supabaseClient.rpc(
-        "get_login_email",
-        {
-          p_login:login
-        }
-      );
+});
 
+if(result.error){
 
-      if(error){
+message("Nom/téléphone ou mot de passe incorrect.");
+return;
+}
 
-        console.error(error);
+user=result.data.user;
 
-        showMessage(
-          "Impossible de rechercher ce compte."
-        );
+await loadProfile();
 
-        return;
+openApp();
 
-      }
+await loadRates();
+await loadAds();
+await loadMyAds();
 
+realtime();
 
-      email = data;
+}catch(error){
 
-    }
+console.error(error);
 
+message("Erreur de connexion.");
 
-    if(!email){
-
-      showMessage(
-        "Nom ou téléphone introuvable."
-      );
-
-      return;
-
-    }
-
-
-    const {
-      data,
-      error
-    } =
-    await supabaseClient.auth.signInWithPassword({
-
-      email:email,
-
-      password:password
-
-    });
-
-
-    if(error){
-
-      console.error(error);
-
-      showMessage(
-        "Nom/téléphone ou mot de passe incorrect."
-      );
-
-      return;
-
-    }
-
-
-    currentUser = data.user;
-
-    await chargerProfil();
-
-    afficherApp();
-
-    await chargerTaux();
-
-    await afficherAnnonces();
-
-    await afficherMesAnnonces();
-
-    activerRealtime();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    showMessage(
-      "Une erreur est survenue pendant la connexion."
-    );
-
-  }
+}
 
 }
 
 
-/* =====================================================
-   PROFIL
-===================================================== */
+/* =========================
+PROFIL
+========================= */
 
-async function chargerProfil(){
+async function loadProfile(){
 
-  if(!currentUser){
-    return;
-  }
+if(!user) return;
 
+const result=await db
+.from("profiles")
+.select("*")
+.eq("id",user.id)
+.maybeSingle();
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select("*")
-    .eq("id",currentUser.id)
-    .maybeSingle();
+if(result.error){
 
+console.error(result.error);
 
-  if(error){
+profileData={
+id:user.id,
+nom:user.user_metadata?.nom||"Utilisateur",
+telephone:user.user_metadata?.telephone||"",
+role:"user"
+};
 
-    console.error(
-      "Erreur profil:",
-      error
-    );
+return;
+}
 
-    currentProfile = {
-      id:currentUser.id,
-      nom:currentUser.user_metadata?.nom || "Utilisateur",
-      telephone:currentUser.user_metadata?.telephone || "",
-      role:"user"
-    };
-
-    return;
-
-  }
-
-
-  currentProfile =
-    data || {
-      id:currentUser.id,
-      nom:currentUser.user_metadata?.nom || "Utilisateur",
-      telephone:currentUser.user_metadata?.telephone || "",
-      role:"user"
-    };
+profileData=result.data||{
+id:user.id,
+nom:user.user_metadata?.nom||"Utilisateur",
+telephone:user.user_metadata?.telephone||"",
+role:"user"
+};
 
 }
 
 
-/* =====================================================
-   AFFICHER APP
-===================================================== */
+function openApp(){
 
-function afficherApp(){
+$("auth").classList.add("hidden");
+$("app").classList.remove("hidden");
 
-  $("auth").classList.add("hidden");
+const name=profileData?.nom||"Utilisateur";
 
-  $("app").classList.remove("hidden");
+$("headerName").textContent=name;
 
+$("profileName").textContent=name;
 
-  const nom =
-    currentProfile?.nom ||
-    "Utilisateur";
+$("profilePhone").textContent=
+profileData?.telephone||"";
 
+$("avatar").textContent=
+name.charAt(0).toUpperCase();
 
-  $("headerUser").textContent =
-    nom;
+if(profileData?.role==="admin"){
 
+$("profileRole").innerHTML=
+'<span class="adminbadge">👑 Administrateur</span>';
 
-  $("profileName").textContent =
-    nom;
+$("adminBox").classList.remove("hidden");
 
+}else{
 
-  $("profilePhone").textContent =
-    currentProfile?.telephone || "";
+$("profileRole").innerHTML=
+'<span style="color:#667085">Utilisateur</span>';
 
+$("adminBox").classList.add("hidden");
 
-  $("profileAvatar").textContent =
-    nom.charAt(0).toUpperCase();
-
-
-  if(currentProfile?.role === "admin"){
-
-    $("profileRole").innerHTML =
-      '<span class="adminBadge">👑 Administrateur</span>';
-
-    $("adminPanel").classList.remove("hidden");
-
-  }else{
-
-    $("profileRole").innerHTML =
-      '<span style="color:#667085;">Utilisateur</span>';
-
-    $("adminPanel").classList.add("hidden");
-
-  }
+}
 
 }
 
 
-/* =====================================================
-   DECONNEXION
-===================================================== */
+/* =========================
+DÉCONNEXION
+========================= */
 
-async function deconnexion(){
+async function logoutUser(){
 
-  try{
+if(adsChannel)
+await db.removeChannel(adsChannel);
 
-    await supabaseClient.auth.signOut();
+if(ratesChannel)
+await db.removeChannel(ratesChannel);
 
-  }catch(error){
+await db.auth.signOut();
 
-    console.error(error);
-
-  }
-
-
-  currentUser = null;
-  currentProfile = null;
-
-
-  if(realtimeAnnoncesChannel){
-
-    await supabaseClient.removeChannel(
-      realtimeAnnoncesChannel
-    );
-
-    realtimeAnnoncesChannel = null;
-
-  }
-
-
-  if(realtimeTauxChannel){
-
-    await supabaseClient.removeChannel(
-      realtimeTauxChannel
-    );
-
-    realtimeTauxChannel = null;
-
-  }
-
-
-  $("app").classList.add("hidden");
-
-  $("auth").classList.remove("hidden");
-
-  showAuth("connexion");
+location.reload();
 
 }
 
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
+/* =========================
+NAVIGATION
+========================= */
 
-function showPage(page,button){
+function page(id,button){
 
-  document
-    .querySelectorAll(".page")
-    .forEach(p=>{
-      p.classList.remove("active");
-    });
+document.querySelectorAll(".page")
+.forEach(p=>p.classList.remove("active"));
 
+$(id).classList.add("active");
 
-  const target =
-    $("page" + page);
+document.querySelectorAll(".nav button")
+.forEach(b=>b.classList.remove("active"));
 
+button.classList.add("active");
 
-  if(target){
-
-    target.classList.add("active");
-
-  }
-
-
-  document
-    .querySelectorAll(".navBtn")
-    .forEach(btn=>{
-      btn.classList.remove("active");
-    });
-
-
-  if(button){
-
-    button.classList.add("active");
-
-  }
-
-
-  if(page === "Annonces"){
-
-    afficherAnnonces();
-
-  }
-
-
-  if(page === "MesAnnonces"){
-
-    afficherMesAnnonces();
-
-  }
-
-
-  if(page === "Taux"){
-
-    chargerTaux();
-
-  }
+if(id==="ads") loadAds();
+if(id==="myAds") loadMyAds();
+if(id==="ratesPage") loadRates();
 
 }
 
 
-/* =====================================================
-   TAUX
-===================================================== */
+/* =========================
+TAUX
+========================= */
 
-async function chargerTaux(){
+async function loadRates(){
 
-  try{
+try{
 
-    const {
-      data,
-      error
-    } =
-    await supabaseClient
-      .from("taux")
-      .select("*");
+const result=await db
+.from("taux")
+.select("*");
 
+if(result.error){
 
-    if(error){
+console.error(result.error);
+return;
+}
 
-      console.error(error);
+let usd=9700;
+let eur=11300;
+let cfa=15.5;
 
-      return;
+(result.data||[]).forEach(row=>{
 
-    }
+const devise=String(row.devise||"").toUpperCase();
 
+if(devise==="USD") usd=Number(row.valeur);
+if(devise==="EUR") eur=Number(row.valeur);
+if(devise==="CFA") cfa=Number(row.valeur);
 
-    let usd = 9700;
-    let eur = 11300;
-    let cfa = 15.5;
+});
 
+$("usd").textContent=numberFormat(usd)+" GNF";
+$("eur").textContent=numberFormat(eur)+" GNF";
+$("cfa").textContent=numberFormat(cfa)+" GNF";
 
-    data?.forEach(row=>{
+$("usd2").textContent=numberFormat(usd)+" GNF";
+$("eur2").textContent=numberFormat(eur)+" GNF";
+$("cfa2").textContent=numberFormat(cfa)+" GNF";
 
-      const devise =
-        String(
-          row.devise || ""
-        ).toUpperCase();
+$("adminUSD").value=usd;
+$("adminEUR").value=eur;
+$("adminCFA").value=cfa;
 
+}catch(error){
 
-      const valeur =
-        Number(row.valeur);
+console.error(error);
 
-
-      if(devise === "USD"){
-
-        usd = valeur;
-
-      }
-
-
-      if(devise === "EUR"){
-
-        eur = valeur;
-
-      }
-
-
-      if(devise === "CFA"){
-
-        cfa = valeur;
-
-      }
-
-    });
-
-
-    $("rateUSD").textContent =
-      formatNumber(usd) + " GNF";
-
-
-    $("rateEUR").textContent =
-      formatNumber(eur) + " GNF";
-
-
-    $("rateCFA").textContent =
-      formatNumber(cfa) + " GNF";
-
-
-    $("rateUSD2").textContent =
-      formatNumber(usd) + " GNF";
-
-
-    $("rateEUR2").textContent =
-      formatNumber(eur) + " GNF";
-
-
-    $("rateCFA2").textContent =
-      formatNumber(cfa) + " GNF";
-
-
-    $("adminUSD").value = usd;
-    $("adminEUR").value = eur;
-    $("adminCFA").value = cfa;
-
-
-  }catch(error){
-
-    console.error(error);
-
-  }
+}
 
 }
 
 
-/* =====================================================
-   MODIFICATION DES TAUX ADMIN
-===================================================== */
+/* =========================
+ADMIN TAUX
+========================= */
 
-async function modifierTaux(){
+async function saveRates(){
 
-  if(!currentProfile ||
-     currentProfile.role !== "admin"){
+if(profileData?.role!=="admin"){
 
-    alert(
-      "Vous n'avez pas les droits administrateur."
-    );
+alert("Vous n'avez pas les droits administrateur.");
+return;
+}
 
-    return;
+const usd=Number($("adminUSD").value);
+const eur=Number($("adminEUR").value);
+const cfa=Number($("adminCFA").value);
 
-  }
+if(!usd||!eur||!cfa){
 
+alert("Veuillez remplir les trois taux.");
+return;
+}
 
-  const usd =
-    Number($("adminUSD").value);
+try{
 
-  const eur =
-    Number($("adminEUR").value);
+const values=[
+{devise:"USD",valeur:usd},
+{devise:"EUR",valeur:eur},
+{devise:"CFA",valeur:cfa}
+];
 
-  const cfa =
-    Number($("adminCFA").value);
+for(const item of values){
 
+const result=await db
+.from("taux")
+.update({
+valeur:item.valeur,
+updated_at:new Date().toISOString()
+})
+.eq("devise",item.devise);
 
-  if(!usd || !eur || !cfa){
+if(result.error) throw result.error;
 
-    alert(
-      "Veuillez remplir correctement les trois taux."
-    );
+}
 
-    return;
+await loadRates();
 
-  }
+alert("Les taux ont été mis à jour.");
 
+}catch(error){
 
-  try{
+console.error(error);
 
-    const valeurs = [
+alert(
+"Modification refusée. Vérifiez votre rôle administrateur."
+);
 
-      {
-        devise:"USD",
-        valeur:usd
-      },
-
-      {
-        devise:"EUR",
-        valeur:eur
-      },
-
-      {
-        devise:"CFA",
-        valeur:cfa
-      }
-
-    ];
-
-
-    for(const item of valeurs){
-
-      const {
-        error
-      } =
-      await supabaseClient
-        .from("taux")
-        .update({
-          valeur:item.valeur,
-          updated_at:new Date().toISOString()
-        })
-        .eq("devise",item.devise);
-
-
-      if(error){
-
-        throw error;
-
-      }
-
-    }
-
-
-    await chargerTaux();
-
-
-    alert(
-      "Les taux ont été mis à jour."
-    );
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Impossible de modifier les taux. Vérifiez vos droits administrateur."
-    );
-
-  }
+}
 
 }
 
 
-/* =====================================================
-   CHEQUES
-===================================================== */
+/* =========================
+CHEQUES
+========================= */
 
-function toggleCheque(type){
+function chequeToggle(type){
 
-  if(type === "AI"){
+if(type==="have"){
 
-    const value =
-      $("aiForme").value;
+if($("haveForm").value==="Chèque bancaire")
+$("haveCheque").classList.remove("hidden");
+else
+$("haveCheque").classList.add("hidden");
 
-    if(value === "Chèque bancaire"){
+}
 
-      $("chequeAI")
-        .classList
-        .remove("hidden");
+if(type==="want"){
 
-    }else{
+if($("wantForm").value==="Chèque bancaire")
+$("wantCheque").classList.remove("hidden");
+else
+$("wantCheque").classList.add("hidden");
 
-      $("chequeAI")
-        .classList
-        .add("hidden");
-
-    }
-
-  }
-
-
-  if(type === "CH"){
-
-    const value =
-      $("chercheForme").value;
-
-    if(value === "Chèque bancaire"){
-
-      $("chequeCH")
-        .classList
-        .remove("hidden");
-
-    }else{
-
-      $("chequeCH")
-        .classList
-        .add("hidden");
-
-    }
-
-  }
+}
 
 }
 
 
-/* =====================================================
-   TAUX NEGOCIABLE
-===================================================== */
+/* =========================
+TAUX NEGOCIABLE
+========================= */
 
-function toggleTaux(){
+function toggleRate(){
 
-  const checked =
-    $("negociable").checked;
+const check=$("negotiable").checked;
 
+$("rateInput").disabled=check;
 
-  $("taux").disabled =
-    checked;
+if(check){
 
+$("rateInput").value="";
+$("rateInput").placeholder="À négocier";
 
-  if(checked){
+}else{
 
-    $("taux").value = "";
+$("rateInput").placeholder="Ex : 9800";
 
-    $("taux").placeholder =
-      "À négocier";
-
-  }else{
-
-    $("taux").placeholder =
-      "Ex : 9800";
-
-  }
+}
 
 }
 
 
-/* =====================================================
-   PUBLICATION ANNONCE
-===================================================== */
+/* =========================
+PUBLIER
+========================= */
 
-async function publierAnnonce(){
+async function publishAd(){
 
-  if(!currentUser){
+if(!user){
 
-    alert(
-      "Vous devez être connecté."
-    );
+alert("Vous devez être connecté.");
+return;
+}
 
-    return;
+const haveCurrency=$("haveCurrency").value;
+const amount=Number($("amount").value);
+const haveForm=$("haveForm").value;
 
-  }
+const wantCurrency=$("wantCurrency").value;
+const wantForm=$("wantForm").value;
 
+const negotiable=$("negotiable").checked;
 
-  const aiDevise =
-    $("aiDevise").value;
+const rate=
+negotiable
+?null
+:Number($("rateInput").value);
 
-  const montant =
-    Number($("montant").value);
+const location=$("location").value.trim();
+const validity=$("validity").value;
 
-  const aiForme =
-    $("aiForme").value;
+if(!amount||amount<=0){
 
-  const chercheDevise =
-    $("chercheDevise").value;
+alert("Entrez un montant valide.");
+return;
+}
 
-  const chercheForme =
-    $("chercheForme").value;
+if(!negotiable&&(!rate||rate<=0)){
 
-  const negociable =
-    $("negociable").checked;
+alert("Entrez un taux ou sélectionnez « À négocier ».");
+return;
+}
 
-  const taux =
-    negociable
-      ? null
-      : Number($("taux").value);
+if(!location){
 
-  const lieu =
-    $("lieu").value.trim();
+alert("Indiquez la localisation.");
+return;
+}
 
-  const duree =
-    $("duree").value;
+const annonce={
 
+user_id:user.id,
 
-  if(!montant || montant <= 0){
+ai_devise:haveCurrency,
+montant:amount,
+ai_forme:haveForm,
 
-    alert(
-      "Veuillez entrer un montant valide."
-    );
+ai_cheque_type:
+haveForm==="Chèque bancaire"
+?$("haveChequeType").value
+:null,
 
-    return;
+ai_banque:
+haveForm==="Chèque bancaire"
+?$("haveBank").value.trim()
+:null,
 
-  }
+cherche_devise:wantCurrency,
+cherche_forme:wantForm,
 
+cherche_cheque_type:
+wantForm==="Chèque bancaire"
+?$("wantChequeType").value
+:null,
 
-  if(!negociable && (!taux || taux <= 0)){
+cherche_banque:
+wantForm==="Chèque bancaire"
+?$("wantBank").value.trim()
+:null,
 
-    alert(
-      "Veuillez entrer un taux ou sélectionner « À négocier »."
-    );
+taux:rate,
+negociable:negotiable,
+localisation:location,
+duree_validite:validity
 
-    return;
+};
 
-  }
+try{
 
+const result=await db
+.from("annonces")
+.insert(annonce);
 
-  if(!lieu){
+if(result.error){
 
-    alert(
-      "Veuillez indiquer la localisation."
-    );
+console.error(result.error);
 
-    return;
+alert(
+"Erreur : "+result.error.message
+);
 
-  }
+return;
+}
 
+alert("Annonce publiée avec succès !");
 
-  const annonce = {
+$("amount").value="";
+$("rateInput").value="";
+$("location").value="";
+$("haveBank").value="";
+$("wantBank").value="";
+$("negotiable").checked=false;
 
-    user_id:currentUser.id,
+toggleRate();
 
-    ai_devise:aiDevise,
+await loadAds();
+await loadMyAds();
 
-    montant:montant,
+page(
+"ads",
+document.querySelectorAll(".nav button")[2]
+);
 
-    ai_forme:aiForme,
+}catch(error){
 
-    ai_cheque_type:
-      aiForme === "Chèque bancaire"
-        ? $("aiChequeType").value
-        : null,
+console.error(error);
+alert("Erreur pendant la publication.");
 
-    ai_banque:
-      aiForme === "Chèque bancaire"
-        ? $("aiBanque").value.trim()
-        : null,
-
-    cherche_devise:chercheDevise,
-
-    cherche_forme:chercheForme,
-
-    cherche_cheque_type:
-      chercheForme === "Chèque bancaire"
-        ? $("chercheChequeType").value
-        : null,
-
-    cherche_banque:
-      chercheForme === "Chèque bancaire"
-        ? $("chercheBanque").value.trim()
-        : null,
-
-    taux:taux,
-
-    negociable:negociable,
-
-    localisation:lieu,
-
-    duree_validite:duree
-
-  };
-
-
-  try{
-
-    const {
-      error
-    } =
-    await supabaseClient
-      .from("annonces")
-      .insert(annonce);
-
-
-    if(error){
-
-      console.error(error);
-
-      alert(
-        "Erreur lors de la publication : " +
-        error.message
-      );
-
-      return;
-
-    }
-
-
-    alert(
-      "Annonce publiée avec succès !"
-    );
-
-
-    /*
-      Réinitialiser le formulaire
-    */
-
-    $("montant").value = "";
-
-    $("taux").value = "";
-
-    $("lieu").value = "";
-
-    $("negociable").checked = false;
-
-    $("taux").disabled = false;
-
-    $("aiBanque").value = "";
-
-    $("chercheBanque").value = "";
-
-
-    $("aiForme").value =
-      "Espèces";
-
-    $("chercheForme").value =
-      "Espèces";
-
-
-    toggleCheque("AI");
-
-    toggleCheque("CH");
-
-
-    showPage(
-      "Annonces",
-      document.querySelectorAll(".navBtn")[2]
-    );
-
-
-    await afficherAnnonces();
-
-    await afficherMesAnnonces();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Une erreur est survenue."
-    );
-
-  }
+}
 
 }
 
 
-/* =====================================================
-   RECUPERATION DES PROFILS
-===================================================== */
+/* =========================
+PROFILS
+========================= */
 
-async function recupererProfils(userIds){
+async function getProfiles(ids){
 
-  if(!userIds.length){
+if(!ids.length) return {};
 
-    return {};
+const unique=[...new Set(ids)];
 
-  }
+const result=await db
+.from("profiles")
+.select("id,nom,telephone")
+.in("id",unique);
 
+if(result.error){
 
-  const uniques =
-    [...new Set(userIds)];
+console.error(result.error);
+return {};
+}
 
+const map={};
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select("id,nom,telephone")
-    .in("id",uniques);
+(result.data||[]).forEach(p=>{
+map[p.id]=p;
+});
 
-
-  if(error){
-
-    console.error(error);
-
-    return {};
-
-  }
-
-
-  const map = {};
-
-
-  (data || []).forEach(profile=>{
-
-    map[profile.id] =
-      profile;
-
-  });
-
-
-  return map;
+return map;
 
 }
 
 
-/* =====================================================
-   AFFICHER ANNONCES
-===================================================== */
+/* =========================
+ANNONCES
+========================= */
 
-async function afficherAnnonces(){
+async function loadAds(){
 
-  const container =
-    $("annoncesList");
+const box=$("adsList");
 
+box.innerHTML=
+'<div class="loading">Chargement...</div>';
 
-  container.innerHTML =
-    '<div class="loading">Chargement des annonces...</div>';
+try{
 
+const result=await db
+.from("annonces")
+.select("*")
+.order("created_at",{ascending:false});
 
-  try{
+if(result.error){
 
-    const {
-      data,
-      error
-    } =
-    await supabaseClient
-      .from("annonces")
-      .select("*")
-      .order("created_at",{ascending:false});
+console.error(result.error);
 
+box.innerHTML=
+'<div class="empty">Impossible de charger les annonces.</div>';
 
-    if(error){
+return;
+}
 
-      console.error(error);
+if(!result.data?.length){
 
-      container.innerHTML =
-        '<div class="empty">Impossible de charger les annonces.</div>';
+box.innerHTML=
+'<div class="empty">Aucune annonce pour le moment.</div>';
 
-      return;
+return;
+}
 
-    }
+const profiles=await getProfiles(
+result.data.map(a=>a.user_id)
+);
 
+box.innerHTML=result.data
+.map(a=>adCard(a,profiles[a.user_id]))
+.join("");
 
-    if(!data || data.length === 0){
+}catch(error){
 
-      container.innerHTML =
-        '<div class="empty">Aucune annonce pour le moment.</div>';
+console.error(error);
 
-      return;
+box.innerHTML=
+'<div class="empty">Erreur de chargement.</div>';
 
-    }
-
-
-    const profiles =
-      await recupererProfils(
-        data.map(a=>a.user_id)
-      );
-
-
-    container.innerHTML =
-      data
-        .map(a =>
-          carteAnnonce(
-            a,
-            profiles[a.user_id]
-          )
-        )
-        .join("");
-
-
-  }catch(error){
-
-    console.error(error);
-
-    container.innerHTML =
-      '<div class="empty">Erreur de chargement.</div>';
-
-  }
+}
 
 }
 
 
-/* =====================================================
-   MES ANNONCES
-===================================================== */
+/* =========================
+MES ANNONCES
+========================= */
 
-async function afficherMesAnnonces(){
+async function loadMyAds(){
 
-  const container =
-    $("mesAnnoncesList");
+if(!user) return;
+
+const box=$("myAdsList");
+
+box.innerHTML=
+'<div class="loading">Chargement...</div>';
+
+try{
+
+const result=await db
+.from("annonces")
+.select("*")
+.eq("user_id",user.id)
+.order("created_at",{ascending:false});
+
+if(result.error){
+
+console.error(result.error);
+
+box.innerHTML=
+'<div class="empty">Impossible de charger vos annonces.</div>';
+
+return;
+}
+
+if(!result.data?.length){
+
+box.innerHTML=
+'<div class="empty">Vous n'avez aucune annonce.</div>';
+
+return;
+}
+
+box.innerHTML=result.data
+.map(a=>adCard(a,profileData))
+.join("");
+
+}catch(error){
+
+console.error(error);
+
+box.innerHTML=
+'<div class="empty">Erreur de chargement.</div>';
+
+}
+
+}
 
 
-  if(!currentUser){
+/* =========================
+CARTE ANNONCE
+========================= */
 
-    return;
+function adCard(a,p){
 
-  }
+const name=p?.nom||"Utilisateur";
+const phone=p?.telephone||"";
+
+const date=a.created_at
+?new Date(a.created_at).toLocaleString("fr-FR")
+:"";
+
+const rate=a.negociable
+?'<span class="badge">À négocier</span>'
+:escapeHTML(numberFormat(a.taux))+" GNF";
+
+let haveCheque="";
+
+if(a.ai_forme==="Chèque bancaire"){
+
+haveCheque=`
+<div class="row">
+<span class="label">Chèque :</span>
+${escapeHTML(a.ai_cheque_type||"")}
+${a.ai_banque?" — "+escapeHTML(a.ai_banque):""}
+</div>`;
+
+}
+
+let wantCheque="";
+
+if(a.cherche_forme==="Chèque bancaire"){
+
+wantCheque=`
+<div class="row">
+<span class="label">Chèque recherché :</span>
+${escapeHTML(a.cherche_cheque_type||"")}
+${a.cherche_banque?" — "+escapeHTML(a.cherche_banque):""}
+</div>`;
+
+}
+
+let deleteButton="";
+
+if(user&&a.user_id===user.id){
+
+deleteButton=`
+<button class="delete"
+onclick="deleteAd('${a.id}')">
+🗑️ Supprimer
+</button>`;
+
+}
+
+return `
+
+<div class="ann">
+
+<div class="antop">
+
+<div>
+<div class="blue">J'AI</div>
+<div class="amount">
+${escapeHTML(numberFormat(a.montant))}
+${escapeHTML(a.ai_devise)}
+</div>
+</div>
+
+<div style="text-align:right">
+<div class="blue">JE CHERCHE</div>
+<strong>${escapeHTML(a.cherche_devise)}</strong>
+</div>
+
+</div>
+
+<div class="row">
+<span class="label">Forme :</span>
+${escapeHTML(a.ai_forme)}
+</div>
+
+${haveCheque}
+
+<div class="row">
+<span class="label">Je cherche sous forme de :</span>
+${escapeHTML(a.cherche_forme)}
+</div>
+
+${wantCheque}
+
+<div class="row">
+<span class="label">Taux :</span>
+${rate}
+</div>
+
+<div class="row">
+<span class="label">📍 Localisation :</span>
+${escapeHTML(a.localisation)}
+</div>
+
+<div class="row">
+<span class="label">⏱️ Validité :</span>
+${escapeHTML(a.duree_validite)}
+</div>
+
+<div class="row">
+<span class="label">👤 Publié par :</span>
+${escapeHTML(name)}
+</div>
+
+<div class="row">
+<span class="label">📞 Téléphone :</span>
+${escapeHTML(phone)}
+</div>
+
+<div class="row">
+<span class="label">📅 Date :</span>
+${escapeHTML(date)}
+</div>
+
+${deleteButton}
+
+</div>
+
+`;
+
+}
 
 
-  container.innerHTML =
-    '<div class="loading">Chargement...</div>';
+/* =========================
+SUPPRIMER
+========================= */
+
+async function deleteAd(id){
+
+if(!confirm("Supprimer cette annonce ?")) return;
+
+try{
+
+const result=await db
+.from("annonces")
+.delete()
+.eq("id",id)
+.eq("user_id",user.id);
+
+if(result.error){
+
+alert("Impossible de supprimer l'annonce.");
+console.error(result.error);
+return;
+}
+
+await loadAds();
+await loadMyAds();
+
+}catch(error){
+
+console.error(error);
+alert("Erreur.");
+
+}
+
+}
 
 
-  try{
+/* =========================
+TEMPS RÉEL
+========================= */
 
-    const {
-      data,
-      error
-    } =
-    await supabaseClient
-      .from("annonces")
-      .select("*")
-      .eq("user_id",currentUser.id)
-      .order("created_at",{ascending:false});
+function realtime(){
 
+if(adsChannel)
+db.removeChannel(adsChannel);
 
-    if(error){
+if(ratesChannel)
+db.removeChannel(ratesChannel);
 
-      console.error(error);
+adsChannel=db
+.channel("devise-madina-annonces")
+.on(
+"postgres_changes",
+{
+event:"*",
+schema:"public",
+table:"annonces"
+},
+()=>{
+loadAds();
+loadMyAds();
+}
+)
+.subscribe();
 
-      container.innerHTML =
-        '<div class="empty">Imposs
+ratesChannel=db
+.channel("devise-madina-taux")
+.on(
+"postgres_changes",
+{
+event:"*",
+schema:"public",
+table:"taux"
+},
+()=>{
+loadRates();
+}
+)
+.subscribe();
+
+}
+
+</script>
+
+</body>
+  </html>
