@@ -6,57 +6,54 @@
 
 <title>Devise Madina</title>
 
+<!-- SUPABASE : chargé AVANT notre JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
   margin:0;
-  font-family:Arial,sans-serif;
-  background:#f4f7fb;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f6f9;
   color:#222;
 }
-
-/* ================= SPLASH ================= */
 
 #splash{
   position:fixed;
   inset:0;
+  z-index:99999;
   background:#0b5ed7;
   color:white;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   flex-direction:column;
-  z-index:999999;
 }
 
 #splash h1{
-  margin:0;
   font-size:36px;
+  margin:0 0 10px;
 }
-
-#splash p{
-  margin-top:10px;
-}
-
-/* ================= APP ================= */
 
 #app{
   display:none;
   min-height:100vh;
 }
 
-header{
+.header{
   background:#0b5ed7;
   color:white;
-  padding:18px;
+  padding:20px;
   text-align:center;
 }
 
-header h1{
+.header h1{
   margin:0;
+}
+
+.header p{
+  margin:7px 0 0;
 }
 
 nav{
@@ -67,24 +64,21 @@ nav{
 }
 
 nav button{
+  flex:0 0 auto;
+  padding:15px 17px;
   border:0;
   background:white;
-  padding:15px;
-  white-space:nowrap;
-  cursor:pointer;
-}
-
-nav button.active{
-  color:#0b5ed7;
-  font-weight:bold;
-  border-bottom:3px solid #0b5ed7;
+  font-size:14px;
 }
 
 .container{
   max-width:900px;
   margin:auto;
-  padding:18px;
+  padding:15px;
 }
+
+.page{display:none}
+.page.active{display:block}
 
 .card{
   background:white;
@@ -98,13 +92,16 @@ h2{
   margin-top:0;
 }
 
-input,
-select,
-textarea{
+label{
+  display:block;
+  font-weight:bold;
+  margin-top:12px;
+}
+
+input,select{
   width:100%;
   padding:13px;
-  margin-top:7px;
-  margin-bottom:15px;
+  margin-top:6px;
   border:1px solid #ccc;
   border-radius:9px;
   font-size:15px;
@@ -116,11 +113,12 @@ button{
 
 .btn{
   width:100%;
+  padding:13px;
+  margin-top:12px;
   border:0;
+  border-radius:9px;
   background:#0b5ed7;
   color:white;
-  padding:13px;
-  border-radius:9px;
   font-size:16px;
   font-weight:bold;
 }
@@ -129,15 +127,28 @@ button{
   background:#dc3545;
 }
 
-.btn-secondary{
-  background:#6c757d;
+.message{
+  padding:12px;
+  border-radius:8px;
+  margin:10px 0;
 }
 
-.hidden{
-  display:none!important;
+.success{
+  background:#d1e7dd;
+  color:#0f5132;
 }
 
-.rate-grid{
+.error{
+  background:#f8d7da;
+  color:#842029;
+}
+
+.info{
+  background:#cff4fc;
+  color:#055160;
+}
+
+.rates{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:12px;
@@ -146,15 +157,15 @@ button{
 .rate{
   background:#eef5ff;
   padding:18px;
-  border-radius:12px;
   text-align:center;
+  border-radius:12px;
 }
 
 .rate strong{
   display:block;
-  font-size:21px;
   color:#0b5ed7;
-  margin-top:7px;
+  font-size:21px;
+  margin-top:8px;
 }
 
 .annonce{
@@ -166,50 +177,20 @@ button{
 
 .badge{
   display:inline-block;
-  background:#e7f1ff;
+  background:#e8f1ff;
   color:#0b5ed7;
   padding:5px 9px;
   border-radius:20px;
-  font-size:13px;
   margin:3px;
-}
-
-.success{
-  background:#d1e7dd;
-  color:#0f5132;
-  padding:12px;
-  border-radius:8px;
-  margin-bottom:15px;
-}
-
-.error{
-  background:#f8d7da;
-  color:#842029;
-  padding:12px;
-  border-radius:8px;
-  margin-bottom:15px;
-}
-
-.info{
-  background:#cff4fc;
-  color:#055160;
-  padding:12px;
-  border-radius:8px;
-  margin-bottom:15px;
-}
-
-label{
-  font-weight:bold;
-  display:block;
-}
-
-.small{
   font-size:13px;
-  color:#666;
+}
+
+.hidden{
+  display:none!important;
 }
 
 @media(max-width:600px){
-  .rate-grid{
+  .rates{
     grid-template-columns:1fr;
   }
 }
@@ -218,188 +199,1539 @@ label{
 
 <body>
 
-<!-- ================= SPLASH ================= -->
-
+<!-- SPLASH -->
 <div id="splash">
   <h1>Devise Madina</h1>
   <p>Chargement...</p>
 </div>
 
-<!-- ================= APPLICATION ================= -->
-
+<!-- APPLICATION -->
 <div id="app">
 
-<header>
-  <h1>Devise Madina</h1>
-  <div class="small" style="color:white;">
-    Votre plateforme d'échange à Madina
+  <div class="header">
+    <h1>Devise Madina</h1>
+    <p>Votre plateforme d'échange à Madina</p>
   </div>
-</header>
 
-<nav id="navigation" class="hidden">
-  <button onclick="showPage('accueil')">Accueil</button>
-  <button onclick="showPage('annonces')">Annonces</button>
-  <button onclick="showPage('publier')">Publier</button>
-  <button onclick="showPage('mesannonces')">Mes annonces</button>
-  <button onclick="showPage('profil')">Profil</button>
-  <button id="adminNav" class="hidden" onclick="showPage('admin')">Admin</button>
-</nav>
+  <!-- AUTH -->
+  <section id="auth">
 
-<div class="container">
+    <div class="container">
 
-<!-- ================= AUTH ================= -->
+      <div class="card">
 
-<section id="authPage">
+        <h2>Connexion</h2>
 
-  <div class="card">
+        <div id="loginMsg"></div>
 
-    <h2>Connexion</h2>
+        <label>Nom ou téléphone</label>
+        <input id="login" placeholder="Nom ou numéro">
 
-    <div id="loginMessage"></div>
+        <label>Mot de passe</label>
+        <input id="password" type="password">
 
-    <label>Nom ou téléphone</label>
-    <input id="login" placeholder="Ex : Ibrahima ou 622000000">
+        <button class="btn" onclick="login()">
+          Se connecter
+        </button>
 
-    <label>Mot de passe</label>
-    <input id="loginPassword" type="password">
+      </div>
 
-    <button class="btn" onclick="loginUser()">
-      Se connecter
+      <div class="card">
+
+        <h2>Créer un compte</h2>
+
+        <div id="registerMsg"></div>
+
+        <label>Nom</label>
+        <input id="name" placeholder="Votre nom">
+
+        <label>Téléphone</label>
+        <input id="phone" placeholder="Ex : 622000000">
+
+        <label>Mot de passe</label>
+        <input id="newPassword" type="password">
+
+        <button class="btn" onclick="register()">
+          Créer mon compte
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MENU -->
+  <nav id="menu" class="hidden">
+
+    <button onclick="page('home')">
+      Accueil
     </button>
 
-  </div>
-
-  <div class="card">
-
-    <h2>Créer un compte</h2>
-
-    <div id="registerMessage"></div>
-
-    <label>Nom</label>
-    <input id="registerName" placeholder="Votre nom">
-
-    <label>Téléphone</label>
-    <input id="registerPhone" placeholder="Ex : 622000000">
-
-    <label>Mot de passe</label>
-    <input id="registerPassword" type="password">
-
-    <button class="btn" onclick="registerUser()">
-      Créer mon compte
+    <button onclick="page('annonces')">
+      Annonces
     </button>
 
+    <button onclick="page('publier')">
+      Publier
+    </button>
+
+    <button onclick="page('mes')">
+      Mes annonces
+    </button>
+
+    <button onclick="page('profil')">
+      Profil
+    </button>
+
+    <button id="adminButton" class="hidden" onclick="page('admin')">
+      Admin
+    </button>
+
+  </nav>
+
+  <div class="container">
+
+    <!-- ACCUEIL -->
+    <section id="home" class="page">
+
+      <div class="card">
+
+        <h2>Bienvenue 👋</h2>
+
+        <p>
+          Trouvez des personnes qui souhaitent acheter
+          ou vendre des devises à Madina.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h2>💱 Taux actuels</h2>
+
+        <div class="rates">
+
+          <div class="rate">
+            USD / GNF
+            <strong id="usd">...</strong>
+          </div>
+
+          <div class="rate">
+            EUR / GNF
+            <strong id="eur">...</strong>
+          </div>
+
+          <div class="rate">
+            CFA / GNF
+            <strong id="cfa">...</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ANNONCES -->
+    <section id="annonces" class="page">
+
+      <div class="card">
+
+        <h2>📢 Annonces</h2>
+
+        <div id="allAds">
+          Chargement...
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- PUBLIER -->
+    <section id="publier" class="page">
+
+      <div class="card">
+
+        <h2>📢 Nouvelle annonce</h2>
+
+        <div id="publishMsg"></div>
+
+        <label>J'ai</label>
+
+        <select id="haveCurrency">
+          <option value="USD">Dollar (USD)</option>
+          <option value="EUR">Euro (EUR)</option>
+          <option value="CFA">CFA (XOF)</option>
+          <option value="GNF">Franc guinéen (GNF)</option>
+        </select>
+
+        <label>Montant</label>
+
+        <input
+          id="amount"
+          type="number"
+          placeholder="Ex : 1000"
+        >
+
+        <label>Sous forme de</label>
+
+        <select id="haveForm" onchange="chequeFields()">
+          <option value="Especes">Espèces</option>
+          <option value="Orange Money">Orange Money</option>
+          <option value="MTN Mobile Money">MTN Mobile Money</option>
+          <option value="Wave">Wave</option>
+          <option value="Cheque">Chèque bancaire</option>
+        </select>
+
+        <div id="haveCheque" class="hidden">
+
+          <label>Type de chèque</label>
+
+          <input id="haveChequeType">
+
+          <label>Banque</label>
+
+          <input id="haveBank">
+
+        </div>
+
+        <label>Je cherche</label>
+
+        <select id="wantCurrency">
+          <option value="USD">Dollar (USD)</option>
+          <option value="EUR">Euro (EUR)</option>
+          <option value="CFA">CFA (XOF)</option>
+          <option value="GNF">Franc guinéen (GNF)</option>
+        </select>
+
+        <label>Sous forme de</label>
+
+        <select id="wantForm" onchange="chequeFields()">
+          <option value="Especes">Espèces</option>
+          <option value="Orange Money">Orange Money</option>
+          <option value="MTN Mobile Money">MTN Mobile Money</option>
+          <option value="Wave">Wave</option>
+          <option value="Cheque">Chèque bancaire</option>
+        </select>
+
+        <div id="wantCheque" class="hidden">
+
+          <label>Type de chèque</label>
+
+          <input id="wantChequeType">
+
+          <label>Banque</label>
+
+          <input id="wantBank">
+
+        </div>
+
+        <label>Taux proposé</label>
+
+        <input
+          id="rate"
+          type="number"
+          step="0.01"
+          placeholder="Ex : 9700"
+        >
+
+        <label>
+          <input
+            id="negotiable"
+            type="checkbox"
+            style="width:auto"
+          >
+          À négocier
+        </label>
+
+        <label>Localisation</label>
+
+        <input
+          id="location"
+          placeholder="Ex : Madina, Conakry"
+        >
+
+        <label>Durée de validité</label>
+
+        <select id="duration">
+          <option value="24 heures">24 heures</option>
+          <option value="48 heures">48 heures</option>
+          <option value="3 jours">3 jours</option>
+          <option value="7 jours">7 jours</option>
+        </select>
+
+        <button class="btn" onclick="publishAd()">
+          Publier
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- MES ANNONCES -->
+    <section id="mes" class="page">
+
+      <div class="card">
+
+        <h2>📋 Mes annonces</h2>
+
+        <div id="myAds">
+          Chargement...
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- PROFIL -->
+    <section id="profil" class="page">
+
+      <div class="card">
+
+        <h2>👤 Mon profil</h2>
+
+        <div id="profile"></div>
+
+        <button
+          class="btn btn-danger"
+          onclick="logout()">
+          Se déconnecter
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- ADMIN -->
+    <section id="admin" class="page">
+
+      <div class="card">
+
+        <h2>👑 Administration</h2>
+
+        <div id="adminMsg"></div>
+
+        <label>USD / GNF</label>
+        <input id="adminUsd" type="number">
+
+        <label>EUR / GNF</label>
+        <input id="adminEur" type="number">
+
+        <label>CFA / GNF</label>
+        <input id="adminCfa" type="number" step="0.01">
+
+        <button class="btn" onclick="saveRates()">
+          Enregistrer les taux
+        </button>
+
+      </div>
+
+    </section>
+
   </div>
 
-</section>
+</div>
 
-<!-- ================= ACCUEIL ================= -->
+<script>
 
-<section id="accueil" class="page hidden">
+/* =====================================================
+   CONFIGURATION SUPABASE
+===================================================== */
 
-  <div class="card">
+const SUPABASE_URL =
+"https://wfiamfhislywldilotr.supabase.co";
 
-    <h2>Bienvenue sur Devise Madina 👋</h2>
+const SUPABASE_KEY =
+"sb_publishable_kXVEOktiC5IMsSuAQJlVAw_2mqOgt5-";
+
+let db = null;
+let user = null;
+let profile = null;
+
+
+/* =====================================================
+   DEMARRAGE
+===================================================== */
+
+window.addEventListener("load", async function(){
+
+  /*
+    IMPORTANT :
+    Le splash disparaît toujours.
+  */
+
+  setTimeout(function(){
+
+    document.getElementById("splash").style.display="none";
+    document.getElementById("app").style.display="block";
+
+  },800);
+
+
+  /* Vérification Supabase */
+
+  try{
+
+    if(
+      !window.supabase ||
+      typeof window.supabase.createClient !== "function"
+    ){
+
+      console.error("Supabase JS non chargé");
+
+      return;
+    }
+
+
+    db = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+
+    console.log("Supabase connecté");
+
+
+    /* Vérifier session */
+
+    const result =
+      await db.auth.getSession();
+
+
+    if(
+      result.data &&
+      result.data.session
+    ){
+
+      user =
+        result.data.session.user;
+
+      await loadProfile();
+
+      openApp();
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "Erreur Supabase :",
+      error
+    );
+
+  }
+
+});
+
+
+/* =====================================================
+   INSCRIPTION
+===================================================== */
+
+async function register(){
+
+  if(!db){
+
+    msg(
+      "registerMsg",
+      "Supabase n'est pas chargé.",
+      "error"
+    );
+
+    return;
+  }
+
+  const name =
+    document.getElementById("name").value.trim();
+
+  const phone =
+    document.getElementById("phone").value.trim();
+
+  const password =
+    document.getElementById("newPassword").value;
+
+
+  if(!name || !phone || !password){
+
+    msg(
+      "registerMsg",
+      "Remplis tous les champs.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  if(password.length < 6){
+
+    msg(
+      "registerMsg",
+      "Le mot de passe doit avoir au moins 6 caractères.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  const number =
+    phone.replace(/\D/g,"");
+
+  const email =
+    "dm."+number+"@devise-madina.local";
+
+
+  try{
+
+    const result =
+      await db.auth.signUp({
+
+        email:email,
+
+        password:password,
+
+        options:{
+          data:{
+            nom:name,
+            telephone:phone
+          }
+        }
+
+      });
+
+
+    if(result.error){
+
+      msg(
+        "registerMsg",
+        result.error.message,
+        "error"
+      );
+
+      return;
+    }
+
+
+    if(!result.data.session){
+
+      msg(
+        "registerMsg",
+        "Compte créé. Désactive « Confirm email » dans Supabase Authentication.",
+        "info"
+      );
+
+      return;
+    }
+
+
+    user =
+      result.data.user;
+
+    await loadProfile();
+
+    openApp();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    msg(
+      "registerMsg",
+      "Erreur lors de l'inscription.",
+      "error"
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   CONNEXION
+===================================================== */
+
+async function login(){
+
+  if(!db){
+
+    msg(
+      "loginMsg",
+      "Supabase n'est pas chargé.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  const loginValue =
+    document.getElementById("login").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+
+  if(!loginValue || !password){
+
+    msg(
+      "loginMsg",
+      "Remplis tous les champs.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  try{
+
+    let email = loginValue;
+
+
+    if(!loginValue.includes("@")){
+
+      const result =
+        await db.rpc(
+          "get_login_email",
+          {
+            p_login:loginValue
+          }
+        );
+
+
+      if(result.error){
+
+        msg(
+          "loginMsg",
+          result.error.message,
+          "error"
+        );
+
+        return;
+      }
+
+
+      email =
+        result.data;
+    }
+
+
+    if(!email){
+
+      msg(
+        "loginMsg",
+        "Utilisateur introuvable.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    const result =
+      await db.auth.signInWithPassword({
+
+        email:email,
+
+        password:password
+
+      });
+
+
+    if(result.error){
+
+      msg(
+        "loginMsg",
+        result.error.message,
+        "error"
+      );
+
+      return;
+    }
+
+
+    user =
+      result.data.user;
+
+    await loadProfile();
+
+    openApp();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    msg(
+      "loginMsg",
+      "Erreur de connexion.",
+      "error"
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   PROFIL
+===================================================== */
+
+async function loadProfile(){
+
+  if(!db || !user) return;
+
+
+  const result =
+    await db
+    .from("profiles")
+    .select("*")
+    .eq("id",user.id)
+    .maybeSingle();
+
+
+  if(result.error){
+
+    console.error(
+      "Erreur profil",
+      result.error
+    );
+
+    return;
+  }
+
+
+  profile =
+    result.data;
+
+}
+
+
+/* =====================================================
+   OUVRIR APPLICATION
+===================================================== */
+
+function openApp(){
+
+  document
+    .getElementById("auth")
+    .style.display="none";
+
+
+  document
+    .getElementById("menu")
+    .classList.remove("hidden");
+
+
+  if(
+    profile &&
+    profile.role === "admin"
+  ){
+
+    document
+      .getElementById("adminButton")
+      .classList.remove("hidden");
+
+  }
+
+
+  page("home");
+
+  loadRates();
+
+  loadAds();
+
+  loadMyAds();
+
+  showProfile();
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function page(id){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(function(section){
+
+      section.classList.remove("active");
+
+    });
+
+
+  const target =
+    document.getElementById(id);
+
+
+  if(target){
+
+    target.classList.add("active");
+
+  }
+
+
+  window.scrollTo(0,0);
+
+}
+
+
+/* =====================================================
+   TAUX
+===================================================== */
+
+async function loadRates(){
+
+  if(!db) return;
+
+
+  try{
+
+    const result =
+      await db
+      .from("taux")
+      .select("*");
+
+
+    if(result.error){
+
+      console.error(result.error);
+
+      return;
+    }
+
+
+    result.data.forEach(function(row){
+
+      if(row.devise === "USD"){
+
+        document.getElementById("usd")
+          .textContent =
+          number(row.valeur);
+
+        document.getElementById("adminUsd")
+          .value =
+          row.valeur;
+      }
+
+
+      if(row.devise === "EUR"){
+
+        document.getElementById("eur")
+          .textContent =
+          number(row.valeur);
+
+        document.getElementById("adminEur")
+          .value =
+          row.valeur;
+      }
+
+
+      if(
+        row.devise === "CFA" ||
+        row.devise === "XOF"
+      ){
+
+        document.getElementById("cfa")
+          .textContent =
+          number(row.valeur);
+
+        document.getElementById("adminCfa")
+          .value =
+          row.valeur;
+      }
+
+    });
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+
+}
+
+
+/* =====================================================
+   PUBLIER
+===================================================== */
+
+async function publishAd(){
+
+  if(!db || !user){
+
+    msg(
+      "publishMsg",
+      "Tu dois être connecté.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  const haveCurrency =
+    document.getElementById("haveCurrency").value;
+
+  const amount =
+    Number(
+      document.getElementById("amount").value
+    );
+
+  const haveForm =
+    document.getElementById("haveForm").value;
+
+  const wantCurrency =
+    document.getElementById("wantCurrency").value;
+
+  const wantForm =
+    document.getElementById("wantForm").value;
+
+  const rate =
+    Number(
+      document.getElementById("rate").value
+    );
+
+  const negotiable =
+    document.getElementById("negotiable").checked;
+
+  const location =
+    document.getElementById("location").value.trim();
+
+  const duration =
+    document.getElementById("duration").value;
+
+
+  if(
+    !amount ||
+    !rate ||
+    !location
+  ){
+
+    msg(
+      "publishMsg",
+      "Montant, taux et localisation sont obligatoires.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  try{
+
+    const result =
+      await db
+      .from("annonces")
+      .insert({
+
+        user_id:user.id,
+
+        ai_devise:haveCurrency,
+
+        montant:amount,
+
+        ai_forme:haveForm,
+
+        ai_cheque_type:
+          haveForm === "Cheque"
+          ? document.getElementById("haveChequeType").value
+          : null,
+
+        ai_banque:
+          haveForm === "Cheque"
+          ? document.getElementById("haveBank").value
+          : null,
+
+        cherche_devise:wantCurrency,
+
+        cherche_forme:wantForm,
+
+        cherche_cheque_type:
+          wantForm === "Cheque"
+          ? document.getElementById("wantChequeType").value
+          : null,
+
+        cherche_banque:
+          wantForm === "Cheque"
+          ? document.getElementById("wantBank").value
+          : null,
+
+        taux:rate,
+
+        negociable:negotiable,
+
+        localisation:location,
+
+        duree_validite:duration
+
+      });
+
+
+    if(result.error){
+
+      msg(
+        "publishMsg",
+        result.error.message,
+        "error"
+      );
+
+      return;
+    }
+
+
+    msg(
+      "publishMsg",
+      "✅ Annonce publiée avec succès.",
+      "success"
+    );
+
+
+    document.getElementById("amount").value="";
+    document.getElementById("rate").value="";
+    document.getElementById("location").value="";
+
+
+    loadAds();
+
+    loadMyAds();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    msg(
+      "publishMsg",
+      "Erreur lors de la publication.",
+      "error"
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   ANNONCES
+===================================================== */
+
+async function loadAds(){
+
+  const box =
+    document.getElementById("allAds");
+
+
+  if(!db){
+
+    box.innerHTML =
+      "Connexion à Supabase indisponible.";
+
+    return;
+  }
+
+
+  try{
+
+    const result =
+      await db
+      .from("annonces")
+      .select(`
+        *,
+        profiles (
+          nom,
+          telephone
+        )
+      `)
+      .order(
+        "created_at",
+        {ascending:false}
+      );
+
+
+    if(result.error){
+
+      box.innerHTML =
+        '<div class="message error">'+
+        result.error.message+
+        '</div>';
+
+      return;
+    }
+
+
+    if(!result.data.length){
+
+      box.innerHTML =
+        "<p>Aucune annonce pour le moment.</p>";
+
+      return;
+    }
+
+
+    box.innerHTML =
+      result.data
+      .map(renderAd)
+      .join("");
+
+
+  }catch(error){
+
+    console.error(error);
+
+    box.innerHTML =
+      '<div class="message error">'+
+      'Erreur de chargement.'+
+      '</div>';
+
+  }
+
+}
+
+
+function renderAd(ad){
+
+  const p =
+    ad.profiles || {};
+
+
+  return `
+
+    <div class="annonce">
+
+      <h3>
+        ${safe(p.nom || "Utilisateur")}
+      </h3>
+
+      <span class="badge">
+        J'ai ${safe(ad.ai_devise)}
+      </span>
+
+      <span class="badge">
+        ${number(ad.montant)}
+      </span>
+
+      <p>
+        <b>Forme :</b>
+        ${safe(ad.ai_forme)}
+      </p>
+
+      <p>
+        <b>Je cherche :</b>
+        ${safe(ad.cherche_devise)}
+      </p>
+
+      <p>
+        <b>Forme recherchée :</b>
+        ${safe(ad.cherche_forme)}
+      </p>
+
+      <p>
+        <b>Taux :</b>
+        ${number(ad.taux)}
+        ${ad.negociable ? " — À négocier" : ""}
+      </p>
+
+      <p>
+        📍 ${safe(ad.localisation)}
+      </p>
+
+      <p>
+        ⏱️ ${safe(ad.duree_validite)}
+      </p>
+
+      ${
+        p.telephone
+        ?
+        `<p>📞 ${safe(p.telephone)}</p>`
+        :
+        ""
+      }
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   MES ANNONCES
+===================================================== */
+
+async function loadMyAds(){
+
+  const box =
+    document.getElementById("myAds");
+
+
+  if(!db || !user) return;
+
+
+  const result =
+    await db
+    .from("annonces")
+    .select("*")
+    .eq("user_id",user.id)
+    .order(
+      "created_at",
+      {ascending:false}
+    );
+
+
+  if(result.error){
+
+    box.innerHTML =
+      '<div class="message error">'+
+      result.error.message+
+      '</div>';
+
+    return;
+  }
+
+
+  if(!result.data.length){
+
+    box.innerHTML =
+      "<p>Tu n'as aucune annonce.</p>";
+
+    return;
+  }
+
+
+  box.innerHTML =
+    result.data.map(function(ad){
+
+      return `
+
+        <div class="annonce">
+
+          <p>
+            <b>
+              ${safe(ad.ai_devise)}
+              →
+              ${safe(ad.cherche_devise)}
+            </b>
+          </p>
+
+          <p>
+            Montant :
+            ${number(ad.montant)}
+          </p>
+
+          <p>
+            Taux :
+            ${number(ad.taux)}
+          </p>
+
+          <p>
+            📍 ${safe(ad.localisation)}
+          </p>
+
+          <button
+            class="btn btn-danger"
+            onclick="deleteAd('${ad.id}')">
+            Supprimer
+          </button>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+}
+
+
+/* =====================================================
+   SUPPRIMER
+===================================================== */
+
+async function deleteAd(id){
+
+  if(!confirm("Supprimer cette annonce ?")){
+    return;
+  }
+
+
+  const result =
+    await db
+    .from("annonces")
+    .delete()
+    .eq("id",id)
+    .eq("user_id",user.id);
+
+
+  if(result.error){
+
+    alert(result.error.message);
+
+    return;
+  }
+
+
+  loadAds();
+
+  loadMyAds();
+
+}
+
+
+/* =====================================================
+   ADMIN
+===================================================== */
+
+async function saveRates(){
+
+  if(
+    !profile ||
+    profile.role !== "admin"
+  ){
+
+    msg(
+      "adminMsg",
+      "Accès administrateur refusé.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  const values = [
+
+    {
+      devise:"USD",
+      valeur:Number(
+        document.getElementById("adminUsd").value
+      )
+    },
+
+    {
+      devise:"EUR",
+      valeur:Number(
+        document.getElementById("adminEur").value
+      )
+    },
+
+    {
+      devise:"CFA",
+      valeur:Number(
+        document.getElementById("adminCfa").value
+      )
+    }
+
+  ];
+
+
+  try{
+
+    for(const item of values){
+
+      const result =
+        await db
+        .from("taux")
+        .update({
+          valeur:item.valeur,
+          updated_at:new Date().toISOString()
+        })
+        .eq(
+          "devise",
+          item.devise
+        );
+
+
+      if(result.error){
+        throw result.error;
+      }
+
+    }
+
+
+    msg(
+      "adminMsg",
+      "✅ Taux enregistrés.",
+      "success"
+    );
+
+
+    loadRates();
+
+
+  }catch(error){
+
+    msg(
+      "adminMsg",
+      error.message,
+      "error"
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   PROFIL
+===================================================== */
+
+function showProfile(){
+
+  const box =
+    document.getElementById("profile");
+
+
+  if(!profile){
+
+    box.innerHTML =
+      "<p>Profil introuvable.</p>";
+
+    return;
+  }
+
+
+  box.innerHTML = `
 
     <p>
-      Trouvez des personnes qui souhaitent acheter ou vendre
-      des devises à Madina.
+      <b>Nom :</b>
+      ${safe(profile.nom)}
     </p>
 
-  </div>
+    <p>
+      <b>Téléphone :</b>
+      ${safe(profile.telephone)}
+    </p>
 
-  <div class="card">
+    <p>
+      <b>Rôle :</b>
+      ${safe(profile.role || "user")}
+    </p>
 
-    <h2>Taux actuels</h2>
+  `;
 
-    <div class="rate-grid">
+}
 
-      <div class="rate">
-        USD / GNF
-        <strong id="rateUSD">...</strong>
-      </div>
 
-      <div class="rate">
-        EUR / GNF
-        <strong id="rateEUR">...</strong>
-      </div>
+/* =====================================================
+   CHEQUES
+===================================================== */
 
-      <div class="rate">
-        CFA / GNF
-        <strong id="rateCFA">...</strong>
-      </div>
+function chequeFields(){
 
-    </div>
+  const have =
+    document.getElementById("haveForm").value;
 
-  </div>
+  const want =
+    document.getElementById("wantForm").value;
 
-</section>
 
-<!-- ================= ANNONCES ================= -->
+  document
+    .getElementById("haveCheque")
+    .classList.toggle(
+      "hidden",
+      have !== "Cheque"
+    );
 
-<section id="annonces" class="page hidden">
 
-  <div class="card">
+  document
+    .getElementById("wantCheque")
+    .classList.toggle(
+      "hidden",
+      want !== "Cheque"
+    );
 
-    <h2>📢 Annonces disponibles</h2>
+}
 
-    <div id="annoncesList">
-      Chargement des annonces...
-    </div>
 
-  </div>
+/* =====================================================
+   DECONNEXION
+===================================================== */
 
-</section>
+async function logout(){
 
-<!-- ================= PUBLIER ================= -->
+  if(db){
+    await db.auth.signOut();
+  }
 
-<section id="publier" class="page hidden">
 
-  <div class="card">
+  user=null;
+  profile=null;
 
-    <h2>📢 Publier une annonce</h2>
 
-    <div id="publishMessage"></div>
+  document
+    .getElementById("menu")
+    .classList.add("hidden");
 
-    <label>J'ai</label>
-    <select id="aiDevise">
-      <option value="USD">Dollar (USD)</option>
-      <option value="EUR">Euro (EUR)</option>
-      <option value="CFA">CFA (XOF)</option>
-      <option value="GNF">Franc guinéen (GNF)</option>
-    </select>
 
-    <label>Montant</label>
-    <input id="montant" type="number" placeholder="Ex : 1000">
+  document
+    .getElementById("auth")
+    .style.display="block";
 
-    <label>Sous forme de</label>
-    <select id="aiForme" onchange="toggleCheque('ai')">
-      <option value="Especes">Espèces</option>
-      <option value="Orange Money">Orange Money</option>
-      <option value="MTN Mobile Money">MTN Mobile Money</option>
-      <option value="Wave">Wave</option>
-      <option value="Cheque">Chèque bancaire</option>
-    </select>
 
-    <div id="aiChequeBox" class="hidden">
+  document
+    .querySelectorAll(".page")
+    .forEach(function(x){
+      x.classList.remove("active");
+    });
 
-      <label>Type de chèque</label>
-      <input id="aiChequeType" placeholder="Ex : chèque certifié">
+}
 
-      <label>Banque</label>
-      <input id="aiBanque" placeholder="Nom de la banque">
 
-    </div>
+/* =====================================================
+   OUTILS
+===================================================== */
 
-    <label>Je cherche</label>
-    <select id="chercheDevise">
-      <option value="USD">Dollar (USD)</option>
-      <option value="EUR">Euro (EUR)</option>
-      <option value="CFA">CFA (XOF)</option>
-      <option value="GNF">Franc guinéen (GNF)</option>
-    </select>
+function msg(id,text,type){
 
-    <label>Sous forme de</label>
-    <select id="chercheForme" onchange="toggleCheque('cherche')">
-      <option value="Especes">Espèces</option>
-      <option value="Orange Money">Orange Money</option>
-      <option value="MTN Mobile Money">MTN Mobile Money</option>
+  const box =
+    document.getElementById(id);
+
+  if(box){
+
+    box.innerHTML =
+      '<div class="message '+type+'">'+
+      text+
+      '</div>';
+
+  }
+
+}
+
+
+function number(value){
+
+  if(value === null || value === undefined){
+    return "...";
+  }
+
+  return Number(value)
+    .toLocaleString("fr-FR");
+
+}
+
+
+function safe(value){
+
+  if(value === null || value === undefined){
+    return "";
+  }
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+</script>
+
+</body>
+  </html>
