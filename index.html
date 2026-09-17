@@ -2,7 +2,11 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="theme-color" content="#0b5ed7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 
 <title>Devise Madina</title>
 
@@ -11,16 +15,19 @@
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-  background:#f4f7fb;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f3f6fb;
   color:#172033;
+  min-height:100vh;
 }
 
-button,input,select{
-  font:inherit;
+button,
+input,
+select{
+  font-family:inherit;
 }
 
 button{
@@ -28,62 +35,176 @@ button{
 }
 
 .hidden{
-  display:none !important;
+  display:none!important;
 }
 
-/* ================= SPLASH ================= */
-
+/* SPLASH */
 #splash{
   position:fixed;
   inset:0;
-  z-index:9999;
-  background:#0758b8;
+  background:#0b5ed7;
   color:white;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  z-index:9999;
 }
 
-.splash-box{
-  text-align:center;
-}
-
-.logo-circle{
-  width:100px;
-  height:100px;
+.logoCircle{
+  width:95px;
+  height:95px;
   border-radius:50%;
   background:white;
-  color:#0758b8;
+  color:#0b5ed7;
   display:flex;
-  justify-content:center;
   align-items:center;
-  margin:auto;
-  font-size:32px;
-  font-weight:bold;
+  justify-content:center;
+  font-size:38px;
+  font-weight:900;
+  margin-bottom:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
-.splash-box h1{
-  margin-top:20px;
+#splash h1{
   font-size:30px;
 }
 
-.splash-box p{
+#splash p{
   margin-top:8px;
+  opacity:.9;
 }
 
-/* ================= HEADER ================= */
+/* AUTH */
+#auth{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.authBox{
+  width:100%;
+  max-width:430px;
+  background:white;
+  padding:28px 22px;
+  border-radius:20px;
+  box-shadow:0 10px 35px rgba(0,0,0,.10);
+}
+
+.authLogo{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.authLogo .logoCircle{
+  margin:0 auto 12px;
+  width:75px;
+  height:75px;
+  font-size:30px;
+}
+
+.authLogo h2{
+  color:#0b5ed7;
+}
+
+.authTabs{
+  display:flex;
+  gap:8px;
+  margin-bottom:20px;
+}
+
+.authTabs button{
+  flex:1;
+  border:0;
+  padding:12px;
+  border-radius:10px;
+  background:#edf2f8;
+  color:#333;
+  font-weight:bold;
+}
+
+.authTabs button.active{
+  background:#0b5ed7;
+  color:white;
+}
+
+.formGroup{
+  margin-bottom:15px;
+}
+
+.formGroup label{
+  display:block;
+  margin-bottom:7px;
+  font-weight:bold;
+  font-size:14px;
+}
+
+.formGroup input,
+.formGroup select{
+  width:100%;
+  padding:13px;
+  border:1px solid #d7deea;
+  border-radius:10px;
+  outline:none;
+  background:white;
+}
+
+.formGroup input:focus,
+.formGroup select:focus{
+  border-color:#0b5ed7;
+}
+
+.primaryBtn{
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:10px;
+  background:#0b5ed7;
+  color:white;
+  font-weight:bold;
+  font-size:16px;
+}
+
+.primaryBtn:active{
+  transform:scale(.98);
+}
+
+.error{
+  background:#ffe5e5;
+  color:#b00020;
+  padding:11px;
+  border-radius:9px;
+  margin-bottom:15px;
+  font-size:14px;
+}
+
+.success{
+  background:#e2f8ea;
+  color:#16743b;
+  padding:11px;
+  border-radius:9px;
+  margin-bottom:15px;
+  font-size:14px;
+}
+
+/* APP */
+#app{
+  min-height:100vh;
+}
 
 header{
-  background:#0758b8;
-  color:white;
-  padding:15px;
   position:sticky;
   top:0;
   z-index:100;
-  box-shadow:0 2px 8px #0002;
+  background:#0b5ed7;
+  color:white;
+  padding:14px 15px;
+  box-shadow:0 3px 12px rgba(0,0,0,.15);
 }
 
-.header-content{
+.headerInside{
   max-width:1100px;
   margin:auto;
   display:flex;
@@ -91,108 +212,29 @@ header{
   align-items:center;
 }
 
-.logo{
+.brand{
+  font-weight:900;
   font-size:20px;
-  font-weight:bold;
 }
 
-.logout{
-  background:#ffffff22;
-  border:1px solid #ffffff55;
-  color:white;
-  padding:8px 12px;
-  border-radius:8px;
-}
-
-/* ================= AUTH ================= */
-
-.auth{
-  min-height:100vh;
+.headerRight{
   display:flex;
   align-items:center;
-  justify-content:center;
-  padding:20px;
+  gap:10px;
 }
 
-.auth-box{
-  width:100%;
-  max-width:430px;
-  background:white;
-  padding:25px;
-  border-radius:15px;
-  box-shadow:0 5px 25px #0001;
-}
-
-.auth-box h2{
-  color:#0758b8;
-  margin-bottom:8px;
-}
-
-.auth-box p{
-  color:#667085;
-  margin-bottom:20px;
-}
-
-.field{
-  margin-bottom:15px;
-}
-
-.field label{
-  display:block;
-  font-weight:bold;
-  margin-bottom:7px;
-}
-
-.field input,
-.field select{
-  width:100%;
-  padding:12px;
-  border:1px solid #d0d5dd;
-  border-radius:9px;
-  background:white;
-  outline:none;
-}
-
-.field input:focus,
-.field select:focus{
-  border-color:#0758b8;
-}
-
-.primary{
-  width:100%;
+.logoutBtn{
   border:0;
-  background:#0758b8;
+  background:rgba(255,255,255,.15);
   color:white;
-  padding:13px;
-  border-radius:9px;
-  font-weight:bold;
+  padding:8px 11px;
+  border-radius:8px;
 }
-
-.secondary{
-  width:100%;
-  border:1px solid #0758b8;
-  background:white;
-  color:#0758b8;
-  padding:12px;
-  border-radius:9px;
-  font-weight:bold;
-  margin-top:10px;
-}
-
-.small-link{
-  text-align:center;
-  color:#0758b8;
-  margin-top:15px;
-  cursor:pointer;
-}
-
-/* ================= APP ================= */
 
 main{
   max-width:1100px;
   margin:auto;
-  padding:20px;
-  padding-bottom:100px;
+  padding:20px 15px 100px;
 }
 
 .page{
@@ -203,72 +245,69 @@ main{
   display:block;
 }
 
-.title{
-  font-size:25px;
-  font-weight:bold;
+.pageTitle{
+  margin-bottom:18px;
+}
+
+.pageTitle h2{
+  font-size:24px;
   margin-bottom:5px;
 }
 
-.subtitle{
+.pageTitle p{
   color:#667085;
-  margin-bottom:20px;
 }
 
-/* ================= CARDS ================= */
+/* RATES */
+.rateGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-bottom:25px;
+}
 
-.card{
+.rateCard{
   background:white;
   border-radius:15px;
-  padding:20px;
-  margin-bottom:18px;
-  box-shadow:0 3px 15px #0000000d;
+  padding:18px;
+  box-shadow:0 3px 14px rgba(0,0,0,.07);
 }
 
-.card h2{
+.rateCard .currency{
+  color:#667085;
+  font-size:14px;
+}
+
+.rateCard .rate{
+  font-size:25px;
+  font-weight:900;
+  margin-top:7px;
+  color:#0b5ed7;
+}
+
+.rateCard small{
+  color:#777;
+}
+
+/* FORMS */
+.card{
+  background:white;
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 3px 14px rgba(0,0,0,.07);
+  margin-bottom:18px;
+}
+
+.sectionTitle{
+  font-size:18px;
+  font-weight:900;
+  color:#0b5ed7;
   margin-bottom:15px;
 }
 
-/* ================= TAUX ================= */
-
-.rates{
+.formGrid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-bottom:20px;
-}
-
-.rate-card{
-  background:#eef6ff;
-  padding:15px;
-  border-radius:12px;
-  text-align:center;
-}
-
-.rate-card strong{
-  display:block;
-  color:#0758b8;
-  font-size:21px;
-  margin:6px 0;
-}
-
-.rate-card small{
-  color:#667085;
-}
-
-/* ================= FORMULAIRE ================= */
-
-.section-title{
-  background:#eef6ff;
-  padding:12px;
-  border-radius:9px;
-  margin:18px 0 15px;
-  font-weight:bold;
-  color:#0758b8;
-}
-
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:repeat(2,1fr);
   gap:15px;
 }
 
@@ -276,193 +315,206 @@ main{
   grid-column:1/-1;
 }
 
-.checkbox{
-  display:flex !important;
+.checkboxLine{
+  display:flex;
   align-items:center;
-  gap:8px;
-  cursor:pointer;
+  gap:9px;
+  margin:10px 0;
 }
 
-.checkbox input{
+.checkboxLine input{
   width:18px;
   height:18px;
 }
 
-.cheque-box{
-  background:#fff8e6;
-  border:1px solid #f0cf72;
-  padding:15px;
-  border-radius:10px;
+/* ANNOUNCEMENTS */
+.annonceList{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
 }
 
-/* ================= ANNONCES ================= */
-
-.annonce{
+.annonceCard{
   background:white;
-  border:1px solid #e1e5ea;
-  border-radius:13px;
-  padding:17px;
-  margin-bottom:15px;
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 3px 14px rgba(0,0,0,.07);
 }
 
-.annonce-top{
+.annonceTop{
   display:flex;
   justify-content:space-between;
   gap:10px;
-  margin-bottom:15px;
+  margin-bottom:13px;
 }
 
-.badge{
-  background:#eaf3ff;
-  color:#0758b8;
-  padding:6px 9px;
-  border-radius:20px;
+.annonceType{
+  font-weight:900;
+  color:#0b5ed7;
+}
+
+.annonceAmount{
+  font-size:22px;
+  font-weight:900;
+}
+
+.infoRow{
+  padding:7px 0;
+  border-bottom:1px solid #edf0f5;
+  font-size:14px;
+}
+
+.infoRow:last-child{
+  border-bottom:0;
+}
+
+.infoLabel{
+  color:#667085;
+}
+
+.deleteBtn{
+  margin-top:14px;
+  border:0;
+  background:#ffe5e5;
+  color:#c62828;
+  padding:10px 13px;
+  border-radius:9px;
+  font-weight:bold;
+}
+
+.negociable{
+  display:inline-block;
+  background:#fff1c7;
+  color:#8a6200;
+  padding:4px 8px;
+  border-radius:6px;
   font-size:12px;
   font-weight:bold;
 }
 
-.money{
-  font-size:22px;
-  font-weight:bold;
-  margin:8px 0;
-}
-
-.exchange{
+/* PROFILE */
+.profileBox{
   text-align:center;
-  color:#0758b8;
-  font-size:24px;
-  margin:12px 0;
 }
 
-.info-row{
-  padding:7px 0;
-  color:#475467;
-  font-size:14px;
+.profileAvatar{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background:#0b5ed7;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 15px;
+  font-size:30px;
+  font-weight:900;
 }
 
-.info-row b{
-  color:#172033;
+.profileName{
+  font-size:23px;
+  font-weight:900;
 }
 
-.negociable{
-  color:#07883f;
-  font-weight:bold;
-}
-
-.delete-btn{
-  margin-top:12px;
-  border:0;
-  background:#ffe9e9;
-  color:#c62828;
-  padding:9px 12px;
-  border-radius:8px;
-}
-
-/* ================= ADMIN ================= */
-
-.admin-rate{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-
-.admin-rate div{
-  background:#f8fafc;
-  padding:15px;
-  border-radius:10px;
-}
-
-.admin-rate p{
-  margin-top:7px;
-  font-weight:bold;
-  color:#0758b8;
-}
-
-/* ================= INSTALLATION ================= */
-
-.install-box{
-  background:#eef6ff;
-  border-radius:12px;
-  padding:18px;
-  line-height:1.6;
-}
-
-/* ================= VIDE ================= */
-
-.empty{
-  text-align:center;
-  padding:30px;
+.profilePhone{
   color:#667085;
+  margin-top:5px;
 }
 
-/* ================= NAVIGATION ================= */
-
-.bottom-nav{
+/* NAV */
+.bottomNav{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  height:68px;
   background:white;
-  border-top:1px solid #ddd;
-  z-index:200;
-  box-shadow:0 -2px 10px #0001;
-}
-
-.nav-inner{
-  max-width:700px;
-  height:100%;
-  margin:auto;
+  border-top:1px solid #dfe4ec;
   display:flex;
-  justify-content:space-around;
+  justify-content:center;
+  z-index:500;
 }
 
-.nav-btn{
+.navInside{
+  width:100%;
+  max-width:800px;
+  display:flex;
+}
+
+.navBtn{
+  flex:1;
   border:0;
-  background:none;
+  background:white;
+  padding:9px 3px 8px;
   color:#667085;
-  padding:7px 8px;
   font-size:11px;
 }
 
-.nav-btn span{
+.navBtn span{
   display:block;
-  font-size:21px;
-  margin-bottom:3px;
+  font-size:20px;
+  margin-bottom:2px;
 }
 
-.nav-btn.active{
-  color:#0758b8;
+.navBtn.active{
+  color:#0b5ed7;
   font-weight:bold;
 }
 
-/* ================= MOBILE ================= */
+/* ADMIN */
+.adminBox{
+  border:2px solid #0b5ed7;
+}
 
-@media(max-width:650px){
+.adminBadge{
+  display:inline-block;
+  background:#0b5ed7;
+  color:white;
+  padding:5px 9px;
+  border-radius:7px;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:12px;
+}
 
-  main{
-    padding:15px;
-    padding-bottom:90px;
-  }
+/* LOADING */
+.loading{
+  text-align:center;
+  padding:25px;
+  color:#667085;
+}
 
-  .rates{
+.empty{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  text-align:center;
+  color:#667085;
+}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+  .rateGrid{
     grid-template-columns:1fr;
   }
 
-  .form-grid{
+  .formGrid{
     grid-template-columns:1fr;
-  }
-
-  .admin-rate{
-    grid-template-columns:1fr;
-  }
-
-  .title{
-    font-size:22px;
   }
 
   .full{
     grid-column:auto;
+  }
+
+  main{
+    padding-bottom:100px;
+  }
+
+  .headerRight{
+    gap:5px;
+  }
+
+  .brand{
+    font-size:17px;
   }
 }
 </style>
@@ -470,1305 +522,910 @@ main{
 
 <body>
 
-<!-- ================= SPLASH ================= -->
-
+<!-- SPLASH -->
 <div id="splash">
-
-  <div class="splash-box">
-
-    <div class="logo-circle">
-      DM
-    </div>
-
-    <h1>Devise Madina</h1>
-
-    <p>
-      Votre plateforme d'échange à Madina
-    </p>
-
-  </div>
-
+  <div class="logoCircle">DM</div>
+  <h1>Devise Madina</h1>
+  <p>Votre partenaire d'échange à Madina</p>
 </div>
 
+<!-- AUTH -->
+<section id="auth" class="hidden">
 
-<!-- ================= AUTHENTIFICATION ================= -->
+  <div class="authBox">
 
-<div id="auth" class="hidden">
+    <div class="authLogo">
+      <div class="logoCircle">DM</div>
+      <h2>Devise Madina</h2>
+      <p>Plateforme d'échange à Madina</p>
+    </div>
 
-  <div class="auth">
+    <div class="authTabs">
+      <button id="tabConnexion" class="active" onclick="showAuth('connexion')">
+        Connexion
+      </button>
 
-    <div class="auth-box">
+      <button id="tabInscription" onclick="showAuth('inscription')">
+        Inscription
+      </button>
+    </div>
 
-      <!-- CONNEXION -->
+    <div id="authMessage"></div>
 
-      <div id="loginBox">
+    <!-- CONNEXION -->
+    <div id="connexionBox">
 
-        <h2>Connexion</h2>
-
-        <p>
-          Connectez-vous à Devise Madina
-        </p>
-
-        <div class="field">
-
-          <label>
-            Nom ou téléphone
-          </label>
-
-          <input
-            id="loginUser"
-            type="text"
-            placeholder="Votre nom ou téléphone"
-          >
-
-        </div>
-
-        <div class="field">
-
-          <label>
-            Mot de passe
-          </label>
-
-          <input
-            id="loginPass"
-            type="password"
-            placeholder="Votre mot de passe"
-          >
-
-        </div>
-
-        <button
-          class="primary"
-          onclick="connexion()"
+      <div class="formGroup">
+        <label>Nom ou téléphone</label>
+        <input
+          id="loginInput"
+          type="text"
+          placeholder="Votre nom ou téléphone"
         >
-          Se connecter
-        </button>
-
-        <div
-          class="small-link"
-          onclick="afficherInscription()"
-        >
-          Créer un compte
-        </div>
-
       </div>
 
-
-      <!-- INSCRIPTION -->
-
-      <div id="registerBox" class="hidden">
-
-        <h2>
-          Créer un compte
-        </h2>
-
-        <p>
-          Rejoignez Devise Madina
-        </p>
-
-        <div class="field">
-
-          <label>
-            Nom complet
-          </label>
-
-          <input
-            id="regName"
-            type="text"
-            placeholder="Votre nom"
-          >
-
-        </div>
-
-        <div class="field">
-
-          <label>
-            Téléphone / WhatsApp
-          </label>
-
-          <input
-            id="regPhone"
-            type="tel"
-            placeholder="Ex : 622000000"
-          >
-
-        </div>
-
-        <div class="field">
-
-          <label>
-            Mot de passe
-          </label>
-
-          <input
-            id="regPass"
-            type="password"
-            placeholder="Créer un mot de passe"
-          >
-
-        </div>
-
-        <button
-          class="primary"
-          onclick="inscription()"
+      <div class="formGroup">
+        <label>Mot de passe</label>
+        <input
+          id="loginPassword"
+          type="password"
+          placeholder="Votre mot de passe"
         >
-          Créer mon compte
-        </button>
-
-        <div
-          class="small-link"
-          onclick="afficherConnexion()"
-        >
-          J'ai déjà un compte
-        </div>
-
       </div>
+
+      <button class="primaryBtn" onclick="connexion()">
+        Se connecter
+      </button>
+
+    </div>
+
+    <!-- INSCRIPTION -->
+    <div id="inscriptionBox" class="hidden">
+
+      <div class="formGroup">
+        <label>Nom complet</label>
+        <input
+          id="registerName"
+          type="text"
+          placeholder="Ex : Ibrahima Diallo"
+        >
+      </div>
+
+      <div class="formGroup">
+        <label>Téléphone / WhatsApp</label>
+        <input
+          id="registerPhone"
+          type="tel"
+          placeholder="Ex : 622000000"
+        >
+      </div>
+
+      <div class="formGroup">
+        <label>Mot de passe</label>
+        <input
+          id="registerPassword"
+          type="password"
+          placeholder="Minimum 6 caractères"
+        >
+      </div>
+
+      <button class="primaryBtn" onclick="inscription()">
+        Créer mon compte
+      </button>
 
     </div>
 
   </div>
 
-</div>
+</section>
 
 
-<!-- ================= APPLICATION ================= -->
-
+<!-- APPLICATION -->
 <div id="app" class="hidden">
 
-<header>
+  <header>
+    <div class="headerInside">
 
-  <div class="header-content">
-
-    <div class="logo">
-      💱 Devise Madina
-    </div>
-
-    <button
-      class="logout"
-      onclick="deconnexion()"
-    >
-      Déconnexion
-    </button>
-
-  </div>
-
-</header>
-
-
-<main>
-
-
-<!-- ================= ACCUEIL ================= -->
-
-<section
-  id="pageAccueil"
-  class="page active"
->
-
-  <div class="title">
-    Publier une annonce
-  </div>
-
-  <div class="subtitle">
-    Trouvez quelqu'un qui possède la devise que vous recherchez.
-  </div>
-
-
-  <!-- TAUX -->
-
-  <div class="rates">
-
-    <div class="rate-card">
-
-      <small>
-        1 USD
-      </small>
-
-      <strong id="rateUSD">
-        0 GNF
-      </strong>
-
-      <small>
-        Dollar → GNF
-      </small>
-
-    </div>
-
-
-    <div class="rate-card">
-
-      <small>
-        1 EUR
-      </small>
-
-      <strong id="rateEUR">
-        0 GNF
-      </strong>
-
-      <small>
-        Euro → GNF
-      </small>
-
-    </div>
-
-
-    <div class="rate-card">
-
-      <small>
-        1 CFA
-      </small>
-
-      <strong id="rateCFA">
-        0 GNF
-      </strong>
-
-      <small>
-        CFA → GNF
-      </small>
-
-    </div>
-
-  </div>
-
-
-  <!-- FORMULAIRE -->
-
-  <div class="card">
-
-
-    <!-- CE QUE J'AI -->
-
-    <div class="section-title">
-      💰 CE QUE J'AI
-    </div>
-
-
-    <div class="form-grid">
-
-
-      <div class="field">
-
-        <label>
-          J'ai
-        </label>
-
-        <select id="aiDevise">
-
-          <option value="USD">
-            Dollar américain (USD)
-          </option>
-
-          <option value="EUR">
-            Euro (EUR)
-          </option>
-
-          <option value="CFA">
-            Franc CFA (XOF)
-          </option>
-
-          <option value="GNF">
-            Franc guinéen (GNF)
-          </option>
-
-        </select>
-
+      <div class="brand">
+        💱 Devise Madina
       </div>
 
-
-      <div class="field">
-
-        <label>
-          Montant
-        </label>
-
-        <input
-          id="montant"
-          type="number"
-          min="0"
-          step="any"
-          placeholder="Ex : 1000"
-        >
-
+      <div class="headerRight">
+        <span id="headerUser"></span>
+        <button class="logoutBtn" onclick="deconnexion()">
+          Déconnexion
+        </button>
       </div>
 
+    </div>
+  </header>
 
-      <div class="field full">
 
-        <label>
-          Sous forme de
-        </label>
+  <main>
 
-        <select
-          id="aiForme"
-          onchange="toggleCheque('ai')"
-        >
+    <!-- ACCUEIL -->
+    <section id="pageAccueil" class="page active">
 
-          <option value="especes">
-            💵 Espèces
-          </option>
-
-          <option value="orange">
-            📱 Orange Money
-          </option>
-
-          <option value="mtn">
-            🟡 MTN Mobile Money
-          </option>
-
-          <option value="wave">
-            🌊 Wave
-          </option>
-
-          <option value="cheque">
-            📝 Chèque bancaire
-          </option>
-
-        </select>
-
+      <div class="pageTitle">
+        <h2>Bienvenue sur Devise Madina</h2>
+        <p>Échangez vos devises directement entre utilisateurs.</p>
       </div>
 
+      <div class="rateGrid">
 
-      <!-- CHEQUE J'AI -->
-
-      <div
-        id="chequeAI"
-        class="cheque-box full hidden"
-      >
-
-        <div class="field">
-
-          <label>
-            Type de chèque
-          </label>
-
-          <select id="typeChequeAI">
-
-            <option value="Chèque bancaire">
-              Chèque bancaire
-            </option>
-
-            <option value="Chèque certifié">
-              Chèque certifié
-            </option>
-
-            <option value="Chèque de banque">
-              Chèque de banque
-            </option>
-
-          </select>
-
+        <div class="rateCard">
+          <div class="currency">USD / GNF</div>
+          <div id="rateUSD" class="rate">—</div>
+          <small>Dollar américain</small>
         </div>
 
-
-        <div class="field">
-
-          <label>
-            Banque
-          </label>
-
-          <input
-            id="banqueAI"
-            type="text"
-            placeholder="Nom de la banque"
-          >
-
+        <div class="rateCard">
+          <div class="currency">EUR / GNF</div>
+          <div id="rateEUR" class="rate">—</div>
+          <small>Euro</small>
         </div>
 
-      </div>
-
-    </div>
-
-
-    <!-- CE QUE JE CHERCHE -->
-
-    <div class="section-title">
-      🔎 CE QUE JE CHERCHE
-    </div>
-
-
-    <div class="form-grid">
-
-
-      <div class="field">
-
-        <label>
-          Je cherche
-        </label>
-
-        <select id="chercheDevise">
-
-          <option value="USD">
-            Dollar américain (USD)
-          </option>
-
-          <option value="EUR">
-            Euro (EUR)
-          </option>
-
-          <option value="CFA">
-            Franc CFA (XOF)
-          </option>
-
-          <option value="GNF">
-            Franc guinéen (GNF)
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Sous forme de
-        </label>
-
-        <select
-          id="chercheForme"
-          onchange="toggleCheque('cherche')"
-        >
-
-          <option value="especes">
-            💵 Espèces
-          </option>
-
-          <option value="orange">
-            📱 Orange Money
-          </option>
-
-          <option value="mtn">
-            🟡 MTN Mobile Money
-          </option>
-
-          <option value="wave">
-            🌊 Wave
-          </option>
-
-          <option value="cheque">
-            📝 Chèque bancaire
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <!-- CHEQUE RECHERCHE -->
-
-      <div
-        id="chequeCH"
-        class="cheque-box full hidden"
-      >
-
-        <div class="field">
-
-          <label>
-            Type de chèque
-          </label>
-
-          <select id="typeChequeCH">
-
-            <option value="Chèque bancaire">
-              Chèque bancaire
-            </option>
-
-            <option value="Chèque certifié">
-              Chèque certifié
-            </option>
-
-            <option value="Chèque de banque">
-              Chèque de banque
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Banque
-          </label>
-
-          <input
-            id="banqueCH"
-            type="text"
-            placeholder="Nom de la banque"
-          >
-
+        <div class="rateCard">
+          <div class="currency">CFA / GNF</div>
+          <div id="rateCFA" class="rate">—</div>
+          <small>Franc CFA</small>
         </div>
 
       </div>
 
 
-      <!-- TAUX -->
+      <div class="card">
 
-      <div class="field">
+        <div class="sectionTitle">
+          📢 Comment ça marche ?
+        </div>
 
-        <label>
-          Taux proposé
-        </label>
-
-        <input
-          id="taux"
-          type="number"
-          min="0"
-          step="any"
-          placeholder="Ex : 9800"
-        >
-
-      </div>
-
-
-      <!-- DUREE -->
-
-      <div class="field">
-
-        <label>
-          Durée de validité
-        </label>
-
-        <select id="duree">
-
-          <option value="24 heures">
-            24 heures
-          </option>
-
-          <option value="3 jours">
-            3 jours
-          </option>
-
-          <option value="7 jours">
-            7 jours
-          </option>
-
-          <option value="30 jours">
-            30 jours
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <!-- NEGOCIABLE -->
-
-      <div class="field full">
-
-        <label class="checkbox">
-
-          <input
-            id="negociable"
-            type="checkbox"
-            onchange="toggleTaux()"
-          >
-
-          <span>
-            À négocier
-          </span>
-
-        </label>
-
-      </div>
-
-
-      <!-- LOCALISATION -->
-
-      <div class="field full">
-
-        <label>
-          📍 Localisation
-        </label>
-
-        <input
-          id="lieu"
-          type="text"
-          placeholder="Ex : Madina, Conakry"
-        >
-
-      </div>
-
-    </div>
-
-
-    <button
-      class="primary"
-      onclick="publierAnnonce()"
-    >
-      📢 Publier l'annonce
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- ================= ANNONCES ================= -->
-
-<section
-  id="pageAnnonces"
-  class="page"
->
-
-  <div class="title">
-    📢 Annonces
-  </div>
-
-  <div class="subtitle">
-    Consultez les annonces disponibles.
-  </div>
-
-  <div id="listeAnnonces"></div>
-
-</section>
-
-
-<!-- ================= MES ANNONCES ================= -->
-
-<section
-  id="pageMesAnnonces"
-  class="page"
->
-
-  <div class="title">
-    📋 Mes annonces
-  </div>
-
-  <div class="subtitle">
-    Retrouvez vos annonces.
-  </div>
-
-  <div id="mesAnnonces"></div>
-
-</section>
-
-
-<!-- ================= TAUX ================= -->
-
-<section
-  id="pageTaux"
-  class="page"
->
-
-  <div class="title">
-    📊 Taux
-  </div>
-
-  <div class="subtitle">
-    Taux configurés sur Devise Madina.
-  </div>
-
-
-  <div class="card">
-
-    <h2>
-      Taux actuels
-    </h2>
-
-
-    <div class="admin-rate">
-
-
-      <div>
-
-        <b>
-          💵 USD / GNF
-        </b>
-
-        <p id="adminUSD">
-          0 GNF
+        <p style="line-height:1.7;color:#667085;">
+          Publiez ce que vous avez et ce que vous recherchez.
+          Les autres utilisateurs peuvent consulter votre annonce
+          et vous contacter directement.
         </p>
 
       </div>
 
+    </section>
 
-      <div>
 
-        <b>
-          💶 EUR / GNF
-        </b>
+    <!-- PUBLIER -->
+    <section id="pagePublier" class="page">
 
-        <p id="adminEUR">
-          0 GNF
-        </p>
+      <div class="pageTitle">
+        <h2>Publier une annonce</h2>
+        <p>Indiquez ce que vous avez et ce que vous recherchez.</p>
+      </div>
+
+
+      <div class="card">
+
+        <div class="sectionTitle">
+          💰 CE QUE J'AI
+        </div>
+
+        <div class="formGrid">
+
+          <div class="formGroup">
+            <label>Devise</label>
+
+            <select id="aiDevise">
+              <option value="USD">Dollar (USD)</option>
+              <option value="EUR">Euro (EUR)</option>
+              <option value="CFA">Franc CFA (XOF)</option>
+              <option value="GNF">Franc guinéen (GNF)</option>
+            </select>
+          </div>
+
+
+          <div class="formGroup">
+            <label>Montant</label>
+
+            <input
+              id="montant"
+              type="number"
+              min="0"
+              placeholder="Ex : 1000"
+            >
+          </div>
+
+
+          <div class="formGroup">
+
+            <label>Sous forme de</label>
+
+            <select id="aiForme" onchange="toggleCheque('AI')">
+
+              <option value="Espèces">
+                Espèces
+              </option>
+
+              <option value="Orange Money">
+                Orange Money
+              </option>
+
+              <option value="MTN Mobile Money">
+                MTN Mobile Money
+              </option>
+
+              <option value="Wave">
+                Wave
+              </option>
+
+              <option value="Chèque bancaire">
+                Chèque bancaire
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div id="chequeAI" class="full hidden">
+
+            <div class="formGrid">
+
+              <div class="formGroup">
+
+                <label>Type de chèque</label>
+
+                <select id="aiChequeType">
+
+                  <option value="Chèque bancaire">
+                    Chèque bancaire
+                  </option>
+
+                  <option value="Chèque certifié">
+                    Chèque certifié
+                  </option>
+
+                  <option value="Chèque de banque">
+                    Chèque de banque
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="formGroup">
+
+                <label>Nom de la banque</label>
+
+                <input
+                  id="aiBanque"
+                  type="text"
+                  placeholder="Ex : Ecobank"
+                >
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
 
-      <div>
+      <div class="card">
 
-        <b>
-          🇬🇳 CFA / GNF
-        </b>
+        <div class="sectionTitle">
+          🔎 CE QUE JE CHERCHE
+        </div>
 
-        <p id="adminCFA">
-          0 GNF
-        </p>
+        <div class="formGrid">
+
+          <div class="formGroup">
+
+            <label>Devise recherchée</label>
+
+            <select id="chercheDevise">
+
+              <option value="USD">Dollar (USD)</option>
+
+              <option value="EUR">Euro (EUR)</option>
+
+              <option value="CFA">Franc CFA (XOF)</option>
+
+              <option value="GNF">Franc guinéen (GNF)</option>
+
+            </select>
+
+          </div>
+
+
+          <div class="formGroup">
+
+            <label>Sous forme de</label>
+
+            <select id="chercheForme" onchange="toggleCheque('CH')">
+
+              <option value="Espèces">
+                Espèces
+              </option>
+
+              <option value="Orange Money">
+                Orange Money
+              </option>
+
+              <option value="MTN Mobile Money">
+                MTN Mobile Money
+              </option>
+
+              <option value="Wave">
+                Wave
+              </option>
+
+              <option value="Chèque bancaire">
+                Chèque bancaire
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div id="chequeCH" class="full hidden">
+
+            <div class="formGrid">
+
+              <div class="formGroup">
+
+                <label>Type de chèque</label>
+
+                <select id="chercheChequeType">
+
+                  <option value="Chèque bancaire">
+                    Chèque bancaire
+                  </option>
+
+                  <option value="Chèque certifié">
+                    Chèque certifié
+                  </option>
+
+                  <option value="Chèque de banque">
+                    Chèque de banque
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="formGroup">
+
+                <label>Nom de la banque</label>
+
+                <input
+                  id="chercheBanque"
+                  type="text"
+                  placeholder="Ex : UBA"
+                >
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="formGroup">
+
+            <label>Taux proposé</label>
+
+            <input
+              id="taux"
+              type="number"
+              min="0"
+              placeholder="Ex : 9800"
+            >
+
+          </div>
+
+
+          <div class="formGroup">
+
+            <label>Durée de validité</label>
+
+            <select id="duree">
+
+              <option value="24 heures">
+                24 heures
+              </option>
+
+              <option value="3 jours">
+                3 jours
+              </option>
+
+              <option value="7 jours">
+                7 jours
+              </option>
+
+              <option value="30 jours">
+                30 jours
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="formGroup full">
+
+            <label>Localisation</label>
+
+            <input
+              id="lieu"
+              type="text"
+              placeholder="Ex : Madina, Conakry"
+            >
+
+          </div>
+
+
+          <div class="checkboxLine full">
+
+            <input
+              type="checkbox"
+              id="negociable"
+              onchange="toggleTaux()"
+            >
+
+            <label for="negociable">
+              Taux à négocier
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="primaryBtn"
+          onclick="publierAnnonce()"
+        >
+          📢 Publier l'annonce
+        </button>
 
       </div>
 
-    </div>
+    </section>
 
 
-    <button
-      class="primary"
-      style="margin-top:15px"
-      onclick="ouvrirAdmin()"
-    >
-      🔐 Modifier les taux
-    </button>
+    <!-- ANNONCES -->
+    <section id="pageAnnonces" class="page">
 
-  </div>
+      <div class="pageTitle">
+        <h2>📢 Annonces</h2>
+        <p>Les offres publiées par les utilisateurs.</p>
+      </div>
 
+      <div id="annoncesList" class="annonceList">
+        <div class="loading">
+          Chargement des annonces...
+        </div>
+      </div>
 
-  <!-- ADMIN -->
-
-  <div
-    id="adminPanel"
-    class="card hidden"
-  >
-
-    <h2>
-      ⚙️ Administration
-    </h2>
-
-    <p style="color:#667085;margin-bottom:15px">
-      Modifie les trois taux.
-    </p>
+    </section>
 
 
-    <div class="field">
+    <!-- MES ANNONCES -->
+    <section id="pageMesAnnonces" class="page">
 
-      <label>
-        1 USD = ? GNF
-      </label>
+      <div class="pageTitle">
+        <h2>📋 Mes annonces</h2>
+        <p>Gérez vos annonces publiées.</p>
+      </div>
 
-      <input
-        id="newUSD"
-        type="number"
-        min="0"
-        step="any"
+      <div id="mesAnnoncesList" class="annonceList">
+        <div class="loading">
+          Chargement...
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- TAUX -->
+    <section id="pageTaux" class="page">
+
+      <div class="pageTitle">
+        <h2>💱 Taux</h2>
+        <p>Les taux actuellement enregistrés.</p>
+      </div>
+
+      <div class="rateGrid">
+
+        <div class="rateCard">
+          <div class="currency">USD / GNF</div>
+          <div id="rateUSD2" class="rate">—</div>
+        </div>
+
+        <div class="rateCard">
+          <div class="currency">EUR / GNF</div>
+          <div id="rateEUR2" class="rate">—</div>
+        </div>
+
+        <div class="rateCard">
+          <div class="currency">CFA / GNF</div>
+          <div id="rateCFA2" class="rate">—</div>
+        </div>
+
+      </div>
+
+
+      <!-- ADMIN -->
+      <div id="adminPanel" class="card adminBox hidden">
+
+        <div class="adminBadge">
+          👑 ADMINISTRATEUR
+        </div>
+
+        <div class="sectionTitle">
+          Modifier les taux
+        </div>
+
+        <div class="formGrid">
+
+          <div class="formGroup">
+
+            <label>USD / GNF</label>
+
+            <input
+              id="adminUSD"
+              type="number"
+              min="0"
+            >
+
+          </div>
+
+
+          <div class="formGroup">
+
+            <label>EUR / GNF</label>
+
+            <input
+              id="adminEUR"
+              type="number"
+              min="0"
+            >
+
+          </div>
+
+
+          <div class="formGroup">
+
+            <label>CFA / GNF</label>
+
+            <input
+              id="adminCFA"
+              type="number"
+              min="0"
+            >
+
+          </div>
+
+        </div>
+
+        <button
+          class="primaryBtn"
+          onclick="modifierTaux()"
+        >
+          💾 Enregistrer les nouveaux taux
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROFIL -->
+    <section id="pageProfil" class="page">
+
+      <div class="pageTitle">
+        <h2>👤 Mon profil</h2>
+      </div>
+
+      <div class="card profileBox">
+
+        <div id="profileAvatar" class="profileAvatar">
+          ?
+        </div>
+
+        <div id="profileName" class="profileName">
+          —
+        </div>
+
+        <div id="profilePhone" class="profilePhone">
+          —
+        </div>
+
+        <div id="profileRole" style="margin-top:10px;"></div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- NAVIGATION -->
+  <nav class="bottomNav">
+
+    <div class="navInside">
+
+      <button
+        class="navBtn active"
+        onclick="showPage('Accueil',this)"
       >
+        <span>🏠</span>
+        Accueil
+      </button>
 
-    </div>
 
-
-    <div class="field">
-
-      <label>
-        1 EUR = ? GNF
-      </label>
-
-      <input
-        id="newEUR"
-        type="number"
-        min="0"
-        step="any"
+      <button
+        class="navBtn"
+        onclick="showPage('Publier',this)"
       >
+        <span>➕</span>
+        Publier
+      </button>
 
-    </div>
 
-
-    <div class="field">
-
-      <label>
-        1 CFA = ? GNF
-      </label>
-
-      <input
-        id="newCFA"
-        type="number"
-        min="0"
-        step="any"
+      <button
+        class="navBtn"
+        onclick="showPage('Annonces',this)"
       >
-
-    </div>
-
-
-    <button
-      class="primary"
-      onclick="modifierTaux()"
-    >
-      💾 Enregistrer
-    </button>
-
-  </div>
-
-</section>
+        <span>📢</span>
+        Annonces
+      </button>
 
 
-<!-- ================= PROFIL ================= -->
-
-<section
-  id="pageProfil"
-  class="page"
->
-
-  <div class="title">
-    👤 Mon profil
-  </div>
-
-
-  <div class="card">
-
-    <div class="field">
-
-      <label>
-        Nom
-      </label>
-
-      <input
-        id="profileName"
-        readonly
+      <button
+        class="navBtn"
+        onclick="showPage('MesAnnonces',this)"
       >
+        <span>📋</span>
+        Mes annonces
+      </button>
 
-    </div>
 
-
-    <div class="field">
-
-      <label>
-        Téléphone
-      </label>
-
-      <input
-        id="profilePhone"
-        readonly
+      <button
+        class="navBtn"
+        onclick="showPage('Taux',this)"
       >
+        <span>💱</span>
+        Taux
+      </button>
+
+
+      <button
+        class="navBtn"
+        onclick="showPage('Profil',this)"
+      >
+        <span>👤</span>
+        Profil
+      </button>
 
     </div>
 
-  </div>
-
-
-  <div class="card">
-
-    <h2>
-      📲 Installer Devise Madina
-    </h2>
-
-    <div class="install-box">
-
-      <p>
-        Sur Android, ouvre le menu de ton navigateur.
-      </p>
-
-      <br>
-
-      <p>
-        Choisis <b>Ajouter à l'écran d'accueil</b>
-        ou <b>Installer l'application</b>
-        si cette option apparaît.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-</main>
-
-
-<!-- ================= NAVIGATION ================= -->
-
-<div class="bottom-nav">
-
-  <div class="nav-inner">
-
-
-    <button
-      class="nav-btn active"
-      onclick="showPage('Accueil',this)"
-    >
-
-      <span>🏠</span>
-      Accueil
-
-    </button>
-
-
-    <button
-      class="nav-btn"
-      onclick="showPage('Annonces',this)"
-    >
-
-      <span>📢</span>
-      Annonces
-
-    </button>
-
-
-    <button
-      class="nav-btn"
-      onclick="showPage('MesAnnonces',this)"
-    >
-
-      <span>📋</span>
-      Mes annonces
-
-    </button>
-
-
-    <button
-      class="nav-btn"
-      onclick="showPage('Taux',this)"
-    >
-
-      <span>📊</span>
-      Taux
-
-    </button>
-
-
-    <button
-      class="nav-btn"
-      onclick="showPage('Profil',this)"
-    >
-
-      <span>👤</span>
-      Profil
-
-    </button>
-
-
-  </div>
+  </nav>
 
 </div>
 
-</div>
 
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
 /* =====================================================
-   DEVise MADINA - JAVASCRIPT
+   SUPABASE
 ===================================================== */
 
-"use strict";
+const SUPABASE_URL =
+  "https://wfiamfhislywldilotr.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_kXVEOktiC5IMsSuAQJlVAw_2mqOgt5-";
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
 
-/* ================= DONNEES ================= */
+/* =====================================================
+   VARIABLES
+===================================================== */
 
-const DEFAULT_RATES = {
-  USD: 9700,
-  EUR: 11300,
-  CFA: 15.5
-};
+let currentUser = null;
+let currentProfile = null;
 
-
-const FORMES = {
-  especes: "💵 Espèces",
-  orange: "📱 Orange Money",
-  mtn: "🟡 MTN Mobile Money",
-  wave: "🌊 Wave",
-  cheque: "📝 Chèque bancaire"
-};
+let realtimeAnnoncesChannel = null;
+let realtimeTauxChannel = null;
 
 
-let user = null;
+/* =====================================================
+   OUTILS
+===================================================== */
+
+function $(id){
+  return document.getElementById(id);
+}
 
 
-/* ================= STOCKAGE SECURISE ================= */
+function escapeHTML(value){
 
-function lireJSON(cle, valeurDefaut){
-
-  try{
-
-    const valeur = localStorage.getItem(cle);
-
-    if(!valeur){
-      return valeurDefaut;
-    }
-
-    const resultat = JSON.parse(valeur);
-
-    return resultat;
-
-  }catch(e){
-
-    return valeurDefaut;
-
+  if(value === null || value === undefined){
+    return "";
   }
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+
+function formatNumber(value){
+
+  if(value === null || value === undefined || value === ""){
+    return "—";
+  }
+
+  return Number(value).toLocaleString("fr-FR");
+}
+
+
+function normalizePhone(phone){
+
+  return String(phone || "")
+    .replace(/\D/g,"");
+}
+
+
+function emailFromPhone(phone){
+
+  const clean = normalizePhone(phone);
+
+  return "dm." + clean + "@devise-madina.local";
+}
+
+
+function showMessage(message,type="error"){
+
+  const box = $("authMessage");
+
+  box.innerHTML =
+    `<div class="${type}">
+      ${escapeHTML(message)}
+    </div>`;
 
 }
 
 
-function enregistrerJSON(cle, valeur){
+/* =====================================================
+   SPLASH
+===================================================== */
+
+setTimeout(async ()=>{
+
+  $("splash").classList.add("hidden");
+
+  await initialiserApplication();
+
+},1200);
+
+
+/* =====================================================
+   INITIALISATION
+===================================================== */
+
+async function initialiserApplication(){
 
   try{
 
-    localStorage.setItem(
-      cle,
-      JSON.stringify(valeur)
-    );
-
-    return true;
-
-  }catch(e){
-
-    alert("Impossible d'enregistrer les données sur ce téléphone.");
-
-    return false;
-
-  }
-
-}
+    const {
+      data:{
+        session
+      }
+    } = await supabaseClient.auth.getSession();
 
 
-/* ================= DEMARRAGE ================= */
+    if(session && session.user){
 
-document.addEventListener("DOMContentLoaded",function(){
+      currentUser = session.user;
 
-  chargerTaux();
-
-  setTimeout(function(){
-
-    const splash = document.getElementById("splash");
-
-    if(splash){
-      splash.classList.add("hidden");
-    }
-
-
-    const saved = lireJSON(
-      "deviseMadinaUser",
-      null
-    );
-
-
-    if(
-      saved &&
-      typeof saved === "object" &&
-      saved.nom &&
-      saved.telephone
-    ){
-
-      user = saved;
+      await chargerProfil();
 
       afficherApp();
 
+      await chargerTaux();
+
+      await afficherAnnonces();
+
+      await afficherMesAnnonces();
+
+      activerRealtime();
+
     }else{
 
-      document
-        .getElementById("auth")
-        .classList.remove("hidden");
+      $("auth").classList.remove("hidden");
 
     }
 
-  },1000);
+  }catch(error){
 
-});
+    console.error(error);
 
+    $("auth").classList.remove("hidden");
 
-/* ================= AUTH ================= */
+    showMessage(
+      "Impossible de charger l'application. Vérifiez votre connexion."
+    );
 
-function afficherInscription(){
-
-  document
-    .getElementById("loginBox")
-    .classList.add("hidden");
-
-  document
-    .getElementById("registerBox")
-    .classList.remove("hidden");
+  }
 
 }
 
 
-function afficherConnexion(){
+/* =====================================================
+   AUTH TABS
+===================================================== */
 
-  document
-    .getElementById("registerBox")
-    .classList.add("hidden");
+function showAuth(type){
 
-  document
-    .getElementById("loginBox")
-    .classList.remove("hidden");
+  $("authMessage").innerHTML = "";
+
+  if(type === "connexion"){
+
+    $("connexionBox").classList.remove("hidden");
+    $("inscriptionBox").classList.add("hidden");
+
+    $("tabConnexion").classList.add("active");
+    $("tabInscription").classList.remove("active");
+
+  }else{
+
+    $("connexionBox").classList.add("hidden");
+    $("inscriptionBox").classList.remove("hidden");
+
+    $("tabConnexion").classList.remove("active");
+    $("tabInscription").classList.add("active");
+
+  }
 
 }
 
 
-function inscription(){
+/* =====================================================
+   INSCRIPTION
+===================================================== */
+
+async function inscription(){
 
   const nom =
-    document
-      .getElementById("regName")
-      .value
-      .trim();
+    $("registerName").value.trim();
 
   const telephone =
-    document
-      .getElementById("regPhone")
-      .value
-      .trim();
+    $("registerPhone").value.trim();
 
   const password =
-    document
-      .getElementById("regPass")
-      .value;
+    $("registerPassword").value;
 
 
   if(!nom || !telephone || !password){
 
-    alert("Remplis tous les champs.");
-
-    return;
-
-  }
-
-
-  const comptes =
-    lireJSON(
-      "deviseMadinaAccounts",
-      []
-    );
-
-
-  if(!Array.isArray(comptes)){
-
-    alert("Erreur dans les données.");
-
-    return;
-
-  }
-
-
-  const existe =
-    comptes.some(function(c){
-
-      return String(c.telephone) === telephone;
-
-    });
-
-
-  if(existe){
-
-    alert("Ce numéro possède déjà un compte.");
-
-    return;
-
-  }
-
-
-  const nouveau = {
-
-    id:
-      Date.now() +
-      Math.floor(Math.random()*1000),
-
-    nom:nom,
-
-    telephone:telephone,
-
-    password:password
-
-  };
-
-
-  comptes.push(nouveau);
-
-
-  if(
-    !enregistrerJSON(
-      "deviseMadinaAccounts",
-      comptes
-    )
-  ){
-
-    return;
-
-  }
-
-
-  document
-    .getElementById("loginUser")
-    .value = telephone;
-
-
-  document
-    .getElementById("loginPass")
-    .value = "";
-
-
-  afficherConnexion();
-
-
-  alert("Compte créé avec succès. Connecte-toi maintenant.");
-
-}
-
-
-function connexion(){
-
-  const identifiant =
-    document
-      .getElementById("loginUser")
-      .value
-      .trim();
-
-  const password =
-    document
-      .getElementById("loginPass")
-      .value;
-
-
-  if(!identifiant || !password){
-
-    alert("Entre ton nom/téléphone et ton mot de passe.");
-
-    return;
-
-  }
-
-
-  const comptes =
-    lireJSON(
-      "deviseMadinaAccounts",
-      []
-    );
-
-
-  if(!Array.isArray(comptes)){
-
-    alert("Aucun compte trouvé.");
-
-    return;
-
-  }
-
-
-  const identifiantMin =
-    identifiant.toLowerCase();
-
-
-  const compte =
-    comptes.find(function(c){
-
-      const nom =
-        String(c.nom || "").toLowerCase();
-
-      const telephone =
-        String(c.telephone || "");
-
-
-      return (
-        (telephone === identifiant ||
-         nom === identifiantMin)
-        &&
-        String(c.password || "") === password
-      );
-
-    });
-
-
-  if(!compte){
-
-    alert(
-      "Nom/téléphone ou mot de passe incorrect."
+    showMessage(
+      "Veuillez remplir tous les champs."
     );
 
     return;
@@ -1776,107 +1433,429 @@ function connexion(){
   }
 
 
-  user = compte;
+  if(normalizePhone(telephone).length < 6){
+
+    showMessage(
+      "Veuillez entrer un numéro de téléphone valide."
+    );
+
+    return;
+
+  }
 
 
-  enregistrerJSON(
-    "deviseMadinaUser",
-    user
+  if(password.length < 6){
+
+    showMessage(
+      "Le mot de passe doit contenir au moins 6 caractères."
+    );
+
+    return;
+
+  }
+
+
+  const email =
+    emailFromPhone(telephone);
+
+
+  showMessage(
+    "Création du compte...",
+    "success"
   );
 
 
-  afficherApp();
+  try{
+
+    const {
+      data,
+      error
+    } = await supabaseClient.auth.signUp({
+
+      email:email,
+
+      password:password,
+
+      options:{
+        data:{
+          nom:nom,
+          telephone:telephone
+        }
+      }
+
+    });
+
+
+    if(error){
+
+      console.error(error);
+
+      showMessage(
+        error.message
+      );
+
+      return;
+
+    }
+
+
+    if(!data.session){
+
+      showMessage(
+        "Compte créé. Si la connexion ne fonctionne pas, désactivez « Confirm email » dans Supabase > Authentication > Settings.",
+        "success"
+      );
+
+      return;
+
+    }
+
+
+    currentUser = data.user;
+
+    await chargerProfil();
+
+    afficherApp();
+
+    await chargerTaux();
+
+    await afficherAnnonces();
+
+    await afficherMesAnnonces();
+
+    activerRealtime();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    showMessage(
+      "Une erreur est survenue pendant l'inscription."
+    );
+
+  }
 
 }
 
+
+/* =====================================================
+   CONNEXION
+===================================================== */
+
+async function connexion(){
+
+  const login =
+    $("loginInput").value.trim();
+
+  const password =
+    $("loginPassword").value;
+
+
+  if(!login || !password){
+
+    showMessage(
+      "Veuillez remplir tous les champs."
+    );
+
+    return;
+
+  }
+
+
+  showMessage(
+    "Connexion...",
+    "success"
+  );
+
+
+  try{
+
+    let email;
+
+
+    /*
+      Si l'utilisateur entre un téléphone,
+      on fabrique directement son identifiant.
+    */
+
+    if(/\d/.test(login) && normalizePhone(login).length >= 6){
+
+      email =
+        emailFromPhone(login);
+
+    }else{
+
+      /*
+        Si l'utilisateur entre son nom,
+        Supabase utilise notre fonction SQL.
+      */
+
+      const {
+        data,
+        error
+      } =
+      await supabaseClient.rpc(
+        "get_login_email",
+        {
+          p_login:login
+        }
+      );
+
+
+      if(error){
+
+        console.error(error);
+
+        showMessage(
+          "Impossible de rechercher ce compte."
+        );
+
+        return;
+
+      }
+
+
+      email = data;
+
+    }
+
+
+    if(!email){
+
+      showMessage(
+        "Nom ou téléphone introuvable."
+      );
+
+      return;
+
+    }
+
+
+    const {
+      data,
+      error
+    } =
+    await supabaseClient.auth.signInWithPassword({
+
+      email:email,
+
+      password:password
+
+    });
+
+
+    if(error){
+
+      console.error(error);
+
+      showMessage(
+        "Nom/téléphone ou mot de passe incorrect."
+      );
+
+      return;
+
+    }
+
+
+    currentUser = data.user;
+
+    await chargerProfil();
+
+    afficherApp();
+
+    await chargerTaux();
+
+    await afficherAnnonces();
+
+    await afficherMesAnnonces();
+
+    activerRealtime();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    showMessage(
+      "Une erreur est survenue pendant la connexion."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   PROFIL
+===================================================== */
+
+async function chargerProfil(){
+
+  if(!currentUser){
+    return;
+  }
+
+
+  const {
+    data,
+    error
+  } =
+  await supabaseClient
+    .from("profiles")
+    .select("*")
+    .eq("id",currentUser.id)
+    .maybeSingle();
+
+
+  if(error){
+
+    console.error(
+      "Erreur profil:",
+      error
+    );
+
+    currentProfile = {
+      id:currentUser.id,
+      nom:currentUser.user_metadata?.nom || "Utilisateur",
+      telephone:currentUser.user_metadata?.telephone || "",
+      role:"user"
+    };
+
+    return;
+
+  }
+
+
+  currentProfile =
+    data || {
+      id:currentUser.id,
+      nom:currentUser.user_metadata?.nom || "Utilisateur",
+      telephone:currentUser.user_metadata?.telephone || "",
+      role:"user"
+    };
+
+}
+
+
+/* =====================================================
+   AFFICHER APP
+===================================================== */
 
 function afficherApp(){
 
-  document
-    .getElementById("auth")
-    .classList.add("hidden");
+  $("auth").classList.add("hidden");
+
+  $("app").classList.remove("hidden");
 
 
-  document
-    .getElementById("app")
-    .classList.remove("hidden");
+  const nom =
+    currentProfile?.nom ||
+    "Utilisateur";
 
 
-  document
-    .getElementById("profileName")
-    .value = user.nom || "";
+  $("headerUser").textContent =
+    nom;
 
 
-  document
-    .getElementById("profilePhone")
-    .value = user.telephone || "";
+  $("profileName").textContent =
+    nom;
 
 
-  chargerTaux();
-
-  afficherAnnonces();
-
-  afficherMesAnnonces();
-
-}
+  $("profilePhone").textContent =
+    currentProfile?.telephone || "";
 
 
-function deconnexion(){
-
-  localStorage.removeItem(
-    "deviseMadinaUser"
-  );
+  $("profileAvatar").textContent =
+    nom.charAt(0).toUpperCase();
 
 
-  user = null;
+  if(currentProfile?.role === "admin"){
 
+    $("profileRole").innerHTML =
+      '<span class="adminBadge">👑 Administrateur</span>';
 
-  document
-    .getElementById("app")
-    .classList.add("hidden");
+    $("adminPanel").classList.remove("hidden");
 
+  }else{
 
-  document
-    .getElementById("auth")
-    .classList.remove("hidden");
+    $("profileRole").innerHTML =
+      '<span style="color:#667085;">Utilisateur</span>';
 
+    $("adminPanel").classList.add("hidden");
 
-  document
-    .getElementById("loginPass")
-    .value = "";
-
-
-  afficherConnexion();
+  }
 
 }
 
 
-/* ================= NAVIGATION ================= */
+/* =====================================================
+   DECONNEXION
+===================================================== */
+
+async function deconnexion(){
+
+  try{
+
+    await supabaseClient.auth.signOut();
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+
+
+  currentUser = null;
+  currentProfile = null;
+
+
+  if(realtimeAnnoncesChannel){
+
+    await supabaseClient.removeChannel(
+      realtimeAnnoncesChannel
+    );
+
+    realtimeAnnoncesChannel = null;
+
+  }
+
+
+  if(realtimeTauxChannel){
+
+    await supabaseClient.removeChannel(
+      realtimeTauxChannel
+    );
+
+    realtimeTauxChannel = null;
+
+  }
+
+
+  $("app").classList.add("hidden");
+
+  $("auth").classList.remove("hidden");
+
+  showAuth("connexion");
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
 function showPage(page,button){
 
   document
     .querySelectorAll(".page")
-    .forEach(function(p){
-
+    .forEach(p=>{
       p.classList.remove("active");
-
-    });
-
-
-  document
-    .querySelectorAll(".nav-btn")
-    .forEach(function(b){
-
-      b.classList.remove("active");
-
     });
 
 
   const target =
-    document.getElementById(
-      "page" + page
-    );
+    $("page" + page);
 
 
   if(target){
@@ -1884,6 +1863,13 @@ function showPage(page,button){
     target.classList.add("active");
 
   }
+
+
+  document
+    .querySelectorAll(".navBtn")
+    .forEach(btn=>{
+      btn.classList.remove("active");
+    });
 
 
   if(button){
@@ -1916,295 +1902,308 @@ function showPage(page,button){
 }
 
 
-/* ================= TAUX ================= */
+/* =====================================================
+   TAUX
+===================================================== */
 
-function getRates(){
+async function chargerTaux(){
 
-  let usd =
-    parseFloat(
-      localStorage.getItem("taux_USD")
-    );
+  try{
 
-  let eur =
-    parseFloat(
-      localStorage.getItem("taux_EUR")
-    );
-
-  let cfa =
-    parseFloat(
-      localStorage.getItem("taux_CFA")
-    );
+    const {
+      data,
+      error
+    } =
+    await supabaseClient
+      .from("taux")
+      .select("*");
 
 
-  if(!Number.isFinite(usd) || usd <= 0){
-    usd = DEFAULT_RATES.USD;
-  }
+    if(error){
 
-  if(!Number.isFinite(eur) || eur <= 0){
-    eur = DEFAULT_RATES.EUR;
-  }
+      console.error(error);
 
-  if(!Number.isFinite(cfa) || cfa <= 0){
-    cfa = DEFAULT_RATES.CFA;
-  }
+      return;
+
+    }
 
 
-  return {
-    USD:usd,
-    EUR:eur,
-    CFA:cfa
-  };
-
-}
+    let usd = 9700;
+    let eur = 11300;
+    let cfa = 15.5;
 
 
-function chargerTaux(){
+    data?.forEach(row=>{
 
-  const rates = getRates();
-
-
-  const rateUSD =
-    document.getElementById("rateUSD");
-
-  const rateEUR =
-    document.getElementById("rateEUR");
-
-  const rateCFA =
-    document.getElementById("rateCFA");
+      const devise =
+        String(
+          row.devise || ""
+        ).toUpperCase();
 
 
-  const adminUSD =
-    document.getElementById("adminUSD");
-
-  const adminEUR =
-    document.getElementById("adminEUR");
-
-  const adminCFA =
-    document.getElementById("adminCFA");
+      const valeur =
+        Number(row.valeur);
 
 
-  if(rateUSD){
-    rateUSD.textContent =
-      formatNumber(rates.USD) + " GNF";
-  }
+      if(devise === "USD"){
+
+        usd = valeur;
+
+      }
 
 
-  if(rateEUR){
-    rateEUR.textContent =
-      formatNumber(rates.EUR) + " GNF";
-  }
+      if(devise === "EUR"){
+
+        eur = valeur;
+
+      }
 
 
-  if(rateCFA){
-    rateCFA.textContent =
-      formatNumber(rates.CFA) + " GNF";
-  }
+      if(devise === "CFA"){
+
+        cfa = valeur;
+
+      }
+
+    });
 
 
-  if(adminUSD){
-    adminUSD.textContent =
-      formatNumber(rates.USD) + " GNF";
-  }
+    $("rateUSD").textContent =
+      formatNumber(usd) + " GNF";
 
 
-  if(adminEUR){
-    adminEUR.textContent =
-      formatNumber(rates.EUR) + " GNF";
-  }
+    $("rateEUR").textContent =
+      formatNumber(eur) + " GNF";
 
 
-  if(adminCFA){
-    adminCFA.textContent =
-      formatNumber(rates.CFA) + " GNF";
-  }
+    $("rateCFA").textContent =
+      formatNumber(cfa) + " GNF";
 
 
-  const newUSD =
-    document.getElementById("newUSD");
-
-  const newEUR =
-    document.getElementById("newEUR");
-
-  const newCFA =
-    document.getElementById("newCFA");
+    $("rateUSD2").textContent =
+      formatNumber(usd) + " GNF";
 
 
-  if(newUSD){
-    newUSD.value = rates.USD;
-  }
-
-  if(newEUR){
-    newEUR.value = rates.EUR;
-  }
-
-  if(newCFA){
-    newCFA.value = rates.CFA;
-  }
-
-}
+    $("rateEUR2").textContent =
+      formatNumber(eur) + " GNF";
 
 
-function ouvrirAdmin(){
-
-  const password =
-    prompt(
-      "Mot de passe administrateur :"
-    );
+    $("rateCFA2").textContent =
+      formatNumber(cfa) + " GNF";
 
 
-  if(password === "madina2024"){
+    $("adminUSD").value = usd;
+    $("adminEUR").value = eur;
+    $("adminCFA").value = cfa;
 
-    document
-      .getElementById("adminPanel")
-      .classList.remove("hidden");
 
-    chargerTaux();
+  }catch(error){
 
-  }else{
-
-    alert("Mot de passe incorrect.");
+    console.error(error);
 
   }
 
 }
 
 
-function modifierTaux(){
+/* =====================================================
+   MODIFICATION DES TAUX ADMIN
+===================================================== */
 
-  const usd =
-    parseFloat(
-      document.getElementById("newUSD").value
+async function modifierTaux(){
+
+  if(!currentProfile ||
+     currentProfile.role !== "admin"){
+
+    alert(
+      "Vous n'avez pas les droits administrateur."
     );
-
-  const eur =
-    parseFloat(
-      document.getElementById("newEUR").value
-    );
-
-  const cfa =
-    parseFloat(
-      document.getElementById("newCFA").value
-    );
-
-
-  if(
-    !Number.isFinite(usd) ||
-    !Number.isFinite(eur) ||
-    !Number.isFinite(cfa) ||
-    usd <= 0 ||
-    eur <= 0 ||
-    cfa <= 0
-  ){
-
-    alert("Entre des taux valides.");
 
     return;
 
   }
 
 
-  localStorage.setItem(
-    "taux_USD",
-    usd
-  );
+  const usd =
+    Number($("adminUSD").value);
 
-  localStorage.setItem(
-    "taux_EUR",
-    eur
-  );
+  const eur =
+    Number($("adminEUR").value);
 
-  localStorage.setItem(
-    "taux_CFA",
-    cfa
-  );
+  const cfa =
+    Number($("adminCFA").value);
 
 
-  chargerTaux();
+  if(!usd || !eur || !cfa){
+
+    alert(
+      "Veuillez remplir correctement les trois taux."
+    );
+
+    return;
+
+  }
 
 
-  alert(
-    "Les 3 taux ont été modifiés avec succès."
-  );
+  try{
+
+    const valeurs = [
+
+      {
+        devise:"USD",
+        valeur:usd
+      },
+
+      {
+        devise:"EUR",
+        valeur:eur
+      },
+
+      {
+        devise:"CFA",
+        valeur:cfa
+      }
+
+    ];
+
+
+    for(const item of valeurs){
+
+      const {
+        error
+      } =
+      await supabaseClient
+        .from("taux")
+        .update({
+          valeur:item.valeur,
+          updated_at:new Date().toISOString()
+        })
+        .eq("devise",item.devise);
+
+
+      if(error){
+
+        throw error;
+
+      }
+
+    }
+
+
+    await chargerTaux();
+
+
+    alert(
+      "Les taux ont été mis à jour."
+    );
+
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Impossible de modifier les taux. Vérifiez vos droits administrateur."
+    );
+
+  }
 
 }
 
 
-/* ================= CHEQUES ================= */
+/* =====================================================
+   CHEQUES
+===================================================== */
 
 function toggleCheque(type){
 
-  if(type === "ai"){
+  if(type === "AI"){
 
-    const forme =
-      document
-        .getElementById("aiForme")
-        .value;
+    const value =
+      $("aiForme").value;
 
+    if(value === "Chèque bancaire"){
 
-    document
-      .getElementById("chequeAI")
-      .classList.toggle(
-        "hidden",
-        forme !== "cheque"
-      );
+      $("chequeAI")
+        .classList
+        .remove("hidden");
+
+    }else{
+
+      $("chequeAI")
+        .classList
+        .add("hidden");
+
+    }
 
   }
 
 
-  if(type === "cherche"){
+  if(type === "CH"){
 
-    const forme =
-      document
-        .getElementById("chercheForme")
-        .value;
+    const value =
+      $("chercheForme").value;
 
+    if(value === "Chèque bancaire"){
 
-    document
-      .getElementById("chequeCH")
-      .classList.toggle(
-        "hidden",
-        forme !== "cheque"
-      );
+      $("chequeCH")
+        .classList
+        .remove("hidden");
+
+    }else{
+
+      $("chequeCH")
+        .classList
+        .add("hidden");
+
+    }
 
   }
 
 }
 
 
-/* ================= NEGOCIABLE ================= */
+/* =====================================================
+   TAUX NEGOCIABLE
+===================================================== */
 
 function toggleTaux(){
 
-  const checkbox =
-    document.getElementById("negociable");
-
-  const input =
-    document.getElementById("taux");
+  const checked =
+    $("negociable").checked;
 
 
-  if(checkbox.checked){
+  $("taux").disabled =
+    checked;
 
-    input.value = "";
 
-    input.disabled = true;
+  if(checked){
+
+    $("taux").value = "";
+
+    $("taux").placeholder =
+      "À négocier";
 
   }else{
 
-    input.disabled = false;
+    $("taux").placeholder =
+      "Ex : 9800";
 
   }
 
 }
 
 
-/* ================= PUBLIER ================= */
+/* =====================================================
+   PUBLICATION ANNONCE
+===================================================== */
 
-function publierAnnonce(){
+async function publierAnnonce(){
 
-  if(!user){
+  if(!currentUser){
 
     alert(
-      "Connecte-toi d'abord."
+      "Vous devez être connecté."
     );
 
     return;
@@ -2213,52 +2212,39 @@ function publierAnnonce(){
 
 
   const aiDevise =
-    document.getElementById("aiDevise").value;
+    $("aiDevise").value;
 
   const montant =
-    parseFloat(
-      document.getElementById("montant").value
-    );
+    Number($("montant").value);
 
   const aiForme =
-    document.getElementById("aiForme").value;
-
+    $("aiForme").value;
 
   const chercheDevise =
-    document.getElementById("chercheDevise").value;
+    $("chercheDevise").value;
 
   const chercheForme =
-    document.getElementById("chercheForme").value;
-
+    $("chercheForme").value;
 
   const negociable =
-    document.getElementById("negociable").checked;
-
+    $("negociable").checked;
 
   const taux =
-    parseFloat(
-      document.getElementById("taux").value
-    );
-
+    negociable
+      ? null
+      : Number($("taux").value);
 
   const lieu =
-    document
-      .getElementById("lieu")
-      .value
-      .trim();
-
+    $("lieu").value.trim();
 
   const duree =
-    document.getElementById("duree").value;
+    $("duree").value;
 
 
-  if(
-    !Number.isFinite(montant) ||
-    montant <= 0
-  ){
+  if(!montant || montant <= 0){
 
     alert(
-      "Indique le montant que tu as."
+      "Veuillez entrer un montant valide."
     );
 
     return;
@@ -2266,16 +2252,10 @@ function publierAnnonce(){
   }
 
 
-  if(
-    !negociable &&
-    (
-      !Number.isFinite(taux) ||
-      taux <= 0
-    )
-  ){
+  if(!negociable && (!taux || taux <= 0)){
 
     alert(
-      "Indique le taux proposé ou coche « À négocier »."
+      "Veuillez entrer un taux ou sélectionner « À négocier »."
     );
 
     return;
@@ -2286,102 +2266,7 @@ function publierAnnonce(){
   if(!lieu){
 
     alert(
-      "Indique la localisation."
-    );
-
-    return;
-
-  }
-
-
-  let chequeAI = null;
-
-  let chequeCH = null;
-
-
-  /* CHEQUE J'AI */
-
-  if(aiForme === "cheque"){
-
-    const type =
-      document
-        .getElementById("typeChequeAI")
-        .value;
-
-
-    const banque =
-      document
-        .getElementById("banqueAI")
-        .value
-        .trim();
-
-
-    if(!banque){
-
-      alert(
-        "Indique la banque du chèque que tu as."
-      );
-
-      return;
-
-    }
-
-
-    chequeAI = {
-      type:type,
-      banque:banque
-    };
-
-  }
-
-
-  /* CHEQUE RECHERCHE */
-
-  if(chercheForme === "cheque"){
-
-    const type =
-      document
-        .getElementById("typeChequeCH")
-        .value;
-
-
-    const banque =
-      document
-        .getElementById("banqueCH")
-        .value
-        .trim();
-
-
-    if(!banque){
-
-      alert(
-        "Indique la banque du chèque recherché."
-      );
-
-      return;
-
-    }
-
-
-    chequeCH = {
-      type:type,
-      banque:banque
-    };
-
-  }
-
-
-  const annonces =
-    lireJSON(
-      "deviseMadinaAnnonces",
-      []
-    );
-
-
-  if(!Array.isArray(annonces)){
-
-    alert(
-      "Impossible de récupérer les annonces."
+      "Veuillez indiquer la localisation."
     );
 
     return;
@@ -2391,520 +2276,299 @@ function publierAnnonce(){
 
   const annonce = {
 
-    id:
-      Date.now() +
-      Math.floor(Math.random()*10000),
+    user_id:currentUser.id,
 
-    aiDevise:aiDevise,
+    ai_devise:aiDevise,
 
     montant:montant,
 
-    aiForme:aiForme,
+    ai_forme:aiForme,
 
-    chequeAI:chequeAI,
+    ai_cheque_type:
+      aiForme === "Chèque bancaire"
+        ? $("aiChequeType").value
+        : null,
 
-    chercheDevise:chercheDevise,
+    ai_banque:
+      aiForme === "Chèque bancaire"
+        ? $("aiBanque").value.trim()
+        : null,
 
-    chercheForme:chercheForme,
+    cherche_devise:chercheDevise,
 
-    chequeCH:chequeCH,
+    cherche_forme:chercheForme,
 
-    taux:
-      negociable
-      ? null
-      : taux,
+    cherche_cheque_type:
+      chercheForme === "Chèque bancaire"
+        ? $("chercheChequeType").value
+        : null,
+
+    cherche_banque:
+      chercheForme === "Chèque bancaire"
+        ? $("chercheBanque").value.trim()
+        : null,
+
+    taux:taux,
 
     negociable:negociable,
 
-    lieu:lieu,
+    localisation:lieu,
 
-    duree:duree,
-
-    auteur:user.nom,
-
-    telephone:user.telephone,
-
-    date:
-      new Date().toLocaleString("fr-FR")
+    duree_validite:duree
 
   };
 
 
-  annonces.unshift(annonce);
+  try{
 
+    const {
+      error
+    } =
+    await supabaseClient
+      .from("annonces")
+      .insert(annonce);
 
-  if(
-    !enregistrerJSON(
-      "deviseMadinaAnnonces",
-      annonces
-    )
-  ){
 
-    return;
+    if(error){
 
-  }
+      console.error(error);
 
+      alert(
+        "Erreur lors de la publication : " +
+        error.message
+      );
 
-  /* RESET */
+      return;
 
-  document.getElementById("montant").value = "";
-
-  document.getElementById("taux").value = "";
-
-  document.getElementById("lieu").value = "";
-
-  document.getElementById("negociable").checked = false;
-
-  document.getElementById("taux").disabled = false;
-
-
-  document.getElementById("aiForme").value =
-    "especes";
-
-  document.getElementById("chercheForme").value =
-    "especes";
-
-
-  document
-    .getElementById("chequeAI")
-    .classList.add("hidden");
-
-
-  document
-    .getElementById("chequeCH")
-    .classList.add("hidden");
-
-
-  document.getElementById("banqueAI").value = "";
-
-  document.getElementById("banqueCH").value = "";
-
-
-  afficherAnnonces();
-
-  afficherMesAnnonces();
-
-
-  alert(
-    "Annonce publiée avec succès !"
-  );
-
-}
-
-
-/* ================= AFFICHER ANNONCES ================= */
-
-function afficherAnnonces(){
-
-  const container =
-    document.getElementById(
-      "listeAnnonces"
-    );
-
-
-  if(!container){
-    return;
-  }
-
-
-  const annonces =
-    lireJSON(
-      "deviseMadinaAnnonces",
-      []
-    );
-
-
-  if(
-    !Array.isArray(annonces) ||
-    annonces.length === 0
-  ){
-
-    container.innerHTML =
-      '<div class="card empty">Aucune annonce pour le moment.</div>';
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    annonces
-      .map(function(a){
-
-        return carteAnnonce(a,false);
-
-      })
-      .join("");
-
-}
-
-
-/* ================= MES ANNONCES ================= */
-
-function afficherMesAnnonces(){
-
-  const container =
-    document.getElementById(
-      "mesAnnonces"
-    );
-
-
-  if(!container || !user){
-    return;
-  }
-
-
-  const annonces =
-    lireJSON(
-      "deviseMadinaAnnonces",
-      []
-    );
-
-
-  const mes =
-    Array.isArray(annonces)
-      ? annonces.filter(function(a){
-
-          return (
-            a.telephone ===
-            user.telephone
-          );
-
-        })
-      : [];
-
-
-  if(mes.length === 0){
-
-    container.innerHTML =
-      '<div class="card empty">Tu n\'as encore publié aucune annonce.</div>';
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    mes
-      .map(function(a){
-
-        return carteAnnonce(a,true);
-
-      })
-      .join("");
-
-}
-
-
-/* ================= CARTE ANNONCE ================= */
-
-function carteAnnonce(
-  a,
-  proprietaire
-){
-
-  let tauxHTML = "";
-
-
-  if(a.negociable){
-
-    tauxHTML =
-      '<div class="info-row negociable">🤝 <b>Taux :</b> À négocier</div>';
-
-  }else{
-
-    tauxHTML =
-      '<div class="info-row">💱 <b>Taux proposé :</b> ' +
-      escapeHTML(
-        formatNumber(a.taux)
-      ) +
-      ' GNF</div>';
-
-  }
-
-
-  let chequeAIHTML = "";
-
-
-  if(
-    a.aiForme === "cheque" &&
-    a.chequeAI
-  ){
-
-    chequeAIHTML =
-      '<div class="info-row">🏦 <b>Chèque :</b> ' +
-      escapeHTML(a.chequeAI.type) +
-      ' — ' +
-      escapeHTML(a.chequeAI.banque) +
-      '</div>';
-
-  }
-
-
-  let chequeCHHTML = "";
-
-
-  if(
-    a.chercheForme === "cheque" &&
-    a.chequeCH
-  ){
-
-    chequeCHHTML =
-      '<div class="info-row">🏦 <b>Chèque recherché :</b> ' +
-      escapeHTML(a.chequeCH.type) +
-      ' — ' +
-      escapeHTML(a.chequeCH.banque) +
-      '</div>';
-
-  }
-
-
-  let deleteHTML = "";
-
-
-  if(proprietaire){
-
-    deleteHTML =
-      '<button class="delete-btn" onclick="supprimerAnnonce(' +
-      Number(a.id) +
-      ')">🗑️ Supprimer</button>';
-
-  }
-
-
-  return `
-
-    <div class="annonce">
-
-      <div class="annonce-top">
-
-        <span class="badge">
-          💰 J'AI
-        </span>
-
-        <span style="color:#667085;font-size:12px">
-          ${escapeHTML(a.date)}
-        </span>
-
-      </div>
-
-
-      <div class="money">
-
-        ${escapeHTML(
-          formatNumber(a.montant)
-        )}
-
-        ${escapeHTML(a.aiDevise)}
-
-      </div>
-
-
-      <div class="info-row">
-
-        💳 <b>Sous forme de :</b>
-
-        ${escapeHTML(
-          FORMES[a.aiForme] ||
-          a.aiForme
-        )}
-
-      </div>
-
-
-      ${chequeAIHTML}
-
-
-      <div class="exchange">
-        ⇅
-      </div>
-
-
-      <div class="annonce-top">
-
-        <span class="badge">
-          🔎 JE CHERCHE
-        </span>
-
-      </div>
-
-
-      <div class="money">
-
-        ${escapeHTML(
-          a.chercheDevise
-        )}
-
-      </div>
-
-
-      <div class="info-row">
-
-        💳 <b>Sous forme de :</b>
-
-        ${escapeHTML(
-          FORMES[a.chercheForme] ||
-          a.chercheForme
-        )}
-
-      </div>
-
-
-      ${chequeCHHTML}
-
-
-      ${tauxHTML}
-
-
-      <div class="info-row">
-
-        📍 <b>Localisation :</b>
-
-        ${escapeHTML(a.lieu)}
-
-      </div>
-
-
-      <div class="info-row">
-
-        ⏳ <b>Validité :</b>
-
-        ${escapeHTML(a.duree)}
-
-      </div>
-
-
-      <div class="info-row">
-
-        👤 <b>Publié par :</b>
-
-        ${escapeHTML(a.auteur)}
-
-      </div>
-
-
-      <div class="info-row">
-
-        📞 <b>Contact :</b>
-
-        ${escapeHTML(a.telephone)}
-
-      </div>
-
-
-      ${deleteHTML}
-
-    </div>
-
-  `;
-
-}
-
-
-/* ================= SUPPRIMER ================= */
-
-function supprimerAnnonce(id){
-
-  if(
-    !confirm(
-      "Supprimer cette annonce ?"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  let annonces =
-    lireJSON(
-      "deviseMadinaAnnonces",
-      []
-    );
-
-
-  if(!Array.isArray(annonces)){
-    annonces = [];
-  }
-
-
-  annonces =
-    annonces.filter(function(a){
-
-      return Number(a.id) !== Number(id);
-
-    });
-
-
-  enregistrerJSON(
-    "deviseMadinaAnnonces",
-    annonces
-  );
-
-
-  afficherAnnonces();
-
-  afficherMesAnnonces();
-
-}
-
-
-/* ================= SECURITE ================= */
-
-function escapeHTML(value){
-
-  if(
-    value === null ||
-    value === undefined
-  ){
-
-    return "";
-
-  }
-
-
-  return String(value)
-
-    .replace(/&/g,"&amp;")
-
-    .replace(/</g,"&lt;")
-
-    .replace(/>/g,"&gt;")
-
-    .replace(/"/g,"&quot;")
-
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/* ================= NOMBRES ================= */
-
-function formatNumber(value){
-
-  const n =
-    Number(value);
-
-
-  if(
-    !Number.isFinite(n)
-  ){
-
-    return "0";
-
-  }
-
-
-  return n.toLocaleString(
-    "fr-FR",
-    {
-      maximumFractionDigits:2
     }
-  );
+
+
+    alert(
+      "Annonce publiée avec succès !"
+    );
+
+
+    /*
+      Réinitialiser le formulaire
+    */
+
+    $("montant").value = "";
+
+    $("taux").value = "";
+
+    $("lieu").value = "";
+
+    $("negociable").checked = false;
+
+    $("taux").disabled = false;
+
+    $("aiBanque").value = "";
+
+    $("chercheBanque").value = "";
+
+
+    $("aiForme").value =
+      "Espèces";
+
+    $("chercheForme").value =
+      "Espèces";
+
+
+    toggleCheque("AI");
+
+    toggleCheque("CH");
+
+
+    showPage(
+      "Annonces",
+      document.querySelectorAll(".navBtn")[2]
+    );
+
+
+    await afficherAnnonces();
+
+    await afficherMesAnnonces();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Une erreur est survenue."
+    );
+
+  }
 
 }
 
-</script>
 
-</body>
-            </html>
+/* =====================================================
+   RECUPERATION DES PROFILS
+===================================================== */
+
+async function recupererProfils(userIds){
+
+  if(!userIds.length){
+
+    return {};
+
+  }
+
+
+  const uniques =
+    [...new Set(userIds)];
+
+
+  const {
+    data,
+    error
+  } =
+  await supabaseClient
+    .from("profiles")
+    .select("id,nom,telephone")
+    .in("id",uniques);
+
+
+  if(error){
+
+    console.error(error);
+
+    return {};
+
+  }
+
+
+  const map = {};
+
+
+  (data || []).forEach(profile=>{
+
+    map[profile.id] =
+      profile;
+
+  });
+
+
+  return map;
+
+}
+
+
+/* =====================================================
+   AFFICHER ANNONCES
+===================================================== */
+
+async function afficherAnnonces(){
+
+  const container =
+    $("annoncesList");
+
+
+  container.innerHTML =
+    '<div class="loading">Chargement des annonces...</div>';
+
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+    await supabaseClient
+      .from("annonces")
+      .select("*")
+      .order("created_at",{ascending:false});
+
+
+    if(error){
+
+      console.error(error);
+
+      container.innerHTML =
+        '<div class="empty">Impossible de charger les annonces.</div>';
+
+      return;
+
+    }
+
+
+    if(!data || data.length === 0){
+
+      container.innerHTML =
+        '<div class="empty">Aucune annonce pour le moment.</div>';
+
+      return;
+
+    }
+
+
+    const profiles =
+      await recupererProfils(
+        data.map(a=>a.user_id)
+      );
+
+
+    container.innerHTML =
+      data
+        .map(a =>
+          carteAnnonce(
+            a,
+            profiles[a.user_id]
+          )
+        )
+        .join("");
+
+
+  }catch(error){
+
+    console.error(error);
+
+    container.innerHTML =
+      '<div class="empty">Erreur de chargement.</div>';
+
+  }
+
+}
+
+
+/* =====================================================
+   MES ANNONCES
+===================================================== */
+
+async function afficherMesAnnonces(){
+
+  const container =
+    $("mesAnnoncesList");
+
+
+  if(!currentUser){
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    '<div class="loading">Chargement...</div>';
+
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+    await supabaseClient
+      .from("annonces")
+      .select("*")
+      .eq("user_id",currentUser.id)
+      .order("created_at",{ascending:false});
+
+
+    if(error){
+
+      console.error(error);
+
+      container.innerHTML =
+        '<div class="empty">Imposs
