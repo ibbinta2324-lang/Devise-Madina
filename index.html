@@ -2,1198 +2,376 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#0b5ed7">
-<title>💱 Devise Madina</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Devise Madina</title>
 
 <style>
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:Arial, sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
 }
+
 body{
-  background:#f3f6fa;
+  background:#f4f7fb;
   color:#172033;
 }
-.cacher{display:none!important}
 
+button,input,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* SPLASH */
 #splash{
   position:fixed;
   inset:0;
   z-index:9999;
-  background:linear-gradient(135deg,#0b5ed7,#063b83);
-  color:white;
+  background:#0758b8;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
+  color:white;
 }
-#splash .logo{font-size:70px}
-#splash h1{margin-top:15px}
-#splash p{margin-top:8px;opacity:.8}
 
-.ecran{
-  max-width:430px;
-  margin:auto;
-  padding:20px;
-  min-height:100vh;
-}
-.carte{
-  background:white;
-  padding:20px;
-  border-radius:18px;
-  margin:18px 0;
-  box-shadow:0 4px 15px rgba(0,0,0,.08);
-}
-.brand{
+.splash-box{
   text-align:center;
-  padding:20px 0;
+  animation:fadeIn 1s ease;
 }
-.brand .logo{font-size:55px}
-.brand h1{
-  color:#084298;
+
+.logo-circle{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:white;
+  color:#0758b8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:auto;
+  font-size:32px;
+  font-weight:bold;
+}
+
+.splash-box h1{
+  margin-top:20px;
+  font-size:30px;
+}
+
+.splash-box p{
   margin-top:8px;
-}
-.brand p{
-  color:#697789;
-  font-size:13px;
-  margin-top:5px;
+  opacity:.9;
 }
 
-.champ{margin-bottom:15px}
-.champ label{
-  display:block;
-  font-size:13px;
-  font-weight:bold;
-  color:#084298;
-  margin-bottom:6px;
+@keyframes fadeIn{
+  from{opacity:0;transform:scale(.9)}
+  to{opacity:1;transform:scale(1)}
 }
-input,select{
-  width:100%;
-  padding:13px;
-  border:2px solid #dce6f2;
-  border-radius:11px;
-  font-size:15px;
-  background:white;
-  outline:none;
-}
-input:focus,select:focus{
-  border-color:#0b5ed7;
-}
-.btn{
-  width:100%;
-  padding:14px;
-  border:0;
-  border-radius:12px;
-  background:#0b5ed7;
+
+/* HEADER */
+header{
+  background:#0758b8;
   color:white;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-}
-.btn.second{
-  background:white;
-  color:#0b5ed7;
-  border:2px solid #0b5ed7;
-}
-.lien{
-  display:block;
-  text-align:center;
-  color:#0b5ed7;
-  font-size:14px;
-  font-weight:bold;
-  margin-top:15px;
-}
-.msg{
-  padding:11px;
-  border-radius:10px;
-  margin-bottom:12px;
-  font-size:13px;
-  text-align:center;
-}
-.ok{
-  background:#e7f7ed;
-  color:#137a3b;
-}
-.err{
-  background:#fdeaea;
-  color:#c62828;
-}
-
-.header{
-  max-width:430px;
-  margin:auto;
-  background:linear-gradient(135deg,#0b5ed7,#063b83);
-  color:white;
-  padding:18px 20px;
-  border-radius:0 0 22px 22px;
-}
-.header h2{font-size:20px}
-.header p{
-  font-size:12px;
-  opacity:.8;
-  margin-top:4px;
-}
-
-.sect{
-  max-width:430px;
-  margin:auto;
-  padding:15px 16px 100px;
-}
-.titre{
-  font-size:17px;
-  font-weight:bold;
-  color:#084298;
-  margin:18px 0 10px;
-}
-
-.taux{
-  background:linear-gradient(135deg,#0b5ed7,#063b83);
-  color:white;
-  border-radius:18px;
   padding:15px;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 2px 8px #0002;
 }
-.tauxligne{
+
+.header-content{
+  max-width:1100px;
+  margin:auto;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:12px 0;
-  border-bottom:1px solid rgba(255,255,255,.2);
 }
-.tauxligne:last-child{border-bottom:0}
-.tauxnom{font-size:13px}
-.tauxval{
+
+.logo{
   font-size:20px;
   font-weight:bold;
 }
 
-.annonce{
-  background:white;
-  border-radius:15px;
-  padding:15px;
-  margin-bottom:12px;
-  box-shadow:0 3px 12px rgba(0,0,0,.07);
-  border-left:5px solid #0b5ed7;
-}
-.badge{
-  display:inline-block;
-  padding:4px 9px;
-  border-radius:20px;
-  font-size:10px;
-  font-weight:bold;
-}
-.vente{
-  background:#e6f7ed;
-  color:#168443;
-}
-.cherche{
-  background:#fff1df;
-  color:#a65b00;
+.user-menu button{
+  background:#ffffff22;
+  border:1px solid #ffffff44;
+  color:white;
+  padding:8px 12px;
+  border-radius:8px;
 }
 
-.navbar{
+/* AUTH */
+.auth{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.auth-box{
+  background:white;
+  width:100%;
+  max-width:430px;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 5px 25px #0001;
+}
+
+.auth-box h2{
+  color:#0758b8;
+  margin-bottom:8px;
+}
+
+.auth-box p{
+  color:#667085;
+  margin-bottom:20px;
+}
+
+.field{
+  margin-bottom:15px;
+}
+
+.field label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:7px;
+}
+
+.field input,
+.field select{
+  width:100%;
+  padding:12px;
+  border:1px solid #d0d5dd;
+  border-radius:9px;
+  outline:none;
+  background:white;
+}
+
+.field input:focus,
+.field select:focus{
+  border-color:#0758b8;
+}
+
+.primary{
+  width:100%;
+  border:0;
+  background:#0758b8;
+  color:white;
+  padding:13px;
+  border-radius:9px;
+  font-weight:bold;
+}
+
+.secondary{
+  width:100%;
+  border:1px solid #0758b8;
+  background:white;
+  color:#0758b8;
+  padding:12px;
+  border-radius:9px;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+.small-link{
+  text-align:center;
+  margin-top:15px;
+  color:#0758b8;
+  cursor:pointer;
+}
+
+/* APP */
+#app{
+  min-height:100vh;
+}
+
+main{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+/* NAV */
+.bottom-nav{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  max-width:430px;
-  margin:auto;
+  height:68px;
   background:white;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:center;
+  z-index:200;
+  box-shadow:0 -2px 10px #0001;
+}
+
+.nav-inner{
+  width:100%;
+  max-width:700px;
   display:flex;
   justify-content:space-around;
-  padding:8px 0;
-  box-shadow:0 -3px 15px rgba(0,0,0,.12);
-  border-radius:18px 18px 0 0;
-  z-index:50;
 }
-.nav{
-  text-align:center;
-  font-size:11px;
-  color:#8995a5;
-  cursor:pointer;
+
+.nav-btn{
+  border:0;
+  background:none;
+  color:#667085;
+  padding:8px 10px;
+  font-size:12px;
 }
-.nav span{
+
+.nav-btn span{
   display:block;
   font-size:22px;
-}
-.nav.act{color:#0b5ed7}
-
-.admin{
-  border:2px dashed #8bb4e8;
+  margin-bottom:3px;
 }
 
-@media(min-width:431px){
-  body{background:#dce5f1}
-}
-</style>
-</head>
-
-<body>
-
-<div id="splash">
-  <div class="logo">💱</div>
-  <h1>Devise Madina</h1>
-  <p>Achat & vente de devises à Madina</p>
-</div>
-
-<!-- ================= CONNEXION ================= -->
-
-<div id="auth" class="cacher">
-<div class="ecran">
-
-<div class="brand">
-  <div class="logo">💱</div>
-  <h1>Devise Madina</h1>
-  <p>USD • EUR • CFA • GNF</p>
-</div>
-
-<div class="carte" id="connexion">
-
-<h3 style="color:#084298;margin-bottom:15px">
-Connexion
-</h3>
-
-<div id="msgConnexion"></div>
-
-<div class="champ">
-<label>Numéro de téléphone</label>
-<input id="loginTel" type="tel" placeholder="Ex : 622000000">
-</div>
-
-<div class="champ">
-<label>Mot de passe</label>
-<input id="loginMdp" type="password">
-</div>
-
-<button class="btn" onclick="connecter()">
-Se connecter
-</button>
-
-<div class="lien" onclick="showInscription()">
-Créer un compte
-</div>
-
-</div>
-
-<!-- INSCRIPTION -->
-
-<div class="carte cacher" id="inscription">
-
-<h3 style="color:#084298;margin-bottom:15px">
-Créer un compte
-</h3>
-
-<div id="msgInscription"></div>
-
-<div class="champ">
-<label>Nom complet</label>
-<input id="nomInscription" type="text">
-</div>
-
-<div class="champ">
-<label>Téléphone</label>
-<input id="telInscription" type="tel">
-</div>
-
-<div class="champ">
-<label>Mot de passe</label>
-<input id="mdpInscription" type="password">
-</div>
-
-<div class="champ">
-<label>Confirmer le mot de passe</label>
-<input id="mdp2Inscription" type="password">
-</div>
-
-<button class="btn" onclick="inscrire()">
-Créer mon compte
-</button>
-
-<div class="lien" onclick="showConnexion()">
-J'ai déjà un compte
-</div>
-
-</div>
-
-</div>
-</div>
-
-<!-- ================= APPLICATION ================= -->
-
-<div id="app" class="cacher">
-
-<div class="header">
-<h2>💱 Devise Madina</h2>
-<p id="bienvenue"></p>
-</div>
-
-<!-- ACCUEIL -->
-
-<div id="pageAccueil" class="sect">
-
-<div class="carte">
-
-<h3 style="color:#084298;margin-bottom:15px">
-📢 Publier une annonce
-</h3>
-
-<div class="champ">
-<label>J'ai</label>
-<select id="aiDevise">
-<option value="USD">🇺🇸 Dollar américain (USD)</option>
-<option value="EUR">🇪🇺 Euro (EUR)</option>
-<option value="XOF">🌍 Franc CFA (XOF)</option>
-<option value="GNF">🇬🇳 Franc guinéen (GNF)</option>
-</select>
-</div>
-
-<div class="champ">
-<label>Montant</label>
-<input id="montant" type="number" placeholder="Ex : 100">
-</div>
-
-<div class="champ">
-<label>Je cherche</label>
-<select id="chercheDevise">
-<option value="GNF">🇬🇳 Franc guinéen (GNF)</option>
-<option value="USD">🇺🇸 Dollar américain (USD)</option>
-<option value="EUR">🇪🇺 Euro (EUR)</option>
-<option value="XOF">🌍 Franc CFA (XOF)</option>
-</select>
-</div>
-
-<div class="champ">
-<label>Taux proposé</label>
-<input id="tauxAnnonce" type="number" placeholder="Ex : 9700">
-</div>
-
-<div class="champ">
-<label>Localisation</label>
-<select id="lieuAnnonce">
-<option>Madina</option>
-<option>Matam</option>
-<option>Taouyah</option>
-<option>Hamdallaye</option>
-<option>Cosa</option>
-<option>Sonfonia</option>
-<option>Autre</option>
-</select>
-</div>
-
-<button class="btn" onclick="publier()">
-📢 Publier l'annonce
-</button>
-
-</div>
-
-<div class="titre">📊 Taux actuels</div>
-
-<div class="taux">
-
-<div class="tauxligne">
-<div class="tauxnom">💵 1 USD → GNF</div>
-<div class="tauxval" id="affUSD">—</div>
-</div>
-
-<div class="tauxligne">
-<div class="tauxnom">💶 1 EUR → GNF</div>
-<div class="tauxval" id="affEUR">—</div>
-</div>
-
-<div class="tauxligne">
-<div class="tauxnom">🌍 1 CFA → GNF</div>
-<div class="tauxval" id="affCFA">—</div>
-</div>
-
-</div>
-
-<div class="titre">📢 Dernières annonces</div>
-<div id="listeAnnonces"></div>
-
-</div>
-
-<!-- TAUX -->
-
-<div id="pageTaux" class="sect cacher">
-
-<div class="titre">📊 Taux de change</div>
-
-<div class="taux">
-
-<div class="tauxligne">
-<div class="tauxnom">💵 1 USD → GNF</div>
-<div class="tauxval" id="tauxUSD">—</div>
-</div>
-
-<div class="tauxligne">
-<div class="tauxnom">💶 1 EUR → GNF</div>
-<div class="tauxval" id="tauxEUR">—</div>
-</div>
-
-<div class="tauxligne">
-<div class="tauxnom">🌍 1 CFA → GNF</div>
-<div class="tauxval" id="tauxCFA">—</div>
-</div>
-
-</div>
-
-<div class="carte admin">
-
-<h3 style="color:#084298">
-🔐 Modifier les taux
-</h3>
-
-<p style="font-size:12px;color:#687789;margin:8px 0 18px">
-Tu peux modifier les trois taux directement depuis ton téléphone.
-</p>
-
-<div class="champ">
-<label>💵 Taux USD → GNF</label>
-<input id="nouveauUSD" type="number" placeholder="Ex : 9700">
-</div>
-
-<div class="champ">
-<label>💶 Taux EUR → GNF</label>
-<input id="nouveauEUR" type="number" placeholder="Ex : 11300">
-</div>
-
-<div class="champ">
-<label>🌍 Taux CFA → GNF</label>
-<input id="nouveauCFA" type="number" step="0.01" placeholder="Ex : 15.5">
-</div>
-
-<div class="champ">
-<label>🔑 Mot de passe admin</label>
-<input id="mdpAdmin" type="password" placeholder="Mot de passe">
-</div>
-
-<button class="btn" onclick="modifierTaux()">
-💾 Enregistrer les taux
-</button>
-
-<div id="msgAdmin" style="margin-top:12px"></div>
-
-</div>
-
-</div>
-
-<!-- ANNONCES -->
-
-<div id="pageAnnonces" class="sect cacher">
-
-<div class="titre">
-📋 Mes annonces
-</div>
-
-<div id="mesAnnonces"></div>
-
-</div>
-
-<!-- PROFIL -->
-
-<div id="pageProfil" class="sect cacher">
-
-<div class="carte" style="text-align:center">
-
-<div style="font-size:55px">👤</div>
-
-<h3 id="profilNom" style="color:#084298"></h3>
-
-<p id="profilTel" style="color:#718096;margin-top:5px"></p>
-
-<button class="btn second"
-style="margin-top:20px"
-onclick="installer()">
-📲 Installer l'application
-</button>
-
-<button class="btn second"
-style="margin-top:10px"
-onclick="deconnecter()">
-Se déconnecter
-</button>
-
-</div>
-
-<div class="carte">
-
-<h3 style="color:#084298">
-📱 Installation
-</h3>
-
-<p style="font-size:13px;color:#65758b;line-height:1.6;margin-top:10px">
-Si le bouton d'installation automatique ne fonctionne pas,
-ouvre le menu <b>⋮</b> de Chrome puis choisis
-<b>« Ajouter à l'écran d'accueil »</b>.
-</p>
-
-</div>
-
-</div>
-
-<!-- NAVIGATION -->
-
-<div class="navbar">
-
-<div class="nav act" id="navAccueil"
-onclick="go('Accueil')">
-<span>🏠</span>
-Accueil
-</div>
-
-<div class="nav" id="navTaux"
-onclick="go('Taux')">
-<span>📊</span>
-Taux
-</div>
-
-<div class="nav" id="navAnnonces"
-onclick="go('Annonces')">
-<span>📋</span>
-Annonces
-</div>
-
-<div class="nav" id="navProfil"
-onclick="go('Profil')">
-<span>👤</span>
-Profil
-</div>
-
-</div>
-
-</div>
-
-<script>
-
-/* =====================================
-   CONFIGURATION
-===================================== */
-
-const ADMIN_PASSWORD="madina2024";
-
-let user=null;
-let deferredPrompt=null;
-
-
-/* =====================================
-   TAUX PAR DEFAUT
-===================================== */
-
-const tauxDefaut={
-  USD:9700,
-  EUR:11300,
-  CFA:15.5
-};
-
-
-/* =====================================
-   DEMARRAGE
-===================================== */
-
-window.addEventListener("load",()=>{
-
-setTimeout(()=>{
-
-document.getElementById("splash").classList.add("cacher");
-
-const saved=localStorage.getItem("dm_user");
-
-if(saved){
-
-try{
-user=JSON.parse(saved);
-ouvrirApplication();
-}catch(e){
-afficherConnexion();
+.nav-btn.active{
+  color:#0758b8;
+  font-weight:bold;
 }
 
-}else{
-
-document.getElementById("auth")
-.classList.remove("cacher");
-
+/* CARDS */
+.card{
+  background:white;
+  border-radius:15px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 3px 15px #0000000d;
 }
 
-},1200);
-
-chargerTaux();
-
-});
-
-
-/* =====================================
-   CONNEXION
-===================================== */
-
-function showInscription(){
-
-document.getElementById("connexion")
-.classList.add("cacher");
-
-document.getElementById("inscription")
-.classList.remove("cacher");
-
+.card h2{
+  margin-bottom:15px;
 }
 
-function showConnexion(){
-
-document.getElementById("inscription")
-.classList.add("cacher");
-
-document.getElementById("connexion")
-.classList.remove("cacher");
-
+.title{
+  font-size:25px;
+  font-weight:bold;
+  margin-bottom:5px;
 }
 
-function afficherConnexion(){
-
-document.getElementById("auth")
-.classList.remove("cacher");
-
+.subtitle{
+  color:#667085;
+  margin-bottom:20px;
 }
 
-function inscrire(){
-
-const nom=document.getElementById("nomInscription").value.trim();
-const tel=document.getElementById("telInscription").value.trim();
-const mdp=document.getElementById("mdpInscription").value;
-const mdp2=document.getElementById("mdp2Inscription").value;
-
-if(!nom||!tel||!mdp){
-
-message("msgInscription","Remplis tous les champs.",false);
-return;
-
+/* RATES */
+.rates{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:20px;
 }
 
-if(mdp!==mdp2){
-
-message("msgInscription","Les mots de passe ne correspondent pas.",false);
-return;
-
+.rate-card{
+  background:#eef6ff;
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
 }
 
-let users=JSON.parse(
-localStorage.getItem("dm_users")||"[]"
-);
-
-if(users.some(u=>u.tel===tel)){
-
-message("msgInscription","Ce numéro existe déjà.",false);
-return;
-
+.rate-card strong{
+  display:block;
+  color:#0758b8;
+  font-size:22px;
+  margin-top:5px;
 }
 
-users.push({
-nom:nom,
-tel:tel,
-mdp:mdp
-});
-
-localStorage.setItem(
-"dm_users",
-JSON.stringify(users)
-);
-
-message(
-"msgInscription",
-"✅ Compte créé. Tu peux maintenant te connecter.",
-true
-);
-
-setTimeout(showConnexion,700);
-
+.rate-card small{
+  color:#667085;
 }
 
-function connecter(){
-
-const tel=document.getElementById("loginTel").value.trim();
-const mdp=document.getElementById("loginMdp").value;
-
-const users=JSON.parse(
-localStorage.getItem("dm_users")||"[]"
-);
-
-const trouve=users.find(
-u=>u.tel===tel&&u.mdp===mdp
-);
-
-if(!trouve){
-
-message(
-"msgConnexion",
-"Numéro ou mot de passe incorrect.",
-false
-);
-
-return;
-
+/* FORM */
+.section-title{
+  background:#eef6ff;
+  padding:12px;
+  border-radius:9px;
+  margin:18px 0 15px;
+  font-weight:bold;
+  color:#0758b8;
 }
 
-user={
-nom:trouve.nom,
-tel:trouve.tel
-};
-
-localStorage.setItem(
-"dm_user",
-JSON.stringify(user)
-);
-
-ouvrirApplication();
-
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
 }
 
-function ouvrirApplication(){
-
-document.getElementById("auth")
-.classList.add("cacher");
-
-document.getElementById("app")
-.classList.remove("cacher");
-
-document.getElementById("bienvenue").textContent=
-"Bienvenue "+user.nom+" 👋";
-
-document.getElementById("profilNom").textContent=
-user.nom;
-
-document.getElementById("profilTel").textContent=
-user.tel;
-
-chargerAnnonces();
-chargerMesAnnonces();
-
+.full{
+  grid-column:1/-1;
 }
 
-function deconnecter(){
-
-localStorage.removeItem("dm_user");
-
-location.reload();
-
+.checkbox{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  margin:10px 0 15px;
 }
 
-
-/* =====================================
-   MESSAGES
-===================================== */
-
-function message(id,texte,ok){
-
-document.getElementById(id).innerHTML=
-'<div class="msg '+(ok?"ok":"err")+'">'+
-texte+
-'</div>';
-
+.checkbox input{
+  width:18px;
+  height:18px;
 }
 
-
-/* =====================================
-   TAUX
-===================================== */
-
-function obtenirTaux(){
-
-return {
-
-USD:parseFloat(
-localStorage.getItem("taux_USD")||tauxDefaut.USD
-),
-
-EUR:parseFloat(
-localStorage.getItem("taux_EUR")||tauxDefaut.EUR
-),
-
-CFA:parseFloat(
-localStorage.getItem("taux_CFA")||tauxDefaut.CFA
-)
-
-};
-
+.cheque-box{
+  background:#fff8e6;
+  border:1px solid #f0cf72;
+  padding:15px;
+  border-radius:10px;
+  margin-top:5px;
 }
 
-function chargerTaux(){
-
-const t=obtenirTaux();
-
-document.getElementById("affUSD").textContent=
-format(t.USD)+" GNF";
-
-document.getElementById("affEUR").textContent=
-format(t.EUR)+" GNF";
-
-document.getElementById("affCFA").textContent=
-format(t.CFA)+" GNF";
-
-document.getElementById("tauxUSD").textContent=
-format(t.USD)+" GNF";
-
-document.getElementById("tauxEUR").textContent=
-format(t.EUR)+" GNF";
-
-document.getElementById("tauxCFA").textContent=
-format(t.CFA)+" GNF";
-
+/* ANNOUNCEMENT */
+.annonce{
+  border:1px solid #e1e5ea;
+  border-radius:13px;
+  padding:17px;
+  margin-bottom:15px;
 }
 
-function modifierTaux(){
-
-const mdp=
-document.getElementById("mdpAdmin").value;
-
-if(mdp!==ADMIN_PASSWORD){
-
-message(
-"msgAdmin",
-"❌ Mot de passe admin incorrect.",
-false
-);
-
-return;
-
+.annonce-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:15px;
 }
 
-const usd=parseFloat(
-document.getElementById("nouveauUSD").value
-);
-
-const eur=parseFloat(
-document.getElementById("nouveauEUR").value
-);
-
-const cfa=parseFloat(
-document.getElementById("nouveauCFA").value
-);
-
-if(!usd||!eur||!cfa){
-
-message(
-"msgAdmin",
-"❌ Remplis les trois taux.",
-false
-);
-
-return;
-
+.badge{
+  background:#eaf3ff;
+  color:#0758b8;
+  padding:6px 9px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
 }
 
-localStorage.setItem("taux_USD",usd);
-localStorage.setItem("taux_EUR",eur);
-localStorage.setItem("taux_CFA",cfa);
-
-chargerTaux();
-
-message(
-"msgAdmin",
-"✅ Les trois taux ont été mis à jour.",
-true
-);
-
-document.getElementById("nouveauUSD").value="";
-document.getElementById("nouveauEUR").value="";
-document.getElementById("nouveauCFA").value="";
-document.getElementById("mdpAdmin").value="";
-
+.money{
+  font-size:22px;
+  font-weight:bold;
+  margin:8px 0;
 }
 
-function format(n){
-
-return Number(n).toLocaleString(
-"fr-FR",
-{
-maximumFractionDigits:2
-}
-);
-
-}
-
-
-/* =====================================
-   ANNONCES
-===================================== */
-
-function publier(){
-
-if(!user){
-
-alert("Connecte-toi d'abord.");
-return;
-
-}
-
-const devise=
-document.getElementById("aiDevise").value;
-
-const montant=parseFloat(
-document.getElementById("montant").value
-);
-
-const cherche=
-document.getElementById("chercheDevise").value;
-
-const taux=parseFloat(
-document.getElementById("tauxAnnonce").value
-);
-
-const lieu=
-document.getElementById("lieuAnnonce").value;
-
-if(!montant){
-
-alert("Entre un montant.");
-return;
-
-}
-
-if(!taux){
-
-alert("Entre un taux.");
-return;
-
-}
-
-const annonce={
-
-id:Date.now(),
-
-devise:devise,
-
-montant:montant,
-
-cherche:cherche,
-
-taux:taux,
-
-lieu:lieu,
-
-nom:user.nom,
-
-tel:user.tel,
-
-date:new Date().toISOString()
-
-};
-
-let annonces=JSON.parse(
-localStorage.getItem("dm_annonces")||"[]"
-);
-
-annonces.unshift(annonce);
-
-localStorage.setItem(
-"dm_annonces",
-JSON.stringify(annonces)
-);
-
-document.getElementById("montant").value="";
-document.getElementById("tauxAnnonce").value="";
-
-chargerAnnonces();
-chargerMesAnnonces();
-
-alert("✅ Annonce publiée.");
-
-}
-
-function chargerAnnonces(){
-
-const annonces=JSON.parse(
-localStorage.getItem("dm_annonces")||"[]"
-);
-
-const element=
-document.getElementById("listeAnnonces");
-
-if(!annonces.length){
-
-element.innerHTML=
-'<p style="text-align:center;color:#7a8798">'+
-"Aucune annonce pour le moment."+
-"</p>";
-
-return;
-
-}
-
-element.innerHTML=
-annonces.slice(0,20)
-.map(creerAnnonce)
-.join("");
-
-}
-
-function chargerMesAnnonces(){
-
-if(!user)return;
-
-const annonces=JSON.parse(
-localStorage.getItem("dm_annonces")||"[]"
-);
-
-const mes=annonces.filter(
-a=>a.tel===user.tel
-);
-
-const element=
-document.getElementById("mesAnnonces");
-
-if(!mes.length){
-
-element.innerHTML=
-'<p style="text-align:center;color:#7a8798">'+
-"Tu n'as aucune annonce."+
-"</p>";
-
-return;
-
-}
-
-element.innerHTML=
-mes.map(creerAnnonce).join("");
-
-}
-
-function deviseNom(code){
-
-if(code==="USD")return"💵 Dollar américain";
-if(code==="EUR")return"💶 Euro";
-if(code==="XOF")return"🌍 Franc CFA";
-return"🇬🇳 Franc guinéen";
-
-}
-
-function creerAnnonce(a){
-
-return `
-<div class="annonce">
-
-<span class="badge vente">
-💰 DISPONIBLE
-</span>
-
-<h3 style="color:#084298;margin:8px 0">
-${format(a.montant)} ${a.devise}
-</h3>
-
-<p style="font-size:13px;color:#66758a">
-${deviseNom(a.devise)}
-</p>
-
-<p style="margin-top:8px;font-size:13px">
-🔎 Recherche :
-<b>${deviseNom(a.cherche)}</b>
-</p>
-
-<p style="margin-top:7px;font-size:13px">
-📈 Taux :
-<b>${format(a.taux)} GNF</b>
-</p>
-
-<p style="margin-top:7px;font-size:13px">
-📍 ${a.lieu}
-</p>
-
-<p style="margin-top:7px;font-size:12px;color:#8995a5">
-👤 ${a.nom} • 📞 ${a.tel}
-</p>
-
-</div>
-`;
-
-}
-
-
-/* =====================================
-   NAVIGATION
-===================================== */
-
-function go(page){
-
-const pages=[
-"Accueil",
-"Taux",
-"Annonces",
-"Profil"
-];
-
-pages.forEach(p=>{
-
-document
-.getElementById("page"+p)
-.classList.toggle(
-"cacher",
-p!==page
-);
-
-document
-.getElementById("nav"+p)
-.classList.toggle(
-"act",
-p===page
-);
-
-});
-
-if(page==="Accueil"){
-chargerAnnonces();
-}
-
-if(page==="Annonces"){
-chargerMesAnnonces();
-}
-
-window.scrollTo(0,0);
-
-}
-
-
-/* =====================================
-   INSTALLATION
-===================================== */
-
-window.addEventListener(
-"beforeinstallprompt",
-event=>{
-
-event.preventDefault();
-
-deferredPrompt=event;
-
-}
-);
-
-async function installer(){
-
-if(deferredPrompt){
-
-deferredPrompt.prompt();
-
-const choix=
-await deferredPrompt.userChoice;
-
-if(choix.outcome==="accepted"){
-
-deferredPrompt=null;
-
-}
-
-return;
-
-}
-
-alert(
-"Pour installer Devise Madina :\n\n"+
-"1. Ouvre le menu ⋮ de Chrome.\n"+
-"2. Choisis « Ajouter à l'écran d'accueil ».\n"+
-"3. Confirme l'installation."
-);
-
-}
-
-</script>
-
-</body>
-</html>
+.exchange{
+  text-align:center;
+  margin:12px 0;
+  color:#0758b8;
+  font-size:22px
