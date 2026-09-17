@@ -1,104 +1,405 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Devise Madina</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<title>Devise Madina</title>
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
-    }
+<style>
+*{
+  box-sizing:border-box;
+}
 
-    #splash {
-      position: fixed;
-      inset: 0;
-      background: #0b5ed7;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 99999;
-    }
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f4f7fb;
+  color:#222;
+}
 
-    #splash h1 {
-      font-size: 35px;
-      margin: 0 0 10px;
-    }
+/* ================= SPLASH ================= */
 
-    #splash p {
-      margin: 0;
-      font-size: 16px;
-    }
+#splash{
+  position:fixed;
+  inset:0;
+  background:#0b5ed7;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:999999;
+}
 
-    #app {
-      display: none;
-      min-height: 100vh;
-    }
+#splash h1{
+  margin:0;
+  font-size:36px;
+}
 
-    header {
-      background: #0b5ed7;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+#splash p{
+  margin-top:10px;
+}
 
-    main {
-      padding: 20px;
-      text-align: center;
-    }
+/* ================= APP ================= */
 
-    .box {
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 3px 15px rgba(0,0,0,.08);
-      max-width: 500px;
-      margin: 30px auto;
-    }
-  </style>
+#app{
+  display:none;
+  min-height:100vh;
+}
+
+header{
+  background:#0b5ed7;
+  color:white;
+  padding:18px;
+  text-align:center;
+}
+
+header h1{
+  margin:0;
+}
+
+nav{
+  display:flex;
+  overflow-x:auto;
+  background:white;
+  border-bottom:1px solid #ddd;
+}
+
+nav button{
+  border:0;
+  background:white;
+  padding:15px;
+  white-space:nowrap;
+  cursor:pointer;
+}
+
+nav button.active{
+  color:#0b5ed7;
+  font-weight:bold;
+  border-bottom:3px solid #0b5ed7;
+}
+
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:18px;
+}
+
+.card{
+  background:white;
+  border-radius:15px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 3px 15px rgba(0,0,0,.07);
+}
+
+h2{
+  margin-top:0;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:13px;
+  margin-top:7px;
+  margin-bottom:15px;
+  border:1px solid #ccc;
+  border-radius:9px;
+  font-size:15px;
+}
+
+button{
+  cursor:pointer;
+}
+
+.btn{
+  width:100%;
+  border:0;
+  background:#0b5ed7;
+  color:white;
+  padding:13px;
+  border-radius:9px;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.btn-danger{
+  background:#dc3545;
+}
+
+.btn-secondary{
+  background:#6c757d;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.rate-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.rate{
+  background:#eef5ff;
+  padding:18px;
+  border-radius:12px;
+  text-align:center;
+}
+
+.rate strong{
+  display:block;
+  font-size:21px;
+  color:#0b5ed7;
+  margin-top:7px;
+}
+
+.annonce{
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:15px;
+  margin-bottom:15px;
+}
+
+.badge{
+  display:inline-block;
+  background:#e7f1ff;
+  color:#0b5ed7;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:13px;
+  margin:3px;
+}
+
+.success{
+  background:#d1e7dd;
+  color:#0f5132;
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:15px;
+}
+
+.error{
+  background:#f8d7da;
+  color:#842029;
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:15px;
+}
+
+.info{
+  background:#cff4fc;
+  color:#055160;
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:15px;
+}
+
+label{
+  font-weight:bold;
+  display:block;
+}
+
+.small{
+  font-size:13px;
+  color:#666;
+}
+
+@media(max-width:600px){
+  .rate-grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <div id="splash">
-    <h1>Devise Madina</h1>
-    <p>Chargement...</p>
+<!-- ================= SPLASH ================= -->
+
+<div id="splash">
+  <h1>Devise Madina</h1>
+  <p>Chargement...</p>
+</div>
+
+<!-- ================= APPLICATION ================= -->
+
+<div id="app">
+
+<header>
+  <h1>Devise Madina</h1>
+  <div class="small" style="color:white;">
+    Votre plateforme d'échange à Madina
+  </div>
+</header>
+
+<nav id="navigation" class="hidden">
+  <button onclick="showPage('accueil')">Accueil</button>
+  <button onclick="showPage('annonces')">Annonces</button>
+  <button onclick="showPage('publier')">Publier</button>
+  <button onclick="showPage('mesannonces')">Mes annonces</button>
+  <button onclick="showPage('profil')">Profil</button>
+  <button id="adminNav" class="hidden" onclick="showPage('admin')">Admin</button>
+</nav>
+
+<div class="container">
+
+<!-- ================= AUTH ================= -->
+
+<section id="authPage">
+
+  <div class="card">
+
+    <h2>Connexion</h2>
+
+    <div id="loginMessage"></div>
+
+    <label>Nom ou téléphone</label>
+    <input id="login" placeholder="Ex : Ibrahima ou 622000000">
+
+    <label>Mot de passe</label>
+    <input id="loginPassword" type="password">
+
+    <button class="btn" onclick="loginUser()">
+      Se connecter
+    </button>
+
   </div>
 
-  <div id="app">
-    <header>
-      <h1>Devise Madina</h1>
-    </header>
+  <div class="card">
 
-    <main>
-      <div class="box">
-        <h2>Bienvenue 👋</h2>
-        <p>La plateforme fonctionne.</p>
-        <p>Nous allons maintenant reconnecter Supabase.</p>
+    <h2>Créer un compte</h2>
+
+    <div id="registerMessage"></div>
+
+    <label>Nom</label>
+    <input id="registerName" placeholder="Votre nom">
+
+    <label>Téléphone</label>
+    <input id="registerPhone" placeholder="Ex : 622000000">
+
+    <label>Mot de passe</label>
+    <input id="registerPassword" type="password">
+
+    <button class="btn" onclick="registerUser()">
+      Créer mon compte
+    </button>
+
+  </div>
+
+</section>
+
+<!-- ================= ACCUEIL ================= -->
+
+<section id="accueil" class="page hidden">
+
+  <div class="card">
+
+    <h2>Bienvenue sur Devise Madina 👋</h2>
+
+    <p>
+      Trouvez des personnes qui souhaitent acheter ou vendre
+      des devises à Madina.
+    </p>
+
+  </div>
+
+  <div class="card">
+
+    <h2>Taux actuels</h2>
+
+    <div class="rate-grid">
+
+      <div class="rate">
+        USD / GNF
+        <strong id="rateUSD">...</strong>
       </div>
-    </main>
+
+      <div class="rate">
+        EUR / GNF
+        <strong id="rateEUR">...</strong>
+      </div>
+
+      <div class="rate">
+        CFA / GNF
+        <strong id="rateCFA">...</strong>
+      </div>
+
+    </div>
+
   </div>
 
-  <script>
-    window.addEventListener("load", function () {
+</section>
 
-      setTimeout(function () {
+<!-- ================= ANNONCES ================= -->
 
-        document.getElementById("splash").style.display = "none";
-        document.getElementById("app").style.display = "block";
+<section id="annonces" class="page hidden">
 
-      }, 1000);
+  <div class="card">
 
-    });
-  </script>
+    <h2>📢 Annonces disponibles</h2>
 
-</body>
-</html>
+    <div id="annoncesList">
+      Chargement des annonces...
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= PUBLIER ================= -->
+
+<section id="publier" class="page hidden">
+
+  <div class="card">
+
+    <h2>📢 Publier une annonce</h2>
+
+    <div id="publishMessage"></div>
+
+    <label>J'ai</label>
+    <select id="aiDevise">
+      <option value="USD">Dollar (USD)</option>
+      <option value="EUR">Euro (EUR)</option>
+      <option value="CFA">CFA (XOF)</option>
+      <option value="GNF">Franc guinéen (GNF)</option>
+    </select>
+
+    <label>Montant</label>
+    <input id="montant" type="number" placeholder="Ex : 1000">
+
+    <label>Sous forme de</label>
+    <select id="aiForme" onchange="toggleCheque('ai')">
+      <option value="Especes">Espèces</option>
+      <option value="Orange Money">Orange Money</option>
+      <option value="MTN Mobile Money">MTN Mobile Money</option>
+      <option value="Wave">Wave</option>
+      <option value="Cheque">Chèque bancaire</option>
+    </select>
+
+    <div id="aiChequeBox" class="hidden">
+
+      <label>Type de chèque</label>
+      <input id="aiChequeType" placeholder="Ex : chèque certifié">
+
+      <label>Banque</label>
+      <input id="aiBanque" placeholder="Nom de la banque">
+
+    </div>
+
+    <label>Je cherche</label>
+    <select id="chercheDevise">
+      <option value="USD">Dollar (USD)</option>
+      <option value="EUR">Euro (EUR)</option>
+      <option value="CFA">CFA (XOF)</option>
+      <option value="GNF">Franc guinéen (GNF)</option>
+    </select>
+
+    <label>Sous forme de</label>
+    <select id="chercheForme" onchange="toggleCheque('cherche')">
+      <option value="Especes">Espèces</option>
+      <option value="Orange Money">Orange Money</option>
+      <option value="MTN Mobile Money">MTN Mobile Money</option>
